@@ -1,0 +1,70 @@
+#buscadorGifos {
+  width: 100%;
+  #titulo {
+    h1 {
+      color: #572ee5;
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      text-align: center;
+      margin: 1.866666vw 11.73333333vw 8.26666666vw 12vw;
+      font-size: 7vw;
+      line-height: 9vw;
+      #GIFOSSpan {
+        color: rgb(48, 202, 194);
+      }
+    }
+  }
+  #searchBar {
+    margin-left: 5.333333vw;
+    margin-right: 5.6vw;
+    #pjsGifos {
+      width: 72.8vw;
+      margin-left: 8.266666vw;
+      margin-right: 8vw;
+      margin-bottom: 0;
+      display: block;
+    }
+    #barra {
+      border: 1px solid #572ee5;
+      border-radius: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 13.333333vw;
+      margin-bottom: 8.26666666vw;
+      #buscarYMas {
+        padding: 0;
+        margin-left: 14.66666vw;
+        margin-right: 6.4vw;
+        color: #6b7989;
+        width: 57.3333333vw;
+        font-size: 3.5vw;
+        line-height: 5vw;
+        border: none;
+      }
+      #lupa {
+        margin-right: 5.3333333vw;
+        width: 5.336vw;
+        height: 5.336vw;
+      }
+    }
+  }
+  #etiquetasInicio {
+    color: #572ee5;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 12vw;
+    #buscadorEtiquetasHome {
+      font-size: 3.7vw;
+      line-height: 6.8vw;
+      margin: 0 18.4vw 0.5333333vw 18.666666vw;
+      font-weight: bold;
+    }
+    #etiquetasEjemplos {
+      margin: 0 20vw 0 20vw;
+      font-weight: 500;
+      font-size: 3.142vw;
+      line-height: 6.8vw;
+    }
+  }
+}

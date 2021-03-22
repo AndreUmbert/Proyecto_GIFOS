@@ -1,0 +1,41 @@
+#trendingGifos {
+  background-color: #f3f5f8;
+  margin-bottom: 12.533333333vw;
+  position: relative;
+  #textosTrending {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    padding-top: 12.26666666vw;
+    #tituloTrendingGifos {
+      color: #572ee5;
+      font-size: 4.3vw;
+      margin-top: 0;
+      margin-bottom: 1.8666666vw;
+      font-weight: bold;
+      line-height: 8vw;
+    }
+    #textoTrendingGifos {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-size: 3.7vw;
+      line-height: 6.3vw;
+      margin: 0 5.6vw 8.533333vw 5.6vw;
+    }
+  }
+  #carruselTrendingGifos {
+      display: flex;
+      overflow: scroll;
+      margin-bottom: 21.8666666vw;
+    .imagenCarrusel {
+      width: 64.8vw;
+      height: 49.866667vw;
+      margin: 0 2.9333333vw 0 2.9333333vw;
+    }
+    #imagenCarrusel1{
+        margin-left: 5.86666666vw;
+    }
+    #imagenCarrusel5{
+        margin-right: 5.86666666vw;
+    }
+  }
+}

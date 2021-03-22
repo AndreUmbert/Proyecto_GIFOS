@@ -1,0 +1,36 @@
+#infoFooter {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 12.53333vw;
+  border-bottom: 1.333333333vw solid #572ee5;
+  #textoFooter {
+    font-size: 3.3vw;
+    margin-bottom: 6.4vw;
+    margin-top: 0;
+    font-family: "Roboto", sans-serif;
+  }
+  #iconosRedesSociales {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 37.333333333vw;
+    margin-right: 37.333333333vw;
+    a {
+        width: 5.333333333vw;
+        height: 5.33333333vw;
+        margin-bottom: 12.266666vw;
+      img {
+        width: 5.333333333vw;
+        height: 5.33333333vw;
+      }
+    }
+  }
+  #marcaCopyrightGifos{
+    font-family: "Roboto", sans-serif;
+    font-size: 3vw;
+    line-height: 5.35vw;
+    margin-bottom: 6.133333333vw;
+    margin-top: 0;
+  }
+}

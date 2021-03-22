@@ -8,15 +8,18 @@
     <title>PROYECTO GIFOS</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header id="header">
         <div id="container" class="container">
             <img src="./assets/assets/logo-mobile.svg" id="logo" alt="imagen de logo GIFOS">
-            <img src="./assets/assets/burger.svg" id="burger"
-                alt="imagen de menu hamburguesa sin desplegar">
+            <img src="./assets/assets/burger.svg" id="burger" alt="imagen de menu hamburguesa sin desplegar">
         </div>
         <nav id="site-nav" class="site-nav">
             <ul id="navLista">
@@ -29,17 +32,57 @@
                 <li id="misGifosBtn"><a class="liNavItem" href="#">Mis GIFOS</a>
                     <div class="borderLiItems"></div>
                 </li>
-                <li id="btnCrearGifos"><a href="#"><img src="./assets/assets/button-crear-gifo.svg"
-                            alt=""></a></li>
+                <li id="btnCrearGifos"><a href="#"><img src="./assets/assets/button-crear-gifo.svg" alt=""></a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-
+        <section id="buscadorGifos">
+            <div id="titulo">
+                <h1>Inspírate, busca, guarda, y crea los mejores <span id="GIFOSSpan">GIFOS</span></h1>
+            </div>
+            <div id="searchBar">
+                <img id="pjsGifos" src="./assets/assets/ilustra_header.svg" alt="ilustracion_GIFOS">
+                <div id="barra">
+                    <input type="text" id="buscarYMas" value="Busca GIFOS y más">
+                    <img id="lupa" src="./assets/assets/icon-search.svg" alt="Imagen_lupa_home">
+                </div>
+            </div>
+            <div id="etiquetasInicio">
+                <p id="buscadorEtiquetasHome">Trending:</p>
+                <p id="etiquetasEjemplos">Reactions, Entertainment,<br> Sports, Stickers, Artists</p>
+            </div>
+        </section>
+        <section id="trendingGifos">
+            <div id="textosTrending">
+                <h2 id="tituloTrendingGifos"> Trending GIFOS</h2>
+                <p id="textoTrendingGifos">Mira los últimos<br>GIFOS de nuestra comunidad</p>
+            </div>
+            <div id="carruselTrendingGifos">
+                <img id="imagenCarrusel1" class="imagenCarrusel"
+                    src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg" alt="Imagen carrusel 1">
+                <img id="imagenCarrusel2" class="imagenCarrusel"
+                    src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg" alt="Imagen carrusel 2">
+                <img id="imagenCarrusel3" class="imagenCarrusel"
+                    src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg" alt="Imagen carrusel 3">
+                <img id="imagenCarrusel4" class="imagenCarrusel"
+                    src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg" alt="Imagen carrusel 4">
+                <img id="imagenCarrusel5" class="imagenCarrusel"
+                    src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg" alt="Imagen carrusel 5">
+            </div>
+        </section>
     </main>
     <footer>
-
+        <div id="infoFooter">
+            <p id="textoFooter">Compartir en:</p>
+            <div id="iconosRedesSociales">
+                <a id="iconoFacebook" href="https://facebook.com/"><img id="imagenIconoFacebook" src="./assets/assets/icon_facebook.svg" alt="icono facebook"></a>
+                <a id="icnonoTwitter" href="https://twitter.com/"><img id="imagenIconoTwitter" src="./assets/assets/icon-twitter.svg" alt="icono twitter"></a>
+                <a id="iconoInstagram" href="https://instagram.com/"><img id="imagenIconoInstagram" src="./assets/assets/icon_instagram.svg" alt="icono instagram"></a>
+            </div>
+            <p id="marcaCopyrightGifos">© GIFOS 2020 All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script src="./menu.js"></script>
