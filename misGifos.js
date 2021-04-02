@@ -8,14 +8,14 @@
 // var lupa = document.getElementById("lupa");
 // var site_nav = document.getElementById("site-nav");
 // var favoritos = document.getElementById("sectionFavoritos");
+// var searchBar = document.getElementById("searchBar");
+// var btnFavoritos = document.getElementById("itemListaFavoritos");
+// var etiquetasInicio = document.getElementById("etiquetasInicio");
 
-var searchBar = document.getElementById("searchBar");
-var btnFavoritos = document.getElementById("itemListaFavoritos");
-var etiquetasInicio = document.getElementById("etiquetasInicio");
+var btnaMisGifos = document.getElementById("itemListaMisGifos");
+var sectionMisGifos =document.getElementById("sectionMisGifos");
 
-
-btnFavoritos.addEventListener('click', async (desplegarFavoritos) =>{
-    sectionFavoritos.style.display = "block";
+btnMisGifos.addEventListener("click", (mostrarMisGifos) =>{
     site_nav.style.display = "none";
     busquedaSection.style.display = "none";
     tituloInicio.style.display = "none";
@@ -24,7 +24,7 @@ btnFavoritos.addEventListener('click', async (desplegarFavoritos) =>{
     etiquetasInicio.style.display = "none";
 });
 
-
 if (buscador.value === "") {
-    sectionFavoritos.style.display = "none";
-} 
+    sectionMisGifos.style.display = "none";
+
+}

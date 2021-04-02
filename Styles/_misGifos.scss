@@ -1,10 +1,10 @@
-#sectionFavoritos{
-    #corFavPrin{
+#sectionMisGifos{
+    #icon_MisGifos{
         margin-left: 50vw;
         transform: translateX(-50%);
-        margin-bottom: 1.8666666666vw;
+        margin-bottom: 1.6vw;
     }
-    #tituloFavoritos{
+    #tituloMisGifos{
         color: #572EE5;
         font-family: "Montserrat", sans-serif;
         font-weight: bold;
@@ -13,10 +13,10 @@
         text-align: center;
         margin-bottom: 12.2666666vw;
     }
-    #galeriaFav{
+    #galeriaMisGifos{
         display: grid;
         grid-template-columns:41.6vw 41.6vw;
-        grid-template-rows: 32vw 32vw 32vw 32vw 32vw 32vw;
+        grid-template-rows: 32vw 32vw 32vw 32vw;
         margin: 0 5.6vw 0 5.6vw;
         grid-gap: 5.6vw;
         margin-bottom: 20.8vw;
@@ -25,7 +25,7 @@
             height: 32vw;
         }
     }
-    #btnVerMasFav{
+    #btnVerMasMisGifos{
         width: 33.8666666vw;
         height: 13.3333333vw;
         margin-left: 33.066666vw;

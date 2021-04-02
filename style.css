@@ -912,14 +912,14 @@ body {
   }
 }
 
-#favoritos #corFavPrin {
+#sectionFavoritos #corFavPrin {
   margin-left: 50vw;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   margin-bottom: 1.8666666666vw;
 }
 
-#favoritos #tituloFavoritos {
+#sectionFavoritos #tituloFavoritos {
   color: #572EE5;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -929,7 +929,7 @@ body {
   margin-bottom: 12.2666666vw;
 }
 
-#favoritos #galeriaFav {
+#sectionFavoritos #galeriaFav {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 41.6vw 41.6vw;
@@ -941,12 +941,53 @@ body {
   margin-bottom: 20.8vw;
 }
 
-#favoritos #galeriaFav img {
+#sectionFavoritos #galeriaFav img {
   width: 41.6vw;
   height: 32vw;
 }
 
-#favoritos #btnVerMasFav {
+#sectionFavoritos #btnVerMasFav {
+  width: 33.8666666vw;
+  height: 13.3333333vw;
+  margin-left: 33.066666vw;
+  margin-bottom: 20.8vw;
+}
+
+#sectionMisGifos #icon_MisGifos {
+  margin-left: 50vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-bottom: 1.6vw;
+}
+
+#sectionMisGifos #tituloMisGifos {
+  color: #572EE5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 4.3vw;
+  line-height: 7.8vw;
+  text-align: center;
+  margin-bottom: 12.2666666vw;
+}
+
+#sectionMisGifos #galeriaMisGifos {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 41.6vw 41.6vw;
+      grid-template-columns: 41.6vw 41.6vw;
+  -ms-grid-rows: 32vw 32vw 32vw 32vw;
+      grid-template-rows: 32vw 32vw 32vw 32vw;
+  margin: 0 5.6vw 0 5.6vw;
+  grid-gap: 5.6vw;
+  margin-bottom: 20.8vw;
+}
+
+#sectionMisGifos #galeriaMisGifos img {
+  width: 41.6vw;
+  height: 32vw;
+}
+
+#sectionMisGifos #btnVerMasMisGifos {
   width: 33.8666666vw;
   height: 13.3333333vw;
   margin-left: 33.066666vw;
