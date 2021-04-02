@@ -1,3 +1,4 @@
+//Trending GIFOS mobile:
 #trendingGifos {
   background-color: #f3f5f8;
   margin-bottom: 12.533333333vw;
@@ -14,7 +15,15 @@
       font-weight: bold;
       line-height: 8vw;
     }
-    #textoTrendingGifos {
+    #textoTrendingGifosMobile {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-size: 3.7vw;
+      line-height: 6.3vw;
+      margin: 0 5.6vw 8.533333vw 5.6vw;
+    }
+    #textoTrendingGifosDesktop {
+      display: none;
       font-family: "Roboto", sans-serif;
       font-weight: 400;
       font-size: 3.7vw;
@@ -22,20 +31,161 @@
       margin: 0 5.6vw 8.533333vw 5.6vw;
     }
   }
-  #carruselTrendingGifos {
+  #carrusel {
+    display: flex;
+    #flechaIzquierda{
+      display: none;
+    }
+    #carruselTrendingGifos {
       display: flex;
       overflow: scroll;
       margin-bottom: 21.8666666vw;
-    .imagenCarrusel {
-      width: 64.8vw;
-      height: 49.866667vw;
-      margin: 0 2.9333333vw 0 2.9333333vw;
-    }
-    #imagenCarrusel1{
+      .imagenCarrusel {
+        width: 64.8vw;
+        height: 49.866667vw;
+        margin: 0 2.9333333vw 0 2.9333333vw;
+      }
+      #imagenCarrusel1 {
         margin-left: 5.86666666vw;
-    }
-    #imagenCarrusel5{
+      }
+      #imagenCarrusel5 {
         margin-right: 5.86666666vw;
+      }
+    }
+    #flechaDerecha{
+      display: none;
+    }
+  }
+}
+
+//Trending GIFOS tablet:
+@media only screen and (min-width: 800px) {
+  #trendingGifos {
+    background-color: #f3f5f8;
+    margin-bottom: 8vw;
+    position: relative;
+    #textosTrending {
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+      padding-top: 9vw;
+      #tituloTrendingGifos {
+        color: #572ee5;
+        font-size: 4vw;
+        margin-top: 0;
+        margin-bottom: 1.8666666vw;
+        font-weight: bold;
+        line-height: 8vw;
+      }
+      #textoTrendingGifosMobile {
+        display: block;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 3.2vw;
+        line-height: 5vw;
+        margin: 0 5.6vw 8.533333vw 5.6vw;
+      }
+      #textoTrendingGifosDesktop {
+        display: none;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 3.2vw;
+        line-height: 5vw;
+        margin: 0 5.6vw 8.533333vw 5.6vw;
+      }
+    }
+    #carrusel {
+      #carruselTrendingGifos {
+        display: flex;
+        overflow: scroll;
+        margin-bottom: 12vw;
+        .imagenCarrusel {
+          width: 42vw;
+          height: 42vw;
+          margin: 0 2.9333333vw 0 2.9333333vw;
+        }
+        #imagenCarrusel1 {
+          margin-left: 5.86666666vw;
+        }
+        #imagenCarrusel5 {
+          margin-right: 5.86666666vw;
+        }
+      }
+    }
+  }
+}
+
+//Trending GIFOS desktop:
+@media only screen and (min-width: 1440px) {
+  #trendingGifos {
+    background-color: #f3f5f8;
+    margin-bottom: 12.638888vw;
+    position: relative;
+    #textosTrending {
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+      padding-top: 4.6527777vw;
+      #tituloTrendingGifos {
+        color: #572ee5;
+        font-size: 1.8vw;
+        margin-top: 0;
+        margin-bottom: 0.8333333333vw;
+        font-weight: bold;
+        line-height: 2.1vw;
+      }
+      #textoTrendingGifosMobile {
+        display: none;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 1vw;
+        line-height: 1vw;
+        margin: 0 5.6vw 8.533333vw 5.6vw;
+        #brTrendingGifos {
+          display: none;
+        }
+      }
+      #textoTrendingGifosDesktop {
+        display: block;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 1.3vw;
+        line-height: 1.3vw;
+        margin: 0 5.6vw 3.6805555vw 5.6vw;
+        .brTrendingGifos {
+          display: none;
+        }
+      }
+    }
+    #carrusel {
+      display: flex;
+      margin-left: 6.527777vw;
+      margin-bottom: 12.63888vw;
+      align-items: center;
+      #flechaIzquierda{
+        display: block;
+        width: 2.777777777777778vw;
+        height: 2.777777777777778vw;
+      }
+      #carruselTrendingGifos {
+        display: flex;
+        overflow: scroll;
+        margin-bottom: 0;
+        .imagenCarrusel {
+          width: 24.792vw;
+          height: 19.098vw;
+          margin: 0 1.00694444vw 0 1.00694444vw;
+        }
+        #imagenCarrusel1 {
+          margin-left: 1.527777vw;
+        }
+        #imagenCarrusel3 {
+          margin-right: 1.736111vw;
+        }
+      }
+      #flechaDerecha{
+        display: block;
+        width: 2.777777777777778vw;
+        height: 2.777777777777778vw;
+      }
     }
   }
 }

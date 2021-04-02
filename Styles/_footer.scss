@@ -1,3 +1,4 @@
+//Footer mobile:
 #infoFooter {
   display: flex;
   flex-direction: column;
@@ -17,20 +18,106 @@
     margin-left: 37.333333333vw;
     margin-right: 37.333333333vw;
     a {
-        width: 5.333333333vw;
-        height: 5.33333333vw;
-        margin-bottom: 12.266666vw;
+      width: 5.333333333vw;
+      height: 5.33333333vw;
+      margin-bottom: 12.266666vw;
       img {
         width: 5.333333333vw;
         height: 5.33333333vw;
       }
     }
   }
-  #marcaCopyrightGifos{
+  #marcaCopyrightGifos {
     font-family: "Roboto", sans-serif;
     font-size: 3vw;
     line-height: 5.35vw;
     margin-bottom: 6.133333333vw;
     margin-top: 0;
+  }
+}
+
+//Footer tablet:
+@media only screen and (min-width: 800px) {
+  #infoFooter {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 6vw;
+    border-bottom: 1.333333333vw solid #572ee5;
+    #textoFooter {
+      font-size: 2.3vw;
+      margin-bottom: 4vw;
+      margin-top: 0;
+      font-family: "Roboto", sans-serif;
+    }
+    #iconosRedesSociales {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-left: 37.333333333vw;
+      margin-right: 37.333333333vw;
+      a {
+        width: 4vw;
+        height: 4vw;
+        margin-bottom: 4vw;
+        img {
+          width: 4vw;
+          height: 4vw;
+        }
+      }
+    }
+    #marcaCopyrightGifos {
+      font-family: "Roboto", sans-serif;
+      font-size: 2.1vw;
+      line-height: 5.35vw;
+      margin-bottom: 6.133333333vw;
+      margin-top: 0;
+    }
+  }
+}
+
+
+//Footer desktop:
+@media only screen and (min-width: 1440px) {
+  #infoFooter {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding-top: 3.4375vw;
+    border-bottom: 0.3541666vw solid #572ee5;
+    #textoFooter {
+      height: 1.04166666vw;
+      padding: 0;
+      font-size: 0.9027777vw;
+      line-height: 1.04166666vw;
+      margin-bottom: 3.57638888vw;
+      margin-top: 0;
+      margin-left: 10.833333vw;
+      font-family: "Roboto", sans-serif;
+    }
+    #iconosRedesSociales {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: 1.1805555vw;
+      margin-right: 51.04166666vw;
+      width: 6.805555555vw;
+      a {
+        width: 1.388888888vw;
+        height: 1.40277777vw;
+        margin-bottom: 3.57638888vw;;
+        img {
+          width: 1.388888888vw;
+          height: 1.40277777vw;
+        }
+      }
+    }
+    #marcaCopyrightGifos {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9027777vw;
+      line-height: 1.04166666vw;
+      margin-bottom: 3.57638888vw;
+      margin-top: 0;
+    }
   }
 }

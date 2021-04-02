@@ -2,11 +2,13 @@ function abrirMenu() {
     var menu =document.getElementById("burger");
     menu.addEventListener("click", ()=>{
         console.log("click");
-        var x = document.getElementById("site-nav"); 
-        if (x.style.display === "block") { 
-            x.style.display = "none"; 
+        var site_nav = document.getElementById("site-nav"); 
+        if (site_nav.style.display === "block") { 
+            site_nav.style.display = "none";
+            menu.src = "./assets/assets/burger.svg"
         } else { 
-            x.style.display = "block"; 
+            site_nav.style.display = "block";
+            menu.src= "./assets/assets/close.svg";
         } 
     })
 }
