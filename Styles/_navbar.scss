@@ -19,6 +19,7 @@
     //Aca se esconde la lista:
     display: none;
     #navLista {
+      z-index: 3;
       margin: 0;
       position: fixed;
       display: block;

@@ -1,23 +1,19 @@
-#busqueda{
-    margin-bottom: 21.06666666vw;
-    #separador{
-        width: 41.8666666vw;
-        border: #9CAFC3 1px solid;
-        margin-left: 29.0666666vw;
-        opacity: 50%;
-        margin-bottom: 11.46666666vw;
+#favoritos{
+    #corFavPrin{
+        margin-left: 50vw;
+        transform: translateX(-50%);
+        margin-bottom: 1.8666666666vw;
     }
-    #tituloBusqueda{
-        color: #572ee5;
-        font-size: 4.3vw;
-        margin-top: 0;
-        margin-bottom: 10.133333vw;
-        font-weight: bold;
-        line-height: 10.666666666vw;
+    #tituloFavoritos{
+        color: #572EE5;
         font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        font-size: 4.3vw;
+        line-height: 7.8vw;
         text-align: center;
+        margin-bottom: 12.2666666vw;
     }
-    #galeria{
+    #galeriaFav{
         display: grid;
         grid-template-columns:41.6vw 41.6vw;
         grid-template-rows: 32vw 32vw 32vw 32vw 32vw 32vw;
@@ -29,9 +25,10 @@
             height: 32vw;
         }
     }
-    #btnVerMas{
+    #btnVerMasFav{
         width: 33.8666666vw;
         height: 13.3333333vw;
         margin-left: 33.066666vw;
+        margin-bottom: 20.8vw;
     }
 }
