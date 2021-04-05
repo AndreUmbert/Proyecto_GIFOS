@@ -33,14 +33,17 @@
   }
   #carrusel {
     display: flex;
-    #flechaIzquierda{
+    #flechaIzquierda {
       display: none;
     }
     #carruselTrendingGifos {
-      display: flex;
+      display: grid;
+      grid-template-columns: 64.8vw 64.8vw 64.8vw;
+      grid-gap: 5.866666666vw;
       overflow: scroll;
       margin-bottom: 21.8666666vw;
-      .imagenCarrusel {
+      height: 49.866667vw;
+      img {
         width: 64.8vw;
         height: 49.866667vw;
         margin: 0 2.9333333vw 0 2.9333333vw;
@@ -48,13 +51,13 @@
       #imagenCarrusel1 {
         margin-left: 5.86666666vw;
       }
-      #imagenCarrusel5 {
-        margin-right: 5.86666666vw;
+      #imagenCarrusel3 {
+        margin-right: 11.733333vw;
       }
     }
-    #flechaDerecha{
-      display: none;
-    }
+  }
+  #flechaDerecha {
+    display: none;
   }
 }
 
@@ -160,7 +163,7 @@
       margin-left: 6.527777vw;
       margin-bottom: 12.63888vw;
       align-items: center;
-      #flechaIzquierda{
+      #flechaIzquierda {
         display: block;
         width: 2.777777777777778vw;
         height: 2.777777777777778vw;
@@ -181,7 +184,7 @@
           margin-right: 1.736111vw;
         }
       }
-      #flechaDerecha{
+      #flechaDerecha {
         display: block;
         width: 2.777777777777778vw;
         height: 2.777777777777778vw;

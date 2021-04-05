@@ -9,24 +9,29 @@ var lupa = document.getElementById("lupa");
 var site_nav = document.getElementById("site-nav");
 var favoritos = document.getElementById("sectionFavoritos");
 const URL_BASE = "https://api.giphy.com/v1/gifs/search?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9&limit=12&q=";
+const busquedasRelacionadas = [];
+let sugerenciasBusqueda = document.getElementById("sugerenciasBusqueda");
+
 
 //al apretar ENTER:
 buscador.addEventListener('keypress', async (buscar) => {
     if (buscar.key === 'Enter') {
+        console.log(busquedasRelacionadas);
         favoritos.style.display = "none";
         site_nav.style.display= "none";
         busquedaSection.style.display = "Block"
         pjsGifos.style.display = "none";
         tituloInicio.style.display = "none";
         lupa.src="./assets/assets/close.svg";
-        // lupa.style.width = ;
         galeria.innerHTML = ``;
-        console.log(buscar.target.value);
         let resultadoBusqueda = await fetch(URL_BASE + buscar.target.value)
         let json = await resultadoBusqueda.json();
         json.data.forEach(trending => {
             galeria.innerHTML += `
+            <div class="divHoverContenedor">
+            <div class= "divHover"><div>
             <img src="${trending.images.fixed_height.url}">
+            </div>
             `;
             tituloBusqueda.innerHTML = `${buscar.target.value}`;
             tituloBusqueda.style.textTransform = "capitalize";
@@ -72,7 +77,10 @@ btnVerMas.addEventListener('click', async (verMas) => {
 
 // console.log(buscarYMas.value);
 
-console.log(typeof(buscador.value));
 if (buscador.value === "") {
     busquedaSection.style.display = "none";
 } 
+
+
+
+

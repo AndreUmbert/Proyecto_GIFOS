@@ -265,7 +265,7 @@ body {
   display: block;
 }
 
-#buscadorGifos #searchBar #barra {
+#buscadorGifos #searchBar #barraContenedor {
   border: 1px solid #572ee5;
   border-radius: 100vw;
   display: -webkit-box;
@@ -279,9 +279,19 @@ body {
           align-items: center;
   height: 13.333333vw;
   margin-bottom: 8.26666666vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-#buscadorGifos #searchBar #barra #buscarYMas {
+#buscadorGifos #searchBar #barraContenedor #barra {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#buscadorGifos #searchBar #barraContenedor #barra #buscarYMas {
   padding: 0;
   margin-left: 14.66666vw;
   margin-right: 6.4vw;
@@ -292,10 +302,20 @@ body {
   border: none;
 }
 
-#buscadorGifos #searchBar #barra #lupa {
+#buscadorGifos #searchBar #barraContenedor #barra #lupa {
   margin-right: 5.3333333vw;
   width: 5.336vw;
   height: 5.336vw;
+}
+
+#buscadorGifos #searchBar #barraContenedor #separadorBusqueda {
+  border: 1px solid #9cafc3;
+  width: 80%;
+  display: none;
+}
+
+#buscadorGifos #searchBar #barraContenedor #sugerenciasBusqueda {
+  display: none;
 }
 
 #buscadorGifos #etiquetasInicio {
@@ -354,7 +374,7 @@ body {
     width: 60vw;
     display: block;
   }
-  #buscadorGifos #searchBar #barra {
+  #buscadorGifos #searchBar #barraContenedor {
     border: 1px solid #572ee5;
     border-radius: 100vw;
     display: -webkit-box;
@@ -368,35 +388,52 @@ body {
             align-items: center;
     height: 10vw;
     margin-bottom: 6vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  #buscadorGifos #searchBar #barra #buscarYMas {
+  #buscadorGifos #searchBar #barraContenedor #barra {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #buscadorGifos #searchBar #barraContenedor #barra #buscarYMas {
     padding: 0;
     margin-left: 14.66666vw;
     margin-right: 6.4vw;
     color: #6b7989;
     width: 57.3333333vw;
-    font-size: 3vw;
+    font-size: 3.5vw;
     line-height: 5vw;
     border: none;
   }
-  #buscadorGifos #searchBar #barra #lupa {
+  #buscadorGifos #searchBar #barraContenedor #barra #lupa {
     margin-right: 5.3333333vw;
-    width: 3vw;
-    height: 3vw;
+    width: 5.336vw;
+    height: 5.336vw;
   }
-  #buscadorGifos #etiquetasInicio {
+  #buscadorGifos #searchBar #barraContenedor #separadorBusqueda {
+    border: 1px solid #9cafc3;
+    width: 80%;
+    display: none;
+  }
+  #buscadorGifos #searchBar #barraContenedor #sugerenciasBusqueda {
+    display: none;
+  }
+  #etiquetasInicio {
     color: #572ee5;
     text-align: center;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 8vw;
   }
-  #buscadorGifos #etiquetasInicio #buscadorEtiquetasHome {
+  #etiquetasInicio #buscadorEtiquetasHome {
     font-size: 3.7vw;
     line-height: 6.8vw;
     margin: 0 18.4vw 0.5333333vw 18.666666vw;
     font-weight: bold;
   }
-  #buscadorGifos #etiquetasInicio #etiquetasEjemplos {
+  #etiquetasInicio #etiquetasEjemplos {
     margin: 0 20vw 0 20vw;
     font-weight: 500;
     font-size: 2.3vw;
@@ -443,7 +480,7 @@ body {
     height: 13.19444444vw;
     display: block;
   }
-  #buscadorGifos #searchBar #barra {
+  #buscadorGifos #searchBar #barraContenedor {
     border: 1px solid #572ee5;
     border-radius: 100vw;
     display: -webkit-box;
@@ -458,8 +495,18 @@ body {
     height: 3.47222222vw;
     width: 38.263888vw;
     margin-bottom: 5.06944444vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  #buscadorGifos #searchBar #barra #buscarYMas {
+  #buscadorGifos #searchBar #barraContenedor #barra {
+    width: 38.263888vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #buscadorGifos #searchBar #barraContenedor #barra #buscarYMas {
     padding: 0;
     margin-left: 3.75vw;
     margin-right: 6.4vw;
@@ -469,10 +516,18 @@ body {
     line-height: 1vw;
     border: none;
   }
-  #buscadorGifos #searchBar #barra #lupa {
+  #buscadorGifos #searchBar #barraContenedor #barra #lupa {
     margin-right: 1.38888888vw;
     width: 1.38888888vw;
     height: 1.38888888vw;
+  }
+  #buscadorGifos #searchBar #barraContenedor #separadorBusqueda {
+    border: 1px solid #9cafc3;
+    width: 80%;
+    display: none;
+  }
+  #buscadorGifos #searchBar #barraContenedor #sugerenciasBusqueda {
+    display: none;
   }
   #buscadorGifos #etiquetasInicio {
     color: #572ee5;
@@ -546,14 +601,17 @@ body {
 }
 
 #trendingGifos #carrusel #carruselTrendingGifos {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 64.8vw 64.8vw 64.8vw;
+      grid-template-columns: 64.8vw 64.8vw 64.8vw;
+  grid-gap: 5.866666666vw;
   overflow: scroll;
   margin-bottom: 21.8666666vw;
+  height: 49.866667vw;
 }
 
-#trendingGifos #carrusel #carruselTrendingGifos .imagenCarrusel {
+#trendingGifos #carrusel #carruselTrendingGifos img {
   width: 64.8vw;
   height: 49.866667vw;
   margin: 0 2.9333333vw 0 2.9333333vw;
@@ -563,11 +621,11 @@ body {
   margin-left: 5.86666666vw;
 }
 
-#trendingGifos #carrusel #carruselTrendingGifos #imagenCarrusel5 {
-  margin-right: 5.86666666vw;
+#trendingGifos #carrusel #carruselTrendingGifos #imagenCarrusel3 {
+  margin-right: 11.733333vw;
 }
 
-#trendingGifos #carrusel #flechaDerecha {
+#trendingGifos #flechaDerecha {
   display: none;
 }
 
@@ -742,7 +800,7 @@ body {
   margin-bottom: 20.8vw;
 }
 
-#busqueda #galeria img {
+#busqueda #galeria .divHoverContenedor img {
   width: 41.6vw;
   height: 32vw;
 }
@@ -751,6 +809,11 @@ body {
   width: 33.8666666vw;
   height: 13.3333333vw;
   margin-left: 33.066666vw;
+}
+
+.divHover:hover {
+  background-color: #572EE5;
+  z-index: 3;
 }
 
 #infoFooter {
@@ -912,6 +975,10 @@ body {
   }
 }
 
+#sectionFavoritos {
+  margin-top: 1.333333333vw;
+}
+
 #sectionFavoritos #corFavPrin {
   margin-left: 50vw;
   -webkit-transform: translateX(-50%);
@@ -951,6 +1018,10 @@ body {
   height: 13.3333333vw;
   margin-left: 33.066666vw;
   margin-bottom: 20.8vw;
+}
+
+#sectionMisGifos {
+  margin-top: 1.333333333vw;
 }
 
 #sectionMisGifos #icon_MisGifos {

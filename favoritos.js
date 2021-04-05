@@ -15,6 +15,7 @@ var etiquetasInicio = document.getElementById("etiquetasInicio");
 
 
 btnFavoritos.addEventListener('click', async (desplegarFavoritos) =>{
+    sectionMisGifos.style.display = "none";
     sectionFavoritos.style.display = "block";
     site_nav.style.display = "none";
     busquedaSection.style.display = "none";

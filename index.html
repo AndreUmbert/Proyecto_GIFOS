@@ -32,7 +32,9 @@
                 <li id="itemListaMisGifos"><a class="liNavItem" href="#">Mis GIFOS</a>
                     <div class="borderLiItems"></div>
                 </li>
-                <li id="btnCrearGifos"><a href="#"><img src="./assets/assets/button-crear-gifo.svg" alt=""></a></li>
+                <li id="btnCrearGifos"><a href="#"><img onmouseover="setImgCrearGifosNueva()"
+                            onmouseout="setImgVolver()" id="imgBtnCrearGifos"
+                            src="./assets/assets/button-crear-gifo.svg" alt=""></a></li>
             </ul>
         </nav>
     </header>
@@ -45,9 +47,13 @@
             </div>
             <div id="searchBar">
                 <img id="pjsGifos" src="./assets/assets/ilustra_header.svg" alt="ilustracion_GIFOS">
-                <div id="barra">
-                    <input type="text" id="buscarYMas" placeholder="Busca GIFOS y más">
-                    <img id="lupa" src="./assets/assets/icon-search.svg" alt="Imagen_lupa_home">
+                <div id="barraContenedor">
+                    <div id="barra">
+                        <input type="text" id="buscarYMas" placeholder="Busca GIFOS y más">
+                        <img id="lupa" src="./assets/assets/icon-search.svg" alt="Imagen_lupa_home">
+                    </div>
+                    <div id="separadorBusqueda"></div>
+                    <div id="sugerenciasBusqueda">h</div>
                 </div>
             </div>
             <div id="etiquetasInicio">
@@ -90,17 +96,7 @@
             </div>
             <div id="carrusel">
                 <img src="./assets/assets/button-slider-left.svg" id="flechaIzquierda">
-                <div id="carruselTrendingGifos">
-                    <img id="imagenCarrusel1" class="imagenCarrusel"
-                        src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg"
-                        alt="Imagen carrusel 1">
-                    <img id="imagenCarrusel2" class="imagenCarrusel"
-                        src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg"
-                        alt="Imagen carrusel 2">
-                    <img id="imagenCarrusel3" class="imagenCarrusel"
-                        src="https://definicion.xyz/wp-content/uploads/2020/11/pastos-700x426.jpg"
-                        alt="Imagen carrusel 3">
-                </div>
+                <div id="carruselTrendingGifos"></div>
                 <img src="./assets/assets/Button-Slider-right.svg" id="flechaDerecha">
             </div>
         </section>
@@ -110,21 +106,27 @@
         <div id="infoFooter">
             <p id="textoFooter">Compartir en:</p>
             <div id="iconosRedesSociales">
-                <a id="iconoFacebook" href="https://facebook.com/"><img id="imagenIconoFacebook"
+                <a id="iconoFacebook" href="https://facebook.com/"><img onmouseover="setHoverIconFb()"
+                    onmouseout="setHoverIconFbVolver()" id="imagenIconoFacebook"
                         src="./assets/assets/icon_facebook.svg" alt="icono facebook"></a>
-                <a id="icnonoTwitter" href="https://twitter.com/"><img id="imagenIconoTwitter"
+                <a id="icnonoTwitter" href="https://twitter.com/"><img onmouseover="setHoverIconTwitter()"
+                    onmouseout="setHoverIconTwitterVolver()" id="imagenIconoTwitter"
                         src="./assets/assets/icon-twitter.svg" alt="icono twitter"></a>
-                <a id="iconoInstagram" href="https://instagram.com/"><img id="imagenIconoInstagram"
+                <a id="iconoInstagram" href="https://instagram.com/"><img onmouseover="setHoverIconInstagram()"
+                    onmouseout="setHoverIconInstagramVolver()" id="imagenIconoInstagram"
                         src="./assets/assets/icon_instagram.svg" alt="icono instagram"></a>
             </div>
             <p id="marcaCopyrightGifos">© GIFOS 2020 All Rights Reserved.</p>
         </div>
     </footer>
 
+    
     <script src="./menu.js"></script>
     <script src="./buscador.js"></script>
     <script src="./favoritos.js"></script>
     <script src="./misGifos.js"></script>
+    <script src="carrusel.js"></script>
+    <script src="./hovers.js"></script>
 </body>
 
 </html>

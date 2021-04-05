@@ -12,10 +12,12 @@
 // var btnFavoritos = document.getElementById("itemListaFavoritos");
 // var etiquetasInicio = document.getElementById("etiquetasInicio");
 
-var btnaMisGifos = document.getElementById("itemListaMisGifos");
+var btnMisGifos = document.getElementById("itemListaMisGifos");
 var sectionMisGifos =document.getElementById("sectionMisGifos");
 
 btnMisGifos.addEventListener("click", (mostrarMisGifos) =>{
+    sectionFavoritos.style.display = "none";
+    sectionMisGifos.style.display = "block";
     site_nav.style.display = "none";
     busquedaSection.style.display = "none";
     tituloInicio.style.display = "none";
@@ -26,5 +28,4 @@ btnMisGifos.addEventListener("click", (mostrarMisGifos) =>{
 
 if (buscador.value === "") {
     sectionMisGifos.style.display = "none";
-
 }

@@ -10,7 +10,7 @@
       margin: 1.866666vw 11.73333333vw 8.26666666vw 12vw;
       font-size: 7vw;
       line-height: 9vw;
-      #brTituloInicio{
+      #brTituloInicio {
         display: none;
       }
       #GIFOSSpan {
@@ -28,7 +28,7 @@
       margin-bottom: 0;
       display: block;
     }
-    #barra {
+    #barraContenedor {
       border: 1px solid #572ee5;
       border-radius: 100vw;
       display: flex;
@@ -36,20 +36,32 @@
       align-items: center;
       height: 13.333333vw;
       margin-bottom: 8.26666666vw;
-      #buscarYMas {
-        padding: 0;
-        margin-left: 14.66666vw;
-        margin-right: 6.4vw;
-        color: #6b7989;
-        width: 57.3333333vw;
-        font-size: 3.5vw;
-        line-height: 5vw;
-        border: none;
+      flex-direction: column;
+      #barra {
+        display: flex;
+        #buscarYMas {
+          padding: 0;
+          margin-left: 14.66666vw;
+          margin-right: 6.4vw;
+          color: #6b7989;
+          width: 57.3333333vw;
+          font-size: 3.5vw;
+          line-height: 5vw;
+          border: none;
+        }
+        #lupa {
+          margin-right: 5.3333333vw;
+          width: 5.336vw;
+          height: 5.336vw;
+        }
       }
-      #lupa {
-        margin-right: 5.3333333vw;
-        width: 5.336vw;
-        height: 5.336vw;
+      #separadorBusqueda {
+        border: 1px solid #9cafc3;
+        width: 80%;
+        display: none;
+      }
+      #sugerenciasBusqueda {
+        display: none;
       }
     }
   }
@@ -102,7 +114,7 @@
         width: 60vw;
         display: block;
       }
-      #barra {
+      #barraContenedor {
         border: 1px solid #572ee5;
         border-radius: 100vw;
         display: flex;
@@ -110,40 +122,52 @@
         align-items: center;
         height: 10vw;
         margin-bottom: 6vw;
-        #buscarYMas {
-          padding: 0;
-          margin-left: 14.66666vw;
-          margin-right: 6.4vw;
-          color: #6b7989;
-          width: 57.3333333vw;
-          font-size: 3vw;
-          line-height: 5vw;
-          border: none;
+        flex-direction: column;
+        #barra {
+          display: flex;
+          #buscarYMas {
+            padding: 0;
+            margin-left: 14.66666vw;
+            margin-right: 6.4vw;
+            color: #6b7989;
+            width: 57.3333333vw;
+            font-size: 3.5vw;
+            line-height: 5vw;
+            border: none;
+          }
+          #lupa {
+            margin-right: 5.3333333vw;
+            width: 5.336vw;
+            height: 5.336vw;
+          }
         }
-        #lupa {
-          margin-right: 5.3333333vw;
-          width: 3vw;
-          height: 3vw;
+        #separadorBusqueda {
+          border: 1px solid #9cafc3;
+          width: 80%;
+          display: none;
+        }
+        #sugerenciasBusqueda {
+          display: none;
         }
       }
     }
-    #etiquetasInicio {
-      color: #572ee5;
-      text-align: center;
-      font-family: "Montserrat", sans-serif;
-      margin-bottom: 8vw;
-      #buscadorEtiquetasHome {
-        font-size: 3.7vw;
-        line-height: 6.8vw;
-        margin: 0 18.4vw 0.5333333vw 18.666666vw;
-        font-weight: bold;
-      }
-      #etiquetasEjemplos {
-        margin: 0 20vw 0 20vw;
-        font-weight: 500;
-        font-size: 2.3vw;
-        line-height: 6.8vw;
-      }
+  }
+  #etiquetasInicio {
+    color: #572ee5;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 8vw;
+    #buscadorEtiquetasHome {
+      font-size: 3.7vw;
+      line-height: 6.8vw;
+      margin: 0 18.4vw 0.5333333vw 18.666666vw;
+      font-weight: bold;
+    }
+    #etiquetasEjemplos {
+      margin: 0 20vw 0 20vw;
+      font-weight: 500;
+      font-size: 2.3vw;
+      line-height: 6.8vw;
     }
   }
 }
@@ -161,7 +185,7 @@
         margin: 0vw 17.56944444vw 1.66666666vw 17.56944444vw;
         font-size: 2vw;
         line-height: 3.5vw;
-        #brTituloInicio{
+        #brTituloInicio {
           display: inline;
         }
         #GIFOSSpan {
@@ -181,7 +205,7 @@
         height: 13.19444444vw;
         display: block;
       }
-      #barra {
+      #barraContenedor {
         border: 1px solid #572ee5;
         border-radius: 100vw;
         display: flex;
@@ -190,20 +214,33 @@
         height: 3.47222222vw;
         width: 38.263888vw;
         margin-bottom: 5.06944444vw;
-        #buscarYMas {
-          padding: 0;
-          margin-left: 3.75vw;
-          margin-right: 6.4vw;
-          color: #6b7989;
-          width: 57.3333333vw;
-          font-size: 1vw;
-          line-height: 1vw;
-          border: none;
-        }
-        #lupa {
+        flex-direction: column;
+        #barra {
+          width: 38.263888vw;
+          display: flex;
+          #buscarYMas {
+            padding: 0;
+            margin-left: 3.75vw;
+            margin-right: 6.4vw;
+            color: #6b7989;
+            width: 57.3333333vw;
+            font-size: 1vw;
+            line-height: 1vw;
+            border: none;
+          }
+          #lupa {
           margin-right: 1.38888888vw;
           width: 1.38888888vw;
           height: 1.38888888vw;
+          }
+        }
+        #separadorBusqueda {
+          border: 1px solid #9cafc3;
+          width: 80%;
+          display: none;
+        }
+        #sugerenciasBusqueda {
+          display: none;
         }
       }
     }
@@ -223,7 +260,7 @@
         font-weight: 500;
         font-size: 1.18vw;
         line-height: 1.8vw;
-        #brTextoTrending{
+        #brTextoTrending {
           display: none;
         }
       }
