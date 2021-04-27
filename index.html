@@ -51,15 +51,15 @@
                     <div id="barra">
                         <input type="text" id="buscarYMas" placeholder="Busca GIFOS y más">
                         <img id="lupa" src="./assets/assets/icon-search.svg" alt="Imagen_lupa_home">
+                        <div id="cruzAparece"></div>
                     </div>
                     <div id="separadorBusqueda"></div>
-                    <div id="sugerenciasBusqueda">h</div>
+                    <div id="sugerenciasBusqueda"></div>
                 </div>
             </div>
             <div id="etiquetasInicio">
                 <p id="buscadorEtiquetasHome">Trending:</p>
-                <p id="etiquetasEjemplos">Reactions, Entertainment,<br id="brTextoTrending"> Sports, Stickers, Artists
-                </p>
+                <p id="etiquetasEjemplos"><br id="brTextoTrending"></p>
             </div>
         </section>
         <section id="busqueda">
@@ -100,33 +100,53 @@
                 <img src="./assets/assets/Button-Slider-right.svg" id="flechaDerecha">
             </div>
         </section>
+        <section id="sectionImagenAmplificada">
+            <div id="cruzImgAmplificada">
+                <img id="cruzImgAmplificadaBtn" src="./assets/assets/close.svg" alt="imagenCruzCerrar">
+            </div>
+            <div id="imgAmplificadaCtn">
+                <img id="imgAmplificada" key="" src="" alt="imagenAmplificada">
+                <div id="pieDeImg">
+                    <div id="infoUsuario">
+                        <p id="nombreUsuario">user</p>
+                        <p id="tituloGif">titulo</p>
+                    </div>
+                    <div id="botonesImgAmpliada">
+                        <img id="btnFavImgAmpliada" src="./assets/assets/icon-fav-hover.svg" alt="imagenBotonFavoritos">
+                        <img id="btnDescargarImgAmpliada" src="./assets/assets/icon-download.svg"
+                            alt="imagenBotonDescarga">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
+    <footer id="footer">
         <div id="infoFooter">
             <p id="textoFooter">Compartir en:</p>
             <div id="iconosRedesSociales">
                 <a id="iconoFacebook" href="https://facebook.com/"><img onmouseover="setHoverIconFb()"
-                    onmouseout="setHoverIconFbVolver()" id="imagenIconoFacebook"
+                        onmouseout="setHoverIconFbVolver()" id="imagenIconoFacebook"
                         src="./assets/assets/icon_facebook.svg" alt="icono facebook"></a>
                 <a id="icnonoTwitter" href="https://twitter.com/"><img onmouseover="setHoverIconTwitter()"
-                    onmouseout="setHoverIconTwitterVolver()" id="imagenIconoTwitter"
+                        onmouseout="setHoverIconTwitterVolver()" id="imagenIconoTwitter"
                         src="./assets/assets/icon-twitter.svg" alt="icono twitter"></a>
                 <a id="iconoInstagram" href="https://instagram.com/"><img onmouseover="setHoverIconInstagram()"
-                    onmouseout="setHoverIconInstagramVolver()" id="imagenIconoInstagram"
+                        onmouseout="setHoverIconInstagramVolver()" id="imagenIconoInstagram"
                         src="./assets/assets/icon_instagram.svg" alt="icono instagram"></a>
             </div>
             <p id="marcaCopyrightGifos">© GIFOS 2020 All Rights Reserved.</p>
         </div>
     </footer>
 
-    
+
     <script src="./menu.js"></script>
     <script src="./buscador.js"></script>
     <script src="./favoritos.js"></script>
     <script src="./misGifos.js"></script>
     <script src="carrusel.js"></script>
     <script src="./hovers.js"></script>
+
 </body>
 
 </html>

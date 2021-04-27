@@ -25,9 +25,22 @@
         grid-gap: 5.6vw;
         margin-bottom: 20.8vw;
         .divHoverContenedor{
-            img{
+            position: relative;
+            .divHover{
                 width: 41.6vw;
                 height: 32vw;
+                background-color: rgba(87, 46, 229, 0.8);
+                display: none;
+                position:absolute;
+                top: 0;
+                left: 0;
+                z-index: 10;
+            }
+            .imgBuscada{
+                width: 41.6vw;
+                height: 32vw;
+                display: block;
+                z-index: 0;
             }
         }
     }
@@ -38,7 +51,6 @@
     }
 }
 
-.divHover:hover{
-    background-color: #572EE5;
-    z-index: 3;
+.imgBuscada:hover ~ .divHover{
+    display: block;
 }

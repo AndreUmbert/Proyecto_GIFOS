@@ -18,25 +18,16 @@ var carrusel = document.getElementById("carruselTrendingGifos");
 const URL_Trending = "https://api.giphy.com/v1/gifs/trending?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9&limit=3";
 
 
-// console.log(JSON.stringify(fetch(URL_Trending).json()));
 
-// fetch(URL_Trending)
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log(data)
-//         console.log(data.data[0].images.fixed_height.url)
-//     }
-//     );
+ 
 
 let mostrarTrending = async () => {
     try {
         let resultado = await fetch(URL_Trending);
         let json = await resultado.json();
-        let counter = 0;
         json.data.forEach(trending => {
-            counter ++;
             carrusel.innerHTML += `
-            <img id="imagenCarrusel${counter}" src="${trending.images.fixed_height.url}">
+            <img id="${trending.id}"  src="${trending.images.fixed_height.url}">
     `;
         });
     } catch (error) {

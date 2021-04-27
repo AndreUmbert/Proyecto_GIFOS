@@ -11,7 +11,7 @@ function setImgVolver() {
     imgBtnCrearGifos.src = "./assets/assets/button-crear-gifo.svg" ;
 }
 
-//hovers MAIN:
+
 
 
 
