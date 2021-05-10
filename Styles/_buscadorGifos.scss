@@ -79,7 +79,7 @@
             p {
               font-family: "Roboto", sans-serif;
               margin: 0 0 0 1.013888888vw;
-              color: #9CAFC3;
+              color: #9cafc3;
             }
           }
         }
@@ -99,10 +99,17 @@
     }
     #etiquetasEjemplos {
       margin: 0 20vw 0 20vw;
-      font-weight: 500;
-      font-size: 3.142vw;
-      line-height: 6.8vw;
-      text-transform: capitalize;
+      display: flex;
+      flex-flow: row wrap;
+      #etiquetasEjemplosTexto {
+       margin-right: 1vw;
+       margin-top: 0;
+       margin-bottom: 0;
+        font-weight: 500;
+        font-size: 3.142vw;
+        line-height: 6.8vw;
+        text-transform: capitalize;
+      }
     }
   }
 }

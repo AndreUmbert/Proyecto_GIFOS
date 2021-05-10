@@ -16,6 +16,7 @@ let galeriaFav = document.getElementById("galeriaFav");
 let itemListaFavoritos = document.getElementById("itemListaFavoritos");
 
 btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
+    menu.src = "./assets/assets/burger.svg";
     sectionMisGifos.style.display = "none";
     sectionFavoritos.style.display = "block";
     site_nav.style.display = "none";
@@ -49,17 +50,83 @@ function actualizarFavoritos() {
 
 
 async function showFavoritos(gifFav) {
-    try {
-        const URL_SearchId = `https://api.giphy.com/v1/gifs/${gifFav}?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9`;
-        const favorito = await fetch(URL_SearchId);
-        let trending = await favorito.json();
-        // console.log(trending);
-        galeriaFav.innerHTML += ` <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.username}" titulo="${trending.title}">
+
+    const URL_SearchId = `https://api.giphy.com/v1/gifs/${gifFav}?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9`;
+    const favorito = await fetch(URL_SearchId);
+    let trending = await favorito.json();
+    // console.log(trending);
+    galeriaFav.innerHTML += ` 
+        <div class="divHoverContenedor">
+        <img key="${trending.data.id}" corazon="true"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.data.username}" titulo="${trending.data.title}">
         <div id="${trending.id}" class="divHover"></div>
         </div>`;
-        
-    } catch (error) {
-        console.log(error);
-    }
+    let arrayImagenesFavoritos = document.querySelectorAll(".imgBuscada");
+    arrayImagenesFavoritos.forEach(imagenesFavoritos => {
+        if (pantallaDesktop.matches) {
+            site_nav.style.display = "block";
+            console.log("pantallaDesktop");
+            imagenesGaleria.addEventListener('mouseover', (eventoPintar) => {
+                // console.log(eventoPintar.target.getAttribute("key"));
+                let divHover = document.getElementById(eventoPintar.target.getAttribute("key"));
+
+                divHover.style.display = "block";
+
+                divHover.addEventListener('mouseout', () => {
+                    divHover.style.display = "none";
+                });
+            });
+        }
+    });
+    arrayImagenesFavoritos.forEach(imagenesFavoritos => {
+        imagenesFavoritos.addEventListener('click', (eventoAmpliar) => {
+            console.log(trending);
+            console.log(eventoAmpliar.target.getAttribute("nombre"));
+            sectionImagenAmplificada.style.display = "block";
+            imgAmplificada.src = `${eventoAmpliar.target.src}`;
+            imgAmplificada.setAttribute("corazon", "true");
+            imgAmplificada.key = `${eventoAmpliar.target.getAttribute("key")}`;
+            imgAmplificada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`);
+            nombreUsuario.innerHTML = `${eventoAmpliar.target.getAttribute("nombre")}`;
+            tituloGif.innerHTML = `${eventoAmpliar.target.getAttribute("titulo")}`;
+            galeriaFav.style.display = "none";
+            busquedaSection.style.display = "none";
+            buscadorGifos.style.display = "none";
+            trendingSection.style.display = "none";
+            footer.style.display = "none";
+            let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
+            btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-active.svg";
+            let cruzImgAmplificadaBtn = document.getElementById('cruzImgAmplificadaBtn');
+            cruzImgAmplificadaBtn.addEventListener('click', (eventoReducir) => {
+                busquedaSection.style.display = "none";
+                sectionImagenAmplificada.style.display = "none";
+                buscadorGifos.style.display = "none";
+                trendingSection.style.display = "block";
+                footer.style.display = "block";
+                galeriaFav.style.display = "grid";
+            });
+            btnFavImgAmpliada.addEventListener('click', (eventoFavorito) => {
+                // console.log(btnFavImgAmpliada.src);
+                // if (eventoAmpliar.target.getAttribute("corazon") == "true") {
+                //     console.log(arrayFavoritos);
+                //     const index = arrayFavoritos.indexOf(eventoAmpliar.target.getAttribute("key"));
+                //     console.log(index);
+                // }
+                eliminarElementoArray(eventoAmpliar.target.getAttribute("key"));
+            });
+            let btnDescargarImgAmpliada = document.getElementById("btnDescargarImgAmpliada");
+            // console.log(btnDescargarImgAmpliada);
+            btnDescargarImgAmpliada.addEventListener('click', (eventoDescargar) => {
+                console.log("click");
+                console.log(eventoDescargar);
+                download();
+            })
+        });
+    });
+}
+
+function eliminarElementoArray(idElementoFavorito) {
+
+    console.log(arrayFavoritos);
+    const index = arrayFavoritos.indexOf(idElementoFavorito);
+    console.log(index);
 }
