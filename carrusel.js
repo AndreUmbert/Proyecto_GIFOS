@@ -70,15 +70,15 @@ let mostrarTrending = async () => {
             let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
             btnFavImgAmpliada.addEventListener('click', (eventoFavorito) => {
                 // console.log(eventoAmpliar.target.getAttribute("id"));
-                if (btnFavImgAmpliada.src == "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-hover.svg") {
-                    btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-active.svg";
+                if (btnFavImgAmpliada.src == "assets/assets/icon-fav-hover.svg") {
+                    btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
                     let idImgFavActive = `${eventoAmpliar.target.getAttribute("id")}`;
                     arrayFavoritos.push(idImgFavActive);
                     localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
                     console.log(arrayFavoritos);
 
-                } else if (btnFavImgAmpliada.src === "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-active.svg") {
-                    btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-hover.svg"
+                } else if (btnFavImgAmpliada.src === "assets/assets/icon-fav-active.svg") {
+                    btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg"
                 }
             });
             let btnDescargarImgAmpliada = document.getElementById("btnDescargarImgAmpliada");
