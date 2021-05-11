@@ -94,9 +94,7 @@
           left: 0;
           z-index: 10;
           #btnsPintadosDesktop {
-            margin-left: 9.2361111111vw;
-            margin-top: 0.6944444vw;
-            margin-right: 0.6944444vw;
+            margin: 0.6944444vw 0.6944444vw 6.25vw 9.2361111111vw;
             #btnFavPintado {
               width: 2.222222vw;
               height: 2.222222vw;
@@ -110,6 +108,22 @@
               width: 2.222222vw;
               height: 2.222222vw;
               margin-left: 0.4166666vw;
+            }
+          }
+          #infoImgPintDesktop {
+            margin-left: 0.90277777vw;
+            #usuarioPintado {
+              font-size: 0.88vw;
+              color: #ffffff;
+              font-family: "Roboto", sans-serif;
+              margin-bottom: 0.34722222vw;
+            }
+            #tituloPintado {
+              color: #ffffff;
+              font-family: "Roboto", sans-serif;
+              font-weight: bold;
+              font-size: 1vw;
+              margin: 0;
             }
           }
         }

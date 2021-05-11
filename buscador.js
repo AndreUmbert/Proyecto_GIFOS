@@ -37,6 +37,7 @@ let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
 
 
 
+
 function loadFavoritosLs() {
     let favoritosGifs = JSON.parse(localStorage.getItem("misFavoritos"));
     if (favoritosGifs) {
@@ -91,12 +92,14 @@ buscador.addEventListener('keypress', async (buscar) => {
         arrayImagenes.forEach(imagenesGaleria => {
             if (pantallaDesktop.matches) {
                 site_nav.style.display = "block";
-                console.log("pantallaDesktop");
+                // console.log("pantallaDesktop");
                 imagenesGaleria.addEventListener('mouseover', (eventoPintar) => {
-
                     let divHover = document.getElementById(eventoPintar.target.getAttribute("key"));
-
                     divHover.style.display = "block";
+                    // let btnDescargarPintado = document.getElementById("btnDescargarPintado");
+                    // btnDescargarPintado.addEventListener("click", (eventoDescargar) => {
+                    //     download();
+                    // });
 
                     divHover.addEventListener('mouseout', () => {
                         divHover.style.display = "none";
@@ -125,14 +128,14 @@ buscador.addEventListener('keypress', async (buscar) => {
                     buscadorGifos.style.display = "block";
                     trendingSection.style.display = "block";
                     footer.style.display = "block";
-                    btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-hover.svg";
+                    btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg";
                 });
                 btnFavImgAmpliada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`)
                 // let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
                 btnFavImgAmpliada.addEventListener('click', (eventoFavorito) => {
 
                     if (eventoAmpliar.target.getAttribute("corazon") == "false") {
-                        btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-active.svg";
+                        btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
                         eventoAmpliar.target.setAttribute("corazon", "true")
                         imgAmplificada.setAttribute("corazon", "true")
                         let idImgFavActive = `${imgAmplificada.getAttribute("key")}`;
@@ -141,7 +144,7 @@ buscador.addEventListener('keypress', async (buscar) => {
                         agregarAFavoritos(eventoAmpliar, imgAmplificada);
 
                     } else {
-                        btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-hover.svg";
+                        btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg";
                         eventoAmpliar.target.setAttribute("corazon", "false");
                         imgAmplificada.setAttribute("corazon", "false");
 
@@ -178,8 +181,18 @@ lupa.addEventListener('click', async (buscarEnLupa) => {
     json.data.forEach(trending => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" titulo="${trending.title}">
-        <div id="${trending.id}" class="divHover"></div>
+        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}">
+        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+        <div id="btnsPintadosDesktop">
+        <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
+        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+        </div>
+        <div id="infoImgPintDesktop">
+        <p id="usuarioPintado">${trending.username}</p>
+        <p id="tituloPintado">${trending.title}</p>
+        </div>
+        </div>
         </div>
         `;
         tituloBusqueda.innerHTML = `${buscador.value}`;
@@ -243,8 +256,18 @@ btnVerMas.addEventListener('click', async (verMas) => {
     json.data.forEach(trending => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" titulo="${trending.title}">
-        <div id="${trending.id}" class="divHover"></div>
+        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}">
+        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+        <div id="btnsPintadosDesktop">
+        <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
+        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+        </div>
+        <div id="infoImgPintDesktop">
+        <p id="usuarioPintado">${trending.username}</p>
+        <p id="tituloPintado">${trending.title}</p>
+        </div>
+        </div>
         </div>
         `;
     });
@@ -383,8 +406,17 @@ async function changeText(objeto) {
     json.data.forEach(trending => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" titulo="${trending.title}">
-        <div id="${trending.id}" class="divHover">
+        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}">
+        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+        <div id="btnsPintadosDesktop">
+        <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
+        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+        </div>
+        <div id="infoImgPintDesktop">
+        <p id="usuarioPintado">${trending.username}</p>
+        <p id="tituloPintado">${trending.title}</p>
+        </div>
         </div>
         </div>
         `;

@@ -589,7 +589,7 @@ body {
     font-weight: bold;
   }
   #buscadorGifos #etiquetasInicio #etiquetasEjemplos {
-    margin-left: 36.111111vw;
+    margin-left: 30vw;
   }
   #buscadorGifos #etiquetasInicio #etiquetasEjemplos #etiquetasEjemplosTexto {
     text-align: center;
@@ -934,9 +934,7 @@ body {
     z-index: 10;
   }
   #busqueda #galeria .divHoverContenedor .divHover #btnsPintadosDesktop {
-    margin-left: 9.2361111111vw;
-    margin-top: 0.6944444vw;
-    margin-right: 0.6944444vw;
+    margin: 0.6944444vw 0.6944444vw 6.25vw 9.2361111111vw;
   }
   #busqueda #galeria .divHoverContenedor .divHover #btnsPintadosDesktop #btnFavPintado {
     width: 2.222222vw;
@@ -951,6 +949,22 @@ body {
     width: 2.222222vw;
     height: 2.222222vw;
     margin-left: 0.4166666vw;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #infoImgPintDesktop {
+    margin-left: 0.90277777vw;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #infoImgPintDesktop #usuarioPintado {
+    font-size: 0.88vw;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 0.34722222vw;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #infoImgPintDesktop #tituloPintado {
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 1vw;
+    margin: 0;
   }
   #busqueda #galeria .divHoverContenedor .imgBuscada {
     width: 18.0555555vw;
