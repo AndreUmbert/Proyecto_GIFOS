@@ -34,7 +34,7 @@ let mostrarTrending = async () => {
         if (pantallaDesktop.matches) {
             site_nav.style.display = "block";
             console.log("pantallaDesktop");
-            imagenesGaleria.addEventListener('mouseover', (eventoPintar) => {
+            imagenesCarrusel.addEventListener('mouseover', (eventoPintar) => {
                 // console.log(eventoPintar.target.getAttribute("key"));
                 let divHover = document.getElementById(eventoPintar.target.getAttribute("key"));
 

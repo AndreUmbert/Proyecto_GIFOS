@@ -60,54 +60,58 @@
 @media only screen and (min-width: 800px) {
   #trendingGifos {
     background-color: #f3f5f8;
-    margin-bottom: 8vw;
+    margin-bottom: 12.533333333vw;
     position: relative;
     #textosTrending {
       font-family: "Montserrat", sans-serif;
       text-align: center;
-      padding-top: 9vw;
+      padding-top: 12.26666666vw;
       #tituloTrendingGifos {
         color: #572ee5;
-        font-size: 4vw;
+        font-size: 4.3vw;
         margin-top: 0;
         margin-bottom: 1.8666666vw;
         font-weight: bold;
         line-height: 8vw;
       }
       #textoTrendingGifosMobile {
-        display: block;
         font-family: "Roboto", sans-serif;
         font-weight: 400;
-        font-size: 3.2vw;
-        line-height: 5vw;
+        font-size: 3.7vw;
+        line-height: 6.3vw;
         margin: 0 5.6vw 8.533333vw 5.6vw;
       }
       #textoTrendingGifosDesktop {
         display: none;
         font-family: "Roboto", sans-serif;
         font-weight: 400;
-        font-size: 3.2vw;
-        line-height: 5vw;
+        font-size: 3.7vw;
+        line-height: 6.3vw;
         margin: 0 5.6vw 8.533333vw 5.6vw;
       }
     }
     #carrusel {
+      display: flex;
+      #flechaIzquierda {
+        display: none;
+      }
       #carruselTrendingGifos {
-        display: flex;
+        display: grid;
+        grid-template-columns: 64.8vw 64.8vw 64.8vw;
+        grid-gap: 5.866666666vw;
         overflow: scroll;
-        margin-bottom: 12vw;
-        .imagenCarrusel {
-          width: 42vw;
-          height: 42vw;
+        margin-bottom: 21.8666666vw;
+        height: 49.866667vw;
+        margin-left: 5.86666666vw;
+        img {
+          width: 64.8vw;
+          height: 49.866667vw;
           margin: 0 2.9333333vw 0 2.9333333vw;
         }
-        #imagenCarrusel1 {
-          margin-left: 5.86666666vw;
-        }
-        #imagenCarrusel5 {
-          margin-right: 5.86666666vw;
-        }
       }
+    }
+    #flechaDerecha {
+      display: none;
     }
   }
 }
@@ -157,6 +161,7 @@
       display: flex;
       margin-left: 6.527777vw;
       margin-bottom: 12.63888vw;
+      margin-right: 6.3888888vw;
       align-items: center;
       #flechaIzquierda {
         display: block;
@@ -164,16 +169,21 @@
         height: 2.777777777777778vw;
       }
       #carruselTrendingGifos {
-        display: flex;
+        display: grid;
+        grid-template-columns: 24.791666vw 24.791666vw 24.791666vw;
+        grid-gap: 2.01388888vw;
         overflow: scroll;
+        height: 19.0972222vw;
         margin-bottom: 0;
-        .imagenCarrusel {
+        margin-left: 1.527777vw;
+        margin-right: 1.7361111vw;
+        .imgBuscadaCarrusel {
           width: 24.792vw;
           height: 19.098vw;
-          margin: 0 1.00694444vw 0 1.00694444vw;
+          margin: 0;
         }
         #imagenCarrusel1 {
-          margin-left: 1.527777vw;
+          margin-left: 0;
         }
         #imagenCarrusel3 {
           margin-right: 1.736111vw;

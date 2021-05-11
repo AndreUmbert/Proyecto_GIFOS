@@ -70,7 +70,17 @@ buscador.addEventListener('keypress', async (buscar) => {
             galeria.innerHTML += `
             <div class="divHoverContenedor">
             <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}">
-            <div id="${trending.id}" class="divHover"></div>
+            <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+            <div id="btnsPintadosDesktop">
+            <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
+            <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
             </div>
             `;
             tituloBusqueda.innerHTML = `${buscar.target.value}`;
@@ -83,7 +93,7 @@ buscador.addEventListener('keypress', async (buscar) => {
                 site_nav.style.display = "block";
                 console.log("pantallaDesktop");
                 imagenesGaleria.addEventListener('mouseover', (eventoPintar) => {
-                    // console.log(eventoPintar.target.getAttribute("key"));
+
                     let divHover = document.getElementById(eventoPintar.target.getAttribute("key"));
 
                     divHover.style.display = "block";

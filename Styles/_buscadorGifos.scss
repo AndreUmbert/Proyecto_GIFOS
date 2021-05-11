@@ -102,9 +102,9 @@
       display: flex;
       flex-flow: row wrap;
       #etiquetasEjemplosTexto {
-       margin-right: 1vw;
-       margin-top: 0;
-       margin-bottom: 0;
+        margin-right: 1vw;
+        margin-top: 0;
+        margin-bottom: 0;
         font-weight: 500;
         font-size: 3.142vw;
         line-height: 6.8vw;
@@ -271,6 +271,9 @@
         }
         #sugerenciasBusqueda {
           display: none;
+          .itemListaSugerido {
+            margin-bottom: 0.34722222vw;
+          }
         }
       }
     }
@@ -286,12 +289,15 @@
         font-weight: bold;
       }
       #etiquetasEjemplos {
-        text-align: center;
-        font-weight: 500;
-        font-size: 1.18vw;
-        line-height: 1.8vw;
-        #brTextoTrending {
-          display: none;
+        margin-left: 36.111111vw;
+        #etiquetasEjemplosTexto {
+          text-align: center;
+          font-weight: 500;
+          font-size: 1.18vw;
+          line-height: 1.8vw;
+          #brTextoTrending {
+            display: none;
+          }
         }
       }
     }

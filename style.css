@@ -136,7 +136,7 @@ body {
             transform: translateX(-50%);
   }
   #header #site-nav #navLista li .liNavItem {
-    color: #572EE5;
+    color: #572ee5;
     font-size: 1.3vw;
     line-height: 1.6vw;
     text-decoration: none;
@@ -163,6 +163,8 @@ body {
     margin-top: 0;
   }
   #header #container #logo {
+    width: 4.10416666vw;
+    height: 4.10416666vw;
     float: left;
     margin: 1.59722vw 0 0.89583333vw 10.83333333vw;
   }
@@ -213,7 +215,7 @@ body {
             transform: translateX(-50%);
   }
   #header #site-nav #navLista li .liNavItem {
-    color: #572EE5;
+    color: #572ee5;
     font-size: 0.72222vw;
     line-height: 1vw;
     text-decoration: none;
@@ -571,6 +573,9 @@ body {
   #buscadorGifos #searchBar #barraContenedor #sugerenciasBusqueda {
     display: none;
   }
+  #buscadorGifos #searchBar #barraContenedor #sugerenciasBusqueda .itemListaSugerido {
+    margin-bottom: 0.34722222vw;
+  }
   #buscadorGifos #etiquetasInicio {
     color: #572ee5;
     text-align: center;
@@ -584,12 +589,15 @@ body {
     font-weight: bold;
   }
   #buscadorGifos #etiquetasInicio #etiquetasEjemplos {
+    margin-left: 36.111111vw;
+  }
+  #buscadorGifos #etiquetasInicio #etiquetasEjemplos #etiquetasEjemplosTexto {
     text-align: center;
     font-weight: 500;
     font-size: 1.18vw;
     line-height: 1.8vw;
   }
-  #buscadorGifos #etiquetasInicio #etiquetasEjemplos #brTextoTrending {
+  #buscadorGifos #etiquetasInicio #etiquetasEjemplos #etiquetasEjemplosTexto #brTextoTrending {
     display: none;
   }
 }
@@ -667,55 +675,63 @@ body {
 @media only screen and (min-width: 800px) {
   #trendingGifos {
     background-color: #f3f5f8;
-    margin-bottom: 8vw;
+    margin-bottom: 12.533333333vw;
     position: relative;
   }
   #trendingGifos #textosTrending {
     font-family: "Montserrat", sans-serif;
     text-align: center;
-    padding-top: 9vw;
+    padding-top: 12.26666666vw;
   }
   #trendingGifos #textosTrending #tituloTrendingGifos {
     color: #572ee5;
-    font-size: 4vw;
+    font-size: 4.3vw;
     margin-top: 0;
     margin-bottom: 1.8666666vw;
     font-weight: bold;
     line-height: 8vw;
   }
   #trendingGifos #textosTrending #textoTrendingGifosMobile {
-    display: block;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-size: 3.2vw;
-    line-height: 5vw;
+    font-size: 3.7vw;
+    line-height: 6.3vw;
     margin: 0 5.6vw 8.533333vw 5.6vw;
   }
   #trendingGifos #textosTrending #textoTrendingGifosDesktop {
     display: none;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-size: 3.2vw;
-    line-height: 5vw;
+    font-size: 3.7vw;
+    line-height: 6.3vw;
     margin: 0 5.6vw 8.533333vw 5.6vw;
   }
-  #trendingGifos #carrusel #carruselTrendingGifos {
+  #trendingGifos #carrusel {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  #trendingGifos #carrusel #flechaIzquierda {
+    display: none;
+  }
+  #trendingGifos #carrusel #carruselTrendingGifos {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 64.8vw 64.8vw 64.8vw;
+        grid-template-columns: 64.8vw 64.8vw 64.8vw;
+    grid-gap: 5.866666666vw;
     overflow: scroll;
-    margin-bottom: 12vw;
-  }
-  #trendingGifos #carrusel #carruselTrendingGifos .imagenCarrusel {
-    width: 42vw;
-    height: 42vw;
-    margin: 0 2.9333333vw 0 2.9333333vw;
-  }
-  #trendingGifos #carrusel #carruselTrendingGifos #imagenCarrusel1 {
+    margin-bottom: 21.8666666vw;
+    height: 49.866667vw;
     margin-left: 5.86666666vw;
   }
-  #trendingGifos #carrusel #carruselTrendingGifos #imagenCarrusel5 {
-    margin-right: 5.86666666vw;
+  #trendingGifos #carrusel #carruselTrendingGifos img {
+    width: 64.8vw;
+    height: 49.866667vw;
+    margin: 0 2.9333333vw 0 2.9333333vw;
+  }
+  #trendingGifos #flechaDerecha {
+    display: none;
   }
 }
 
@@ -766,6 +782,7 @@ body {
     display: flex;
     margin-left: 6.527777vw;
     margin-bottom: 12.63888vw;
+    margin-right: 6.3888888vw;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -776,19 +793,24 @@ body {
     height: 2.777777777777778vw;
   }
   #trendingGifos #carrusel #carruselTrendingGifos {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 24.791666vw 24.791666vw 24.791666vw;
+        grid-template-columns: 24.791666vw 24.791666vw 24.791666vw;
+    grid-gap: 2.01388888vw;
     overflow: scroll;
+    height: 19.0972222vw;
     margin-bottom: 0;
+    margin-left: 1.527777vw;
+    margin-right: 1.7361111vw;
   }
-  #trendingGifos #carrusel #carruselTrendingGifos .imagenCarrusel {
+  #trendingGifos #carrusel #carruselTrendingGifos .imgBuscadaCarrusel {
     width: 24.792vw;
     height: 19.098vw;
-    margin: 0 1.00694444vw 0 1.00694444vw;
+    margin: 0;
   }
   #trendingGifos #carrusel #carruselTrendingGifos #imagenCarrusel1 {
-    margin-left: 1.527777vw;
+    margin-left: 0;
   }
   #trendingGifos #carrusel #carruselTrendingGifos #imagenCarrusel3 {
     margin-right: 1.736111vw;
@@ -806,7 +828,7 @@ body {
 
 #busqueda #separador {
   width: 41.8666666vw;
-  border: #9CAFC3 1px solid;
+  border: #9cafc3 1px solid;
   margin-left: 29.0666666vw;
   opacity: 50%;
   margin-bottom: 11.46666666vw;
@@ -865,6 +887,82 @@ body {
 
 .imgBuscada:hover ~ .divHover {
   display: block;
+}
+
+@media only screen and (min-width: 1440px) {
+  #busqueda {
+    margin-bottom: 5.486111111vw;
+  }
+  #busqueda #separador {
+    width: 23.4722222vw;
+    border: #9cafc3 1px solid;
+    margin-left: 38.2638888vw;
+    opacity: 50%;
+    margin-bottom: 5.6875vw;
+  }
+  #busqueda #tituloBusqueda {
+    color: #572ee5;
+    font-size: 2.430555vw;
+    margin-top: 0;
+    margin-bottom: 4.09722222vw;
+    font-weight: bold;
+    line-height: 2.1vw;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+  #busqueda #galeria {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 18.0555555vw 18.0555555vw 18.0555555vw 18.0555555vw;
+        grid-template-columns: 18.0555555vw 18.0555555vw 18.0555555vw 18.0555555vw;
+    -ms-grid-rows: 13.888888vw 13.888888vw 13.888888vw;
+        grid-template-rows: 13.888888vw 13.888888vw 13.888888vw;
+    margin: 0 10.90277777vw 5.416666666vw 10.83333vw;
+    grid-gap: 2.013888vw;
+  }
+  #busqueda #galeria .divHoverContenedor {
+    position: relative;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover {
+    width: 18.0555555vw;
+    height: 13.888888vw;
+    background-color: rgba(87, 46, 229, 0.8);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #btnsPintadosDesktop {
+    margin-left: 9.2361111111vw;
+    margin-top: 0.6944444vw;
+    margin-right: 0.6944444vw;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #btnsPintadosDesktop #btnFavPintado {
+    width: 2.222222vw;
+    height: 2.222222vw;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #btnsPintadosDesktop #btnDescargarPintado {
+    width: 2.222222vw;
+    height: 2.222222vw;
+    margin-left: 0.4166666vw;
+  }
+  #busqueda #galeria .divHoverContenedor .divHover #btnsPintadosDesktop #btnAmpliarPintado {
+    width: 2.222222vw;
+    height: 2.222222vw;
+    margin-left: 0.4166666vw;
+  }
+  #busqueda #galeria .divHoverContenedor .imgBuscada {
+    width: 18.0555555vw;
+    height: 13.888888vw;
+    display: block;
+    z-index: 0;
+  }
+  #busqueda #btnVerMas {
+    width: 8.81944444vw;
+    height: 3.47222222vw;
+    margin-left: 45.625vw;
+  }
 }
 
 #infoFooter {
@@ -1038,7 +1136,7 @@ body {
 }
 
 #sectionFavoritos #tituloFavoritos {
-  color: #572EE5;
+  color: #572ee5;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 4.3vw;
@@ -1071,6 +1169,56 @@ body {
   margin-bottom: 20.8vw;
 }
 
+@media only screen and (min-width: 1440px) {
+  #sectionFavoritos {
+    margin-bottom: 5.486111111vw;
+  }
+  #sectionFavoritos #tituloFavoritos {
+    color: #572ee5;
+    font-size: 2.430555vw;
+    margin-top: 0;
+    margin-bottom: 4.09722222vw;
+    font-weight: bold;
+    line-height: 2.1vw;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+  #sectionFavoritos #galeriaFav {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 18.0555555vw 18.0555555vw 18.0555555vw 18.0555555vw;
+        grid-template-columns: 18.0555555vw 18.0555555vw 18.0555555vw 18.0555555vw;
+    -ms-grid-rows: 13.888888vw 13.888888vw 13.888888vw;
+        grid-template-rows: 13.888888vw 13.888888vw 13.888888vw;
+    margin: 0 10.90277777vw 5.416666666vw 10.83333vw;
+    grid-gap: 2.013888vw;
+  }
+  #sectionFavoritos #galeriaFav .divHoverContenedor {
+    position: relative;
+  }
+  #sectionFavoritos #galeriaFav .divHoverContenedor .divHover {
+    width: 41.6vw;
+    height: 32vw;
+    background-color: rgba(87, 46, 229, 0.8);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  #sectionFavoritos #galeriaFav .divHoverContenedor .imgBuscada {
+    width: 18.0555555vw;
+    height: 13.888888vw;
+    display: block;
+    z-index: 0;
+  }
+  #sectionFavoritos #btnVerMasFav {
+    width: 8.81944444vw;
+    height: 3.47222222vw;
+    margin-left: 45.625vw;
+  }
+}
+
 #sectionMisGifos {
   margin-top: 1.333333333vw;
 }
@@ -1083,7 +1231,7 @@ body {
 }
 
 #sectionMisGifos #tituloMisGifos {
-  color: #572EE5;
+  color: #572ee5;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 4.3vw;
@@ -1114,6 +1262,56 @@ body {
   height: 13.3333333vw;
   margin-left: 33.066666vw;
   margin-bottom: 20.8vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  #sectionMisGifos {
+    margin-bottom: 5.486111111vw;
+  }
+  #sectionMisGifos #tituloMisGifos {
+    color: #572ee5;
+    font-size: 2.430555vw;
+    margin-top: 0;
+    margin-bottom: 4.09722222vw;
+    font-weight: bold;
+    line-height: 2.1vw;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+  #sectionMisGifos #galeriaMisGifos {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 18.0555555vw 18.0555555vw 18.0555555vw 18.0555555vw;
+        grid-template-columns: 18.0555555vw 18.0555555vw 18.0555555vw 18.0555555vw;
+    -ms-grid-rows: 13.888888vw 13.888888vw 13.888888vw;
+        grid-template-rows: 13.888888vw 13.888888vw 13.888888vw;
+    margin: 0 10.90277777vw 5.416666666vw 10.83333vw;
+    grid-gap: 2.013888vw;
+  }
+  #sectionMisGifos #galeriaMisGifos .divHoverContenedor {
+    position: relative;
+  }
+  #sectionMisGifos #galeriaMisGifos .divHoverContenedor .divHover {
+    width: 18.0555555vw;
+    height: 13.888888vw;
+    background-color: rgba(87, 46, 229, 0.8);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  #sectionMisGifos #galeriaMisGifos .divHoverContenedor .imgBuscada {
+    width: 18.0555555vw;
+    height: 13.888888vw;
+    display: block;
+    z-index: 0;
+  }
+  #sectionMisGifos #btnVerMasMisGifos {
+    width: 8.81944444vw;
+    height: 3.47222222vw;
+    margin-left: 45.625vw;
+  }
 }
 
 #sectionImagenAmplificada {
