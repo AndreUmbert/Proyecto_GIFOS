@@ -1,5 +1,6 @@
 //busqueda Mobile:
 #busqueda {
+  display: none;
   margin-bottom: 21.06666666vw;
   #separador {
     width: 41.8666666vw;
@@ -44,6 +45,9 @@
         z-index: 0;
       }
     }
+  }
+  #busquedaFallida {
+    display: none;
   }
   #btnVerMas {
     width: 33.8666666vw;
@@ -139,6 +143,23 @@
       width: 8.81944444vw;
       height: 3.47222222vw;
       margin-left: 45.625vw;
+    }
+  }
+  #busquedaFallida {
+    #imgBusquedaFallida {
+      margin-left: 44.79166666vw;
+      margin-top: 7.5694444vw;
+      margin-bottom: 2.013888888vw;
+    }
+    #textoBusquedaFallida {
+      text-align: center;
+      font-size: 1.25vw;
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      color: #50e3c2;
+      line-height: 1.78vw;
+      margin-top: 0;
+      margin-bottom: 10.34722vw;
     }
   }
 }

@@ -313,6 +313,7 @@ body {
 
 #buscadorGifos #searchBar #barraContenedor #barra #cruzAparece {
   display: none;
+  margin-right: 5.33333333vw;
 }
 
 #buscadorGifos #searchBar #barraContenedor #separadorBusqueda {
@@ -370,6 +371,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #buscadorGifos #etiquetasInicio #etiquetasEjemplos #etiquetasEjemplosTexto {
@@ -565,6 +572,9 @@ body {
     width: 1.38888888vw;
     height: 1.38888888vw;
   }
+  #buscadorGifos #searchBar #barraContenedor #barra #cruzAparece {
+    margin-right: 1.59722222vw;
+  }
   #buscadorGifos #searchBar #barraContenedor #separadorBusqueda {
     border: 1px solid #9cafc3;
     width: 80%;
@@ -589,7 +599,7 @@ body {
     font-weight: bold;
   }
   #buscadorGifos #etiquetasInicio #etiquetasEjemplos {
-    margin-left: 30vw;
+    margin: 0 30vw 0 30vw;
   }
   #buscadorGifos #etiquetasInicio #etiquetasEjemplos #etiquetasEjemplosTexto {
     text-align: center;
@@ -823,6 +833,7 @@ body {
 }
 
 #busqueda {
+  display: none;
   margin-bottom: 21.06666666vw;
 }
 
@@ -877,6 +888,10 @@ body {
   height: 32vw;
   display: block;
   z-index: 0;
+}
+
+#busqueda #busquedaFallida {
+  display: none;
 }
 
 #busqueda #btnVerMas {
@@ -976,6 +991,21 @@ body {
     width: 8.81944444vw;
     height: 3.47222222vw;
     margin-left: 45.625vw;
+  }
+  #busquedaFallida #imgBusquedaFallida {
+    margin-left: 44.79166666vw;
+    margin-top: 7.5694444vw;
+    margin-bottom: 2.013888888vw;
+  }
+  #busquedaFallida #textoBusquedaFallida {
+    text-align: center;
+    font-size: 1.25vw;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    color: #50e3c2;
+    line-height: 1.78vw;
+    margin-top: 0;
+    margin-bottom: 10.34722vw;
   }
 }
 

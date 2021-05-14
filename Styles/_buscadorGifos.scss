@@ -57,6 +57,7 @@
         }
         #cruzAparece {
           display: none;
+          margin-right: 5.33333333vw;
         }
       }
       #separadorBusqueda {
@@ -101,6 +102,8 @@
       margin: 0 20vw 0 20vw;
       display: flex;
       flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
       #etiquetasEjemplosTexto {
         margin-right: 1vw;
         margin-top: 0;
@@ -263,6 +266,9 @@
             width: 1.38888888vw;
             height: 1.38888888vw;
           }
+          #cruzAparece {
+            margin-right: 1.59722222vw;
+          }
         }
         #separadorBusqueda {
           border: 1px solid #9cafc3;
@@ -289,7 +295,7 @@
         font-weight: bold;
       }
       #etiquetasEjemplos {
-        margin-left: 30vw;
+        margin: 0 30vw 0 30vw;
         #etiquetasEjemplosTexto {
           text-align: center;
           font-weight: 500;
