@@ -222,10 +222,10 @@ async function changeText(objeto) {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
         <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onclick="ampliar()">
-        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="">
         <div id="btnsPintadosDesktop">
         <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
-        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
+        <img id="btnDescargarPintado"  src="assets/assets/icon-download.svg">
         <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
         </div>
         <div id="infoImgPintDesktop">
@@ -237,22 +237,5 @@ async function changeText(objeto) {
         `;
         tituloBusqueda.innerHTML = `${buscador.value}`;
         tituloBusqueda.style.textTransform = "capitalize";
-    });
-}
-
-if (pantallaDesktop.matches) {
-    site_nav.style.display = "block";
-    // console.log("pantallaDesktop");
-    imagenesGaleria.addEventListener('mouseover', (eventoPintar) => {
-        let divHover = document.getElementById(eventoPintar.target.getAttribute("key"));
-        divHover.style.display = "block";
-        // let btnDescargarPintado = document.getElementById("btnDescargarPintado");
-        // btnDescargarPintado.addEventListener("click", (eventoDescargar) => {
-        //     download();
-        // });
-
-        divHover.addEventListener('mouseout', () => {
-            divHover.style.display = "none";
-        });
     });
 }

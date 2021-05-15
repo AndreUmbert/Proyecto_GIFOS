@@ -62,22 +62,6 @@ async function showFavoritos(gifFav) {
         </div>`;
     let arrayImagenesFavoritos = document.querySelectorAll(".imgBuscada");
     arrayImagenesFavoritos.forEach(imagenesFavoritos => {
-        if (pantallaDesktop.matches) {
-            site_nav.style.display = "block";
-            console.log("pantallaDesktop");
-            imagenesFavoritos.addEventListener('mouseover', (eventoPintar) => {
-                // console.log(eventoPintar.target.getAttribute("key"));
-                let divHover = document.getElementById(eventoPintar.target.getAttribute("key"));
-
-                divHover.style.display = "block";
-
-                divHover.addEventListener('mouseout', () => {
-                    divHover.style.display = "none";
-                });
-            });
-        }
-    });
-    arrayImagenesFavoritos.forEach(imagenesFavoritos => {
         imagenesFavoritos.addEventListener('click', (eventoAmpliar) => {
             console.log(trending);
             console.log(eventoAmpliar.target.getAttribute("nombre"));
