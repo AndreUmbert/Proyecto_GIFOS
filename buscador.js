@@ -36,6 +36,7 @@ let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
 let busquedaFallida = document.getElementById("busquedaFallida");
 
 
+
 //Establecer mayuscula al buscador:
 buscador.style.textTransform = "capitalize";
 
@@ -104,7 +105,9 @@ buscador.addEventListener('keypress', async (buscar) => {
     if (buscar.key === 'Enter') {
         tituloGif.innerHTML = ``;
         nombreUsuario.innerHTML = ``;
-        site_nav.style.display = "none";
+        if (!pantallaDesktop.matches) {
+            site_nav.style.display = "none";
+        }
         busquedaSection.style.display = "Block";
         galeria.style.display = "grid";
         galeria.innerHTML = ``;
@@ -113,12 +116,12 @@ buscador.addEventListener('keypress', async (buscar) => {
         json.data.forEach(trending => {
             galeria.innerHTML += `
             <div class="divHoverContenedor">
-            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onclick="ampliar()">
-            <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
             <div id="btnsPintadosDesktop">
-            <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
-            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
-            <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+            <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.id}">
+            <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
             </div>
             <div id="infoImgPintDesktop">
             <p id="usuarioPintado">${trending.username}</p>
@@ -159,12 +162,12 @@ btnVerMas.addEventListener('click', async (verMas) => {
     json.data.forEach(trending => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onclick="ampliar()">
-        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
         <div id="btnsPintadosDesktop">
-        <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
-        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
-        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+        <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.id}">
+        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
         </div>
         <div id="infoImgPintDesktop">
         <p id="usuarioPintado">${trending.username}</p>
@@ -221,19 +224,19 @@ async function changeText(objeto) {
     json.data.forEach(trending => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onclick="ampliar()">
-        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="">
-        <div id="btnsPintadosDesktop">
-        <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
-        <img id="btnDescargarPintado"  src="assets/assets/icon-download.svg">
-        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
-        </div>
-        <div id="infoImgPintDesktop">
-        <p id="usuarioPintado">${trending.username}</p>
-        <p id="tituloPintado">${trending.title}</p>
-        </div>
-        </div>
-        </div>
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+            <div id="btnsPintadosDesktop">
+            <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.id}">
+            <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
+            </div>
         `;
         tituloBusqueda.innerHTML = `${buscador.value}`;
         tituloBusqueda.style.textTransform = "capitalize";

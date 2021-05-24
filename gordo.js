@@ -74,7 +74,7 @@ buscador.addEventListener('keypress', async (buscar) => {
             <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}">
             <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
             <div id="btnsPintadosDesktop">
-            <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
+            <img id="btnFavPintado" onclick="favDesktop(this)" src="assets/assets/icon-fav.svg">
             <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
             <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
             </div>
