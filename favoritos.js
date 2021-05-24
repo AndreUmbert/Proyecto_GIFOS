@@ -14,18 +14,22 @@ let btnFavoritos = document.getElementById("itemListaFavoritos");
 let etiquetasInicio = document.getElementById("etiquetasInicio");
 let galeriaFav = document.getElementById("galeriaFav");
 let itemListaFavoritos = document.getElementById("itemListaFavoritos");
+const gifFav = `${imgAmplificada.getAttribute("key")}`;
 
 btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
     menu.src = "./assets/assets/burger.svg";
     sectionMisGifos.style.display = "none";
     sectionFavoritos.style.display = "block";
-    site_nav.style.display = "none";
+    if (!pantallaDesktop.matches) {
+        site_nav.style.display = "none";
+    }
     busquedaSection.style.display = "none";
     tituloInicio.style.display = "none";
     pjsGifos.style.display = "none";
     searchBar.style.display = "none";
     etiquetasInicio.style.display = "none";
 });
+
 
 
 if (buscador.value === "") {
@@ -54,12 +58,22 @@ async function showFavoritos(gifFav) {
     const URL_SearchId = `https://api.giphy.com/v1/gifs/${gifFav}?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9`;
     const favorito = await fetch(URL_SearchId);
     let trending = await favorito.json();
-    // console.log(trending);
+    console.log(trending);
     galeriaFav.innerHTML += ` 
-        <div class="divHoverContenedor">
-        <img key="${trending.data.id}" corazon="true"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.data.username}" titulo="${trending.data.title}">
-        <div id="${trending.id}" class="divHover"></div>
-        </div>`;
+    <div class="divHoverContenedor">
+    <img key="${trending.data.id}"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.data.username}" corazon="false" titulo="${trending.data.title}" onmouseover="pintar(this)" onclick="ampliar()">
+    <div id="${trending.data.id}" nombre="${trending.data.username}" titulo="${trending.data.title}" class="divHover" onmouseout="despintar(this)">
+    <div id="btnsPintadosDesktop">
+    <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.data.id}">
+    <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.data.id}">
+    <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.data.id}">
+    </div>
+    <div id="infoImgPintDesktop">
+    <p id="usuarioPintado">${trending.data.username}</p>
+    <p id="tituloPintado">${trending.data.title}</p>
+    </div>
+    </div>
+    </div>`;
     let arrayImagenesFavoritos = document.querySelectorAll(".imgBuscada");
     arrayImagenesFavoritos.forEach(imagenesFavoritos => {
         imagenesFavoritos.addEventListener('click', (eventoAmpliar) => {

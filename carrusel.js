@@ -12,12 +12,12 @@ let mostrarTrending = async () => {
     json.data.forEach(trending => {
         carrusel.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onclick="ampliar()">
-        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover">
+        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
         <div id="btnsPintadosDesktop">
-        <img id="btnFavPintado" src="assets/assets/icon-fav.svg">
-        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg">
-        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg">
+        <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.id}">
+        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
         </div>
         <div id="infoImgPintDesktop">
         <p id="usuarioPintado">${trending.username}</p>

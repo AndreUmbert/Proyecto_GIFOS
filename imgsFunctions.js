@@ -1,11 +1,3 @@
-const arrayDivHovers = document.querySelectorAll(".divHover");
-arrayDivHovers.forEach(divsGaleria => {
-    if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
-        btnFavPintado.src = "assets/assets/icon-fav-active.svg";
-    } else {
-        btnFavPintado.src = "assets/assets/icon-fav-hover.svg";
-    }
-});
 
 function pintar(eventoPintar) {
     if (pantallaDesktop.matches) {
@@ -15,13 +7,13 @@ function pintar(eventoPintar) {
         divHover.key = `${eventoPintar.getAttribute("key")}`;
         divHover.style.display = "block";
         let btnFavPintado = document.getElementById("btnFavPintado");
-        // arrayDivHovers.forEach(divsGaleria => {
-        //     if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
-        //         btnFavPintado.src = "assets/assets/icon-fav-active.svg";
-        //     } else {
-        //         btnFavPintado.src = "assets/assets/icon-fav-hover.svg";
-        //     }
-        // });
+        arrayDivHovers.forEach(divsGaleria => {
+            if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
+                btnFavPintado.src = "assets/assets/icon-fav-active.svg";
+            } else {
+                btnFavPintado.src = "assets/assets/icon-fav-hover.svg";
+            }
+        });
     }
 
 }

@@ -216,7 +216,9 @@ async function changeText(objeto) {
     if (buscador.value.charAt(buscador.value.length - 1) == ',') {
         buscador.value = buscador.value.slice(0, -1)
     }
-    site_nav.style.display = "none";
+    if (!pantallaDesktop.matches) {
+        site_nav.style.display = "none";
+    }
     busquedaSection.style.display = "Block";
     galeria.innerHTML = ``;
     let resultadoBusqueda = await fetch(URL_BASE + buscador.value);

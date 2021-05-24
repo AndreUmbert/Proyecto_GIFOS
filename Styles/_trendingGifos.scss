@@ -1,7 +1,7 @@
 //Trending GIFOS mobile:
 #trendingGifos {
   background-color: #f3f5f8;
-  margin-bottom: 12.533333333vw;
+  padding-bottom: 12.533333333vw;
   position: relative;
   #textosTrending {
     font-family: "Montserrat", sans-serif;
@@ -33,6 +33,7 @@
   }
   #carrusel {
     display: flex;
+    margin-bottom: 0;
     #flechaIzquierda {
       display: none;
     }
@@ -75,7 +76,7 @@
 @media only screen and (min-width: 800px) {
   #trendingGifos {
     background-color: #f3f5f8;
-    margin-bottom: 12.533333333vw;
+    padding-bottom: 12.533333333vw;
     position: relative;
     #textosTrending {
       font-family: "Montserrat", sans-serif;
@@ -107,6 +108,7 @@
     }
     #carrusel {
       display: flex;
+      margin-bottom: 0;
       #flechaIzquierda {
         display: none;
       }
@@ -135,7 +137,7 @@
 @media only screen and (min-width: 1440px) {
   #trendingGifos {
     background-color: #f3f5f8;
-    margin-bottom: 12.638888vw;
+    padding-bottom: 12.638888vw;
     position: relative;
     #textosTrending {
       font-family: "Montserrat", sans-serif;
@@ -175,7 +177,7 @@
     #carrusel {
       display: flex;
       margin-left: 6.527777vw;
-      margin-bottom: 12.63888vw;
+      margin-bottom: 0vw;
       margin-right: 6.3888888vw;
       align-items: center;
       #flechaIzquierda {
@@ -195,14 +197,52 @@
         .divHoverContenedor {
           position: relative;
           .divHover {
-            width: 41.6vw;
-            height: 32vw;
+            width: 24.792vw;
+            height: 19.098vw;
             background-color: rgba(87, 46, 229, 0.8);
             display: none;
             position: absolute;
             top: 0;
             left: 0;
             z-index: 10;
+            #btnsPintadosDesktop {
+              margin: 0.6944444vw 0.6944444vw 9.6527777777vw 9.2361111111vw;
+              display: flex;
+              justify-content: flex-end;
+              #btnFavPintado {
+                width: 2.222222vw;
+                height: 2.222222vw;
+                margin: 0;
+              }
+              #btnDescargarPintado {
+                width: 2.222222vw;
+                height: 2.222222vw;
+                margin-left: 0.76388888888vw;
+                margin-right: 0.6944444vw;
+              }
+              #btnAmpliarPintado {
+                width: 2.222222vw;
+                height: 2.222222vw;
+                margin-right: 0;
+                margin-left: 0;
+              }
+            }
+            #infoImgPintDesktop {
+              margin-left: 1.25vw;
+              #usuarioPintado {
+                font-size: 0.88vw;
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
+                margin-bottom: 0.34722222vw;
+              }
+              #tituloPintado {
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
+                font-weight: bold;
+                font-size: 1vw;
+                margin: 0;
+              }
+            }
           }
           .imgBuscada {
             width: 24.792vw;
