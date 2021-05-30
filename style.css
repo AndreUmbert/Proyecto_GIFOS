@@ -1504,6 +1504,260 @@ body {
   }
 }
 
+#creadorGifos {
+  display: none;
+  margin-top: 0.2777777vw;
+}
+
+#creadorGifos #parteGrabar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#creadorGifos #parteGrabar #camaraYLuz {
+  margin-left: 10.833333vw;
+  margin-right: 0.277777vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#creadorGifos #parteGrabar #camaraYLuz #imgCamara {
+  width: 8.541666666vw;
+  height: 11.25vw;
+  margin-top: 8.236111vw;
+}
+
+#creadorGifos #parteGrabar #camaraYLuz #luz {
+  margin-top: 9.6vw;
+  width: 6.319444444vw;
+  height: 9vw;
+}
+
+#creadorGifos #parteGrabar #grabador {
+  margin-right: 4.7857142vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz {
+  width: 47.777777777vw;
+  height: 27.08333333vw;
+  border: 1px solid #572ee5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #cuadradosArriba {
+  margin-top: 1.38888888vw;
+  margin-bottom: 6.041666vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #cuadradosArriba #cuadrado1 {
+  border-left: 1px solid #50e3c2;
+  border-top: 1px solid #50e3c2;
+  margin-left: 1.3888888vw;
+  width: 1.875vw;
+  height: 1.7361111vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #cuadradosArriba #cuadrado2 {
+  border-right: 1px solid #50e3c2;
+  border-top: 1px solid #50e3c2;
+  width: 1.7361111vw;
+  margin-right: 1.3888888vw;
+  margin-left: 41.388888vw;
+  height: 1.875vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #textosGrabacion {
+  margin-bottom: 5.3472222vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #textosGrabacion #tituloGrabacion {
+  text-align: center;
+  color: #572ee5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.44vw;
+  line-height: 2.44vw;
+  margin-bottom: 0.2083333333vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #textosGrabacion #tituloGrabacion #spanGifos {
+  color: #50e3c2;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #textosGrabacion #textoGrabacion1 {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.94vw;
+  line-height: 2.06vw;
+  margin: 0;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #textosGrabacion #textoGrabacion2 {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.94vw;
+  line-height: 2.06vw;
+  margin: 0;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #cuadradosAbajo {
+  margin-bottom: 1.3194444vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1.4583333vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #cuadradosAbajo #cuadrado3 {
+  border-left: 1px solid #50e3c2;
+  border-bottom: 1px solid #50e3c2;
+  width: 1.7361111vw;
+  height: 1.875vw;
+}
+
+#creadorGifos #parteGrabar #grabador #grabacionInterfaz #grabacionUsuario #cuadradosAbajo #cuadrado4 {
+  border-right: 1px solid #50e3c2;
+  border-bottom: 1px solid #50e3c2;
+  margin-left: 41.3194444vw;
+  width: 1.875vw;
+  height: 1.7361111vw;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 10.208333vw;
+  margin-top: 2.0138888vw;
+  margin-bottom: 1.3194444vw;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion #btnGrabacion1 {
+  width: 2.22222222vw;
+  height: 2.22222222vw;
+  border: 1px solid #572ee5;
+  border-radius: 50%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion #btnGrabacion1 #textBtnGrabacion1 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: #572ee5;
+  font-size: 1vw;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion #btnGrabacion2 {
+  width: 2.22222222vw;
+  height: 2.22222222vw;
+  border: 1px solid #572ee5;
+  border-radius: 50%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion #btnGrabacion2 #textBtnGrabacion2 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: #572ee5;
+  font-size: 1vw;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion #btnGrabacion3 {
+  width: 2.22222222vw;
+  height: 2.22222222vw;
+  border: 1px solid #572ee5;
+  border-radius: 50%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#creadorGifos #parteGrabar #grabador #btnsGrabacion #btnGrabacion3 #textBtnGrabacion3 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: #572ee5;
+  font-size: 1vw;
+}
+
+#creadorGifos #parteGrabar #pelicula #imgPelicula {
+  margin-top: 26.56944444vw;
+}
+
+#creadorGifos #separadorGrabacion {
+  background-color: #572ee5;
+  width: 55.243055555vw;
+  height: 0.479166666vw;
+  border-radius: 3rem;
+  margin-left: 22.36111111vw;
+}
+
+#creadorGifos #btnComenzar {
+  margin-top: 1.39583333333vw;
+  height: 3.472222vw;
+  width: 8.81944444vw;
+  border: 1px solid #572ee5;
+  border-radius: 3rem;
+  margin-left: 45.625vw;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#creadorGifos #btnComenzar #textoBtnComenzar {
+  color: #572ee5;
+  font-size: 0.7vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 #sectionImagenAmplificada {
   display: none;
   position: absolute;

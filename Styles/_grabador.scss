@@ -1,0 +1,189 @@
+// Creador de gifos solo es en desktop:
+#creadorGifos {
+  display: none;
+  margin-top: 0.2777777vw;
+  #parteGrabar {
+    display: flex;
+    #camaraYLuz {
+      margin-left: 10.833333vw;
+      margin-right: 0.277777vw;
+      display: flex;
+      #imgCamara {
+        width: 8.541666666vw;
+        height: 11.25vw;
+        margin-top: 8.236111vw;
+      }
+      #luz {
+        margin-top: 9.6vw;
+        width: 6.319444444vw;
+        height: 9vw;
+      }
+    }
+    #grabador {
+      margin-right: 4.7857142vw;
+      #grabacionInterfaz {
+        width: 47.777777777vw;
+        height: 27.08333333vw;
+        border: 1px solid #572ee5;
+        display: flex;
+        flex-direction: column;
+        #grabacionUsuario {
+          #cuadradosArriba {
+            margin-top: 1.38888888vw;
+            margin-bottom: 6.041666vw;
+            display: flex;
+            #cuadrado1 {
+              border-left: 1px solid #50e3c2;
+              border-top: 1px solid #50e3c2;
+              margin-left: 1.3888888vw;
+              width: 1.875vw;
+              height: 1.7361111vw;
+            }
+            #cuadrado2 {
+              border-right: 1px solid #50e3c2;
+              border-top: 1px solid #50e3c2;
+              width: 1.7361111vw;
+              margin-right: 1.3888888vw;
+              margin-left: 41.388888vw;
+              height: 1.875vw;
+            }
+          }
+          #textosGrabacion {
+            margin-bottom: 5.3472222vw;
+            #tituloGrabacion {
+              text-align: center;
+              color: #572ee5;
+              font-family: "Montserrat", sans-serif;
+              font-weight: bold;
+              font-size: 1.44vw;
+              line-height: 2.44vw;
+              margin-bottom: 0.2083333333vw;
+              #spanGifos {
+                color: #50e3c2;
+              }
+            }
+            #textoGrabacion1 {
+              text-align: center;
+              font-family: "Roboto", sans-serif;
+              font-size: 0.94vw;
+              line-height: 2.06vw;
+              margin: 0;
+            }
+            #textoGrabacion2 {
+              text-align: center;
+              font-family: "Roboto", sans-serif;
+              font-size: 0.94vw;
+              line-height: 2.06vw;
+              margin: 0;
+            }
+          }
+          #cuadradosAbajo {
+            margin-bottom: 1.3194444vw;
+            display: flex;
+            margin-left: 1.4583333vw;
+            #cuadrado3 {
+              border-left: 1px solid #50e3c2;
+              border-bottom: 1px solid #50e3c2;
+              width: 1.7361111vw;
+              height: 1.875vw;
+            }
+            #cuadrado4 {
+              border-right: 1px solid #50e3c2;
+              border-bottom: 1px solid #50e3c2;
+              margin-left: 41.3194444vw;
+              width: 1.875vw;
+              height: 1.7361111vw;
+            }
+          }
+        }
+      }
+      #btnsGrabacion {
+        display: flex;
+        justify-content: space-around;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 10.208333vw;
+        margin-top: 2.0138888vw;
+        margin-bottom: 1.3194444vw;
+        #btnGrabacion1 {
+          width: 2.22222222vw;
+          height: 2.22222222vw;
+          border: 1px solid #572ee5;
+          border-radius: 50%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          #textBtnGrabacion1 {
+            align-self: center;
+            font-family: "Roboto", sans-serif;
+            font-weight: 700;
+            color: #572ee5;
+            font-size: 1vw;
+          }
+        }
+        #btnGrabacion2 {
+          width: 2.22222222vw;
+          height: 2.22222222vw;
+          border: 1px solid #572ee5;
+          border-radius: 50%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          #textBtnGrabacion2 {
+            align-self: center;
+            font-family: "Roboto", sans-serif;
+            font-weight: 700;
+            color: #572ee5;
+            font-size: 1vw;
+          }
+        }
+        #btnGrabacion3 {
+          width: 2.22222222vw;
+          height: 2.22222222vw;
+          border: 1px solid #572ee5;
+          border-radius: 50%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          #textBtnGrabacion3 {
+            align-self: center;
+            font-family: "Roboto", sans-serif;
+            font-weight: 700;
+            color: #572ee5;
+            font-size: 1vw;
+          }
+        }
+      }
+    }
+    #pelicula {
+      #imgPelicula {
+        margin-top: 26.56944444vw;
+      }
+    }
+  }
+  #separadorGrabacion {
+    background-color: #572ee5;
+    width: 55.243055555vw;
+    height: 0.479166666vw;
+    border-radius: 3rem;
+    margin-left: 22.36111111vw;
+  }
+  #btnComenzar {
+    margin-top: 1.39583333333vw;
+    height: 3.472222vw;
+    width: 8.81944444vw;
+    border: 1px solid #572ee5;
+    border-radius: 3rem;
+    margin-left: 45.625vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    #textoBtnComenzar {
+      color: #572ee5;
+      font-size: 0.7vw;
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      align-self: center;
+    }
+  }
+}

@@ -17,6 +17,7 @@ let itemListaFavoritos = document.getElementById("itemListaFavoritos");
 const gifFav = `${imgAmplificada.getAttribute("key")}`;
 
 btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
+    creadorGifos.style.display = "none";
     menu.src = "./assets/assets/burger.svg";
     sectionMisGifos.style.display = "none";
     sectionFavoritos.style.display = "block";
@@ -28,6 +29,9 @@ btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
     pjsGifos.style.display = "none";
     searchBar.style.display = "none";
     etiquetasInicio.style.display = "none";
+    if (sectionFavoritos.style.display == "block") {
+        galeriaFav.innerHTML = ``;
+    }
 });
 
 
@@ -45,12 +49,32 @@ function actualizarFavoritos() {
     if (arrayFavoritos.length === 0) {
         console.log("no hay favoritos");
         //Aca hay que mostrar el mensaje
+        if (pantallaDesktop.matches) {
+            btnVerMasFav.style.display = "none";
+            galeriaFav.style.display = "none";
+            noFavs.style.display = "block";
+            noFavs.style.textAlign = "center";
+            let textoNoFav = document.getElementById("textoNoFavs");
+            let imgNoFavs = document.getElementById("imgNoFavs");
+            textoNoFav.style.fontFamily = "Montserrat, sans-serif";
+            textoNoFav.style.fontWeight = "bold";
+            textoNoFav.style.color = "#50E3C2";
+            textoNoFav.style.marginTop = "1.6458333vw";
+            textoNoFav.style.fontSize = "1.25vw";
+            textoNoFav.style.lineHeight = "2.3vw"
+            textoNoFav.style.marginBottom = "9.5138888vw";
+            imgNoFavs.style.marginTop = "7.590277vw";
+        } else {
+            noFavs.style.display = "none";
+        }
     } else {
+        noFavs.style.display = "none";
         arrayFavoritos.forEach(gifFav => {
             showFavoritos(gifFav);
         });
     }
 }
+
 
 
 async function showFavoritos(gifFav) {
@@ -120,6 +144,30 @@ async function showFavoritos(gifFav) {
             })
         });
     });
+    let noFavs = document.getElementById("noFavs");
+    let hijosFavs = document.getElementById("galeriaFav").children;
+    console.log(hijosFavs);
+    console.log(hijosFavs.length);
+    //     if (hijosFavs.length === 0) {
+    //         // galeriaFav.style.display = "none";
+    //         // btnVerMasFav.style.display = "none";
+    //         // if (pantallaDesktop.matches) {
+    //         //     noFavs.style.display = "block";
+    //         //     noFavs.style.textAlign = "center";
+    //         //     let textoNoFav = document.getElementById("textoNoFavs");
+    //         //     let imgNoFavs = document.getElementById("imgNoFavs");
+    //         //     textoNoFav.style.fontFamily = "Montserrat, sans-serif";
+    //         //     textoNoFav.style.fontWeight = "bold";
+    //         //     textoNoFav.style.color = "#50E3C2";
+    //         //     textoNoFav.style.marginTop = "1.6458333vw";
+    //         //     textoNoFav.style.fontSize = "1.25vw";
+    //         //     textoNoFav.style.lineHeight = "2.3vw"
+    //         //     textoNoFav.style.marginBottom = "9.5138888vw";
+    //         //     imgNoFavs.style.marginTop = "7.590277vw";
+    //     }
+    // } else {
+    //     noFavs.style.display = "none";
+    // }
 }
 
 function eliminarElementoArray(idElementoFavorito) {

@@ -32,9 +32,9 @@
                 <li id="itemListaMisGifos"><a class="liNavItem" href="#">Mis GIFOS</a>
                     <div class="borderLiItems"></div>
                 </li>
-                <li id="btnCrearGifos"><a href="#"><img onmouseover="setImgCrearGifosNueva()"
+                <li id="btnCrearGifos"><a href="#"><img boleano="false" onmouseover="setImgCrearGifosNueva()"
                             onmouseout="setImgVolver()" id="imgBtnCrearGifos"
-                            src="./assets/assets/button-crear-gifo.svg" alt=""></a></li>
+                            src="./assets/assets/button-crear-gifo.svg" alt="imagen crear gifos"></a></li>
             </ul>
         </nav>
     </header>
@@ -84,6 +84,10 @@
             <div id="btnVerMasFav">
                 <img src="./assets/assets/CTA-ver-mas.svg" id="verMasFav">
             </div>
+            <div id="noFavs">
+                <img id="imgNoFavs" src="./assets/assets/icon-fav-sin-contenido.svg" alt="imagen corazon vacio">
+                <p id="textoNoFavs">"¡Guarda tu primer GIFO en Favoritos<br> para que se muestre aquí!"</p>
+            </div>
         </section>
         <section id="sectionMisGifos">
             <img id="icon_MisGifos" src="./assets/assets/icon-mis-gifos.svg" alt="imagen_cara_feliz">
@@ -105,6 +109,52 @@
                 <img src="./assets/assets/button-slider-left.svg" id="flechaIzquierda">
                 <div id="carruselTrendingGifos"></div>
                 <img src="./assets/assets/Button-Slider-right.svg" id="flechaDerecha">
+            </div>
+        </section>
+        <section id="creadorGifos">
+            <div id="parteGrabar">
+                <div id="camaraYLuz">
+                    <img src="./assets/assets/camara.svg" id="imgCamara" alt="imagen de camara de grabacion antigua">
+                    <img src="./assets/assets/element-luz-camara.svg" id="luz" alt="imagen luz de proyectores">
+                </div>
+                <div id="grabador">
+                    <div id="grabacionInterfaz">
+                        <div id="grabacionUsuario">
+                            <div id="cuadradosArriba">
+                                <div id="cuadrado1"></div>
+                                <div id="cuadrado2"></div>
+                            </div>
+                            <div id="textosGrabacion">
+                                <h2 id="tituloGrabacion">Aquí podrás<br>crear tus propios <span
+                                        id="spanGifos">GIFOS</span></h2>
+                                <p id="textoGrabacion1">¡Crea tu GIFO en sólo 3 pasos!</p>
+                                <p id="textoGrabacion2">(sólo necesitas una cámara para grabar un video)</p>
+                            </div>
+                            <div id="cuadradosAbajo">
+                                <div id="cuadrado3"></div>
+                                <div id="cuadrado4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="btnsGrabacion">
+                        <div id="btnGrabacion1">
+                            <p id="textBtnGrabacion1">1</p>
+                        </div>
+                        <div id="btnGrabacion2">
+                            <p id="textBtnGrabacion2">2</p>
+                        </div>
+                        <div id="btnGrabacion3">
+                            <p id="textBtnGrabacion3">3</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="pelicula">
+                    <img id="imgPelicula" src="./assets/assets/pelicula.svg" alt="imagen de pelicula">
+                </div>
+            </div>
+            <div id="separadorGrabacion"></div>
+            <div id="btnComenzar">
+                <p id="textoBtnComenzar">COMENZAR</p>
             </div>
         </section>
         <section id="sectionImagenAmplificada">
@@ -154,6 +204,7 @@
     <script src="./carrusel.js"></script>
     <script src="./hovers.js"></script>
     <script src="./imgsFunctions.js"></script>
+    <script src="./creador.js"></script>
 
 </body>
 
