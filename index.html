@@ -124,7 +124,19 @@
                                 <div id="cuadrado1"></div>
                                 <div id="cuadrado2"></div>
                             </div>
-                            <div id="textosGrabacion">
+                            <div id="textosGrabacionYVideo">
+                                <div id="textoGrabacionYvideoPintado">
+                                    <div id="cuadrosVideoPintado">
+                                        <img id="btnDescargarVideoPintado" src="./assets/assets/icon-download.svg"
+                                            alt="imagen descargar">
+                                        <img id="btnCompartirVideoPintado" src="./assets/assets/icon-link-normal.svg"
+                                            alt="imagen de compartir video">
+                                    </div>
+                                    <img id="imgCargando" src="./assets/assets/loader.svg" alt="simbolo de cargando">
+                                    <h3 id="textoSubiendoGifo">Estamos subiendo tu GIFO</h3>
+                                </div>
+                                <video id="video" autoplay></video>
+                                <img id="mostrarVideo" alt="lugar donde se mostrara el video">
                                 <h2 id="tituloGrabacion">Aquí podrás<br>crear tus propios <span
                                         id="spanGifos">GIFOS</span></h2>
                                 <p id="textoGrabacion1">¡Crea tu GIFO en sólo 3 pasos!</p>
@@ -136,16 +148,27 @@
                             </div>
                         </div>
                     </div>
-                    <div id="btnsGrabacion">
-                        <div id="btnGrabacion1">
-                            <p id="textBtnGrabacion1">1</p>
+                    <div id="btnsGrabacionYCronometro">
+                        <div id="btnsGrabacion">
+                            <div id="btnGrabacion1">
+                                <p id="textBtnGrabacion1">1</p>
+                            </div>
+                            <div id="btnGrabacion2">
+                                <p id="textBtnGrabacion2">2</p>
+                            </div>
+                            <div id="btnGrabacion3">
+                                <p id="textBtnGrabacion3">3</p>
+                            </div>
                         </div>
-                        <div id="btnGrabacion2">
-                            <p id="textBtnGrabacion2">2</p>
+                        <div id="cronometro">
+                            <span id="minutero">00</span><span id="segundero">00</span><span
+                                id="centisegundos">00</span>
                         </div>
-                        <div id="btnGrabacion3">
-                            <p id="textBtnGrabacion3">3</p>
+                        <div id="textoSubrayado">
+                            <p id="textoCronometro">REPETIR CAPTURA</p>
+                            <div id="subrayadoDelTexto"></div>
                         </div>
+
                     </div>
                 </div>
                 <div id="pelicula">
@@ -155,6 +178,15 @@
             <div id="separadorGrabacion"></div>
             <div id="btnComenzar">
                 <p id="textoBtnComenzar">COMENZAR</p>
+            </div>
+            <div id="btnGrabar">
+                <p id="textoBtnGrabar">GRABAR</p>
+            </div>
+            <div id="btnFinalizar">
+                <p id="textoBtnFinalizar">FINALIZAR</p>
+            </div>
+            <div id="btnSubirGifo">
+                <p id="textoBtnSubirGifo">SUBIR GIFO</p>
             </div>
         </section>
         <section id="sectionImagenAmplificada">
@@ -196,7 +228,7 @@
         </div>
     </footer>
 
-
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="./menu.js"></script>
     <script src="./buscador.js"></script>
     <script src="./favoritos.js"></script>
