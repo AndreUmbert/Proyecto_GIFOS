@@ -11,7 +11,7 @@
         "Styles/_footer.scss",
         "Styles/_favoritos.scss",
         "Styles/_misGifos.scss",
-        "styles/_grabador.scss",
+        "Styles/_grabador.scss",
         "Styles/_imgAmplificada.scss"
     ],
     "names": [],
