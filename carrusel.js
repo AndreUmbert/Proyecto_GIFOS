@@ -16,8 +16,8 @@ let mostrarTrending = async () => {
         <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
         <div id="btnsPintadosDesktop">
         <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
-        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.id}">
-        <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+        <img id="btnDescargarPintado" onclick="downloadDesktop(this)" src="assets/assets/icon-download.svg" key="${trending.id}">
+        <img id="btnAmpliarPintado"  onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
         </div>
         <div id="infoImgPintDesktop">
         <p id="usuarioPintado">${trending.username}</p>

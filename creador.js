@@ -26,19 +26,28 @@ let textoGrabacionYvideoPintado = document.getElementById("textoGrabacionYvideoP
 let cuadrosVideoPintado = document.getElementById("cuadrosVideoPintado");
 let imgCargando = document.getElementById("imgCargando");
 let textoSubiendoGifo = document.getElementById("textoSubiendoGifo");
-
+let textoCronometro = document.getElementById("textoCronometro");
+let arrayGifosCreados = [];
 
 let apikey = 'umCoI8QE3nt72GLxXUntliERdZW5J6z9';
 let pathSubirGif = `https://upload.giphy.com/v1/gifs?api_key=${apikey}`;
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       PASOS PARA CREAR UN GIFO
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 window.onload = () => {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       1. Boton LI que te lleva hasta el apartado
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 imgBtnCrearGifos.addEventListener('click', (apCreador) => {
 
     imgBtnCrearGifos.setAttribute("toggle", "false");
-    console.log(imgBtnCrearGifos.toggle);
     buscadorGifos.style.display = "none";
     creadorGifos.style.display = "block";
     imgBtnCrearGifos.toggle = "true";
@@ -51,8 +60,12 @@ imgBtnCrearGifos.addEventListener('click', (apCreador) => {
     imgBtnCrearGifos.src = "./assets/assets/CTA-crear-gifo-active-modo-noc.svg";
 });
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       2. Comenzar proceso grabacion, permisos y preparar paso siguiente
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 btnComenzar.addEventListener('click', (eventoComenzar) => {
-    console.log('hola');
+    console.log('comenzando');
     btnComenzar.style.display = "none";
     btnGrabacion1.style.backgroundColor = "#572EE5";
     textBtnGrabacion1.style.color = "#FFFFFF";
@@ -84,7 +97,11 @@ async function prepararPaso2() {
     textosGrabacionYVideo.style.marginLeft = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       3. Grabar el video y iniciar temporizador
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+//BOTON PARA GRABAR
 async function grabar() {
     btnGrabar.addEventListener('click', (eventoGrabar) => {
         getStreamAndRecord();
@@ -94,33 +111,6 @@ async function grabar() {
         startTimer();
     });
 }
-
-
-
-btnFinalizar.addEventListener('click', (eventoFinalizar) => {
-    recorder.stopRecording(async () => {
-        let blob = recorder.getBlob();
-        let uri = URL.createObjectURL(blob);
-        mostrarVideo.src = uri;
-    });
-    cronometro.style.display = "none";
-    textoSubrayado.style.display = "flex";
-    btnsGrabacion.style.marginRight = "4.8vw";
-    btnFinalizar.style.display = "none";
-    btnSubirGifo.style.display = "flex";
-    stopTimer();
-});
-
-btnSubirGifo.addEventListener('click', () => {
-    let blob = recorder.getBlob();
-    let form = new FormData();
-    form.append('file', blob, 'myGif.gif');
-    textoGrabacionYvideoPintado.style.display = "block";
-    // createGif(form);
-})
-
-
-
 
 //FUNCIONALIDAD GRABAR
 async function getStreamAndRecord() {
@@ -145,16 +135,67 @@ async function getStreamAndRecord() {
     recorder.startRecording();
 }
 
-//FUNCIONALIDAD POSTEAR
-// async function createGif(formData) {
-//     const response = await fetch(pathSubirGif, {
-//         method: 'POST',
-//         body: formData
-//     });
-//     const result = await response.json();
-//     console.log(result);
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       3. Terminar de grabar, finalizar el temporizador y generar el blob
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// }
+// terminar de grabar
+btnFinalizar.addEventListener('click', (eventoFinalizar) => {
+    recorder.stopRecording(async () => {
+        let blob = recorder.getBlob();
+        let uri = URL.createObjectURL(blob);
+        mostrarVideo.src = uri;
+    });
+    cronometro.style.display = "none";
+    textoSubrayado.style.display = "flex";
+    btnsGrabacion.style.marginRight = "4.8vw";
+    btnFinalizar.style.display = "none";
+    btnSubirGifo.style.display = "flex";
+    stopTimer();
+});
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       3. Generar el form, subirlo a giphy y almacenarlo
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//subir el gifo a giphy
+btnSubirGifo.addEventListener('click', (eventoSubirGifo) => {
+    btnGrabacion3.style.backgroundColor = "#572EE5";
+    textBtnGrabacion3.style.color = "#FFFFFF";
+    btnGrabacion2.style.backgroundColor = "#FFFFFF";
+    textBtnGrabacion2.style.color = "#572EE5";
+    let blob = recorder.getBlob();
+    let form = new FormData();
+    form.append('file', blob, 'myGif.gif');
+    textoGrabacionYvideoPintado.style.display = "block";
+    createGif(form);
+    setTimeout(confirmarPostGifo, 2500)
+});
+
+// FUNCIONALIDAD DE CREAR EL FORMULARIO
+async function createGif(formData) {
+    const response = await fetch(pathSubirGif, {
+        method: 'POST',
+        body: formData
+    });
+    const result = await response.json();
+    console.log(result);
+    let idMiCreacion = result.data.id;
+    arrayGifosCreados.push(idMiCreacion);
+    localStorage.setItem("misGIFOS", JSON.stringify(arrayGifosCreados));
+}
+
+
+
+//pasos visuales finales(confirmacion de subida del gifo)
+async function confirmarPostGifo() {
+    imgCargando.src = "./assets/assets/check.svg";
+    textoSubiendoGifo.innerHTML = "GIFO subido con éxito";
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       X-1. Generar un timer
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // FUNCIONALIDAD DEL TIMER
 
@@ -191,7 +232,7 @@ function startTimer() {
     if (!interval) {
         lastUpdateTime = new Date().getTime();
         interval = setInterval(update, 1)
-        console.log("holax2");
+        console.log("seteando timer");
     }
 }
 
@@ -207,3 +248,41 @@ function resetTimer() {
 
     mins.innerHTML = secs.innerHTML = centisegundos.innerHTML = pad(0);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       X-2. Resetear la grabacion
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//resetear grabacion
+textoCronometro.addEventListener('click', () => {
+    location.reload();
+});
+
+// async function resetearGrabacion() {
+//     imgBtnCrearGifos.setAttribute("toggle", "false");
+//     buscadorGifos.style.display = "none";
+//     creadorGifos.style.display = "block";
+//     imgBtnCrearGifos.toggle = "true";
+//     sectionFavoritos.style.display = "none";
+//     sectionMisGifos.style.display = "none";
+//     trendingGifos.style.display = "none";
+//     if (!pantallaDesktop.matches) {
+//         site_nav.style.display = "none";
+//     }
+//     imgBtnCrearGifos.src = "./assets/assets/CTA-crear-gifo-active-modo-noc.svg";
+// }
+
+// //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// //                                                                       X-3. Cargar array de gifos creados del usuario
+// //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// //Cargar array de GIFOS del usuario:
+function loadGifosUsuario() {
+    let misGifosCreados = JSON.parse(localStorage.getItem("misGIFOS"));
+    if (misGifosCreados) {
+        arrayGifosCreados = misGifosCreados;
+        console.log(arrayGifosCreados);
+    }
+};
+loadGifosUsuario();

@@ -1,6 +1,7 @@
 
 function pintar(eventoPintar) {
     if (pantallaDesktop.matches) {
+        // console.log(eventoPintar);
         const arrayDivHovers = document.querySelectorAll(".divHover");
         const divHover = document.getElementById(eventoPintar.getAttribute("key"));
         divHover.setAttribute("key", `${eventoPintar.getAttribute("key")}`);
@@ -15,7 +16,6 @@ function pintar(eventoPintar) {
             }
         });
     }
-
 }
 
 function despintar(eventoDespintar) {
@@ -128,8 +128,7 @@ async function download() {
     document.body.removeChild(a);
 }
 
-async function descargarGif() {
-
+async function descargarGif(descargarGif) {
     var source = "https://api.giphy.com/v1/gifs/" + `${imgAmplificada.key}` + "?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9";
     let response = await fetch(source);
     let info = await response.json();
@@ -153,9 +152,10 @@ async function downloadDesktop() {
     document.body.removeChild(a);
 }
 
-async function descargarGifDesktop() {
-
-    var source = "https://api.giphy.com/v1/gifs/" + `${divHover.key}` + "?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9";
+async function descargarGifDesktop(eventoDescargar) {
+    let btnDescargarPintado = document.getElementById("btnDescargarPintado").getAttribute("key");
+    console.log(btnDescargarPintado);
+    var source = "https://api.giphy.com/v1/gifs/" + `${btnDescargarPintado}` + "?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9";
     let response = await fetch(source);
     let info = await response.json();
 

@@ -89,8 +89,8 @@ async function showFavoritos(gifFav) {
     <div id="${trending.data.id}" nombre="${trending.data.username}" titulo="${trending.data.title}" class="divHover" onmouseout="despintar(this)">
     <div id="btnsPintadosDesktop">
     <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.data.id}">
-    <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" key="${trending.data.id}">
-    <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trending.data.id}">
+    <img id="btnDescargarPintado" onclick="downloadDesktop(this)" src="assets/assets/icon-download.svg" key="${trending.data.id}">
+    <img id="btnAmpliarPintado"  onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.data.id}">
     </div>
     <div id="infoImgPintDesktop">
     <p id="usuarioPintado">${trending.data.username}</p>
@@ -148,26 +148,7 @@ async function showFavoritos(gifFav) {
     let hijosFavs = document.getElementById("galeriaFav").children;
     console.log(hijosFavs);
     console.log(hijosFavs.length);
-    //     if (hijosFavs.length === 0) {
-    //         // galeriaFav.style.display = "none";
-    //         // btnVerMasFav.style.display = "none";
-    //         // if (pantallaDesktop.matches) {
-    //         //     noFavs.style.display = "block";
-    //         //     noFavs.style.textAlign = "center";
-    //         //     let textoNoFav = document.getElementById("textoNoFavs");
-    //         //     let imgNoFavs = document.getElementById("imgNoFavs");
-    //         //     textoNoFav.style.fontFamily = "Montserrat, sans-serif";
-    //         //     textoNoFav.style.fontWeight = "bold";
-    //         //     textoNoFav.style.color = "#50E3C2";
-    //         //     textoNoFav.style.marginTop = "1.6458333vw";
-    //         //     textoNoFav.style.fontSize = "1.25vw";
-    //         //     textoNoFav.style.lineHeight = "2.3vw"
-    //         //     textoNoFav.style.marginBottom = "9.5138888vw";
-    //         //     imgNoFavs.style.marginTop = "7.590277vw";
-    //     }
-    // } else {
-    //     noFavs.style.display = "none";
-    // }
+
 }
 
 function eliminarElementoArray(idElementoFavorito) {

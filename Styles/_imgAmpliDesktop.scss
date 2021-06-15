@@ -1,0 +1,53 @@
+#sectionImgAmplificadaDesktop {
+  display: none;
+  #imgCloseDesktop {
+    margin-top: 4.6111111vw;
+    margin-left: 79.6111111vw;
+    margin-bottom: 5.444444444vw;
+  }
+  #contImgDesktop {
+    margin-left: 20.1388888vw;
+    display: flex;
+    align-items: center;
+    #imgFlechaIzqDesktop {
+      margin-right: 1.736111vw;
+    }
+    #imgAmpliadaDesktop {
+      width: 48.2638888vw;
+      height: 26.736111vw;
+      margin-right: 1.736111vw;
+    }
+  }
+  #infoImgAmplaiadaDesktop {
+    margin-left: 24.6527777vw;
+    margin-right: 27.1vw;
+    display: flex;
+    justify-content: space-between;
+    #textosImgAmpladaDesktop {
+      margin-top: 1.875vw;
+      #usuarioImgDesktop {
+        margin-bottom: 0.416666666vw;
+        font-family: "Roboto", sans-serif;
+        font-size: 1vw;
+      }
+      #tituloImgDesktop {
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        margin-top: 0;
+        font-size: 1.1vw;
+      }
+    }
+    #btnsImgAmpladaDesktop {
+      margin-top: 1.52777777vw;
+      #corazonAmpliadoDesktop {
+        border: 1px solid #ced7e1;
+        border-radius: 0.3rem;
+        margin-right: 1.45833333vw;
+      }
+      #descargaAmplaidaDesktop {
+        border: 1px solid #ced7e1;
+        border-radius: 0.3rem;
+      }
+    }
+  }
+}
