@@ -57,6 +57,7 @@ buscador.addEventListener('click', (ocultar) => {
         <img src="./assets/assets/close.svg">
         `;
     cruzAparece.style.display = "block";
+    // cambiarImgs();
 });
 
 //Al clickear sobre close:
@@ -126,9 +127,9 @@ buscador.addEventListener('keypress', async (buscar) => {
             <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
             <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
             <div id="btnsPintadosDesktop" key="${trending.id}">
-            <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnFavPintado" corazon="false" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
             <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-            <img id="btnAmpliarPintado" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
             </div>
             <div id="infoImgPintDesktop">
             <p id="usuarioPintado">${trending.username}</p>
@@ -169,11 +170,11 @@ btnVerMas.addEventListener('click', async (verMas) => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
         <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-        <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-        <div id="btnsPintadosDesktop">
-        <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
-        <img id="btnDescargarPintado" onclick="downloadDesktop(this)" src="assets/assets/icon-download.svg" key="${trending.id}">
-        <img id="btnAmpliarPintado"  onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+        <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+        <div id="btnsPintadosDesktop" key="${trending.id}">
+        <img id="btnFavPintado" corazon="false" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+        <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
         </div>
         <div id="infoImgPintDesktop">
         <p id="usuarioPintado">${trending.username}</p>
@@ -225,6 +226,18 @@ async function changeText(objeto) {
     if (!pantallaDesktop.matches) {
         site_nav.style.display = "none";
     }
+    lupa.style.display = "block";
+    lupa.style.order = "-1";
+    lupa.style.margin = "0 1.458333vw 0 1.458333vw";
+    lupa.src = "./assets/assets/icon-search.svg";
+    cruzAparece.innerHTML = `
+    <img src="./assets/assets/close.svg">
+    `;
+    cruzAparece.style.display = "block";
+    cruzAparece.style.marginLeft = "1.59722222vw";
+    cruzAparece.addEventListener('click', () => {
+        buscador.value = " "
+    });
     busquedaSection.style.display = "Block";
     galeria.innerHTML = ``;
     let resultadoBusqueda = await fetch(URL_BASE + buscador.value);
@@ -232,19 +245,19 @@ async function changeText(objeto) {
     json.data.forEach(trending => {
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-            <div id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-            <div id="btnsPintadosDesktop">
-            <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
-            <img id="btnDescargarPintado" onclick="downloadDesktop(this)" src="assets/assets/icon-download.svg" key="${trending.id}">
-            <img id="btnAmpliarPintado"  onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
-            </div>
-            <div id="infoImgPintDesktop">
-            <p id="usuarioPintado">${trending.username}</p>
-            <p id="tituloPintado">${trending.title}</p>
-            </div>
-            </div>
-            </div>
+        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+        <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+        <div id="btnsPintadosDesktop" key="${trending.id}">
+        <img id="btnFavPintado" corazon="false" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+        <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+        </div>
+        <div id="infoImgPintDesktop">
+        <p id="usuarioPintado">${trending.username}</p>
+        <p id="tituloPintado">${trending.title}</p>
+        </div>
+        </div>
+        </div>
         `;
         tituloBusqueda.innerHTML = `${buscador.value}`;
         tituloBusqueda.style.textTransform = "capitalize";

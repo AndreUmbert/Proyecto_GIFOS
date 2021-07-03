@@ -85,19 +85,20 @@ async function showFavoritos(gifFav) {
     console.log(trending);
     galeriaFav.innerHTML += ` 
     <div class="divHoverContenedor">
-    <img key="${trending.data.id}"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.data.username}" corazon="false" titulo="${trending.data.title}" onmouseover="pintar(this)" onclick="ampliar()">
-    <div id="${trending.data.id}" nombre="${trending.data.username}" titulo="${trending.data.title}" class="divHover" onmouseout="despintar(this)">
-    <div id="btnsPintadosDesktop">
+    <img key="${trending.data.id}"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.data.username}" corazon="true" titulo="${trending.data.title}" onmouseover="pintar(this)" onclick="ampliar()">
+    <div key="${trending.data.id}" id="${trending.data.id}" nombre="${trending.data.username}" titulo="${trending.data.title}" class="divHover" onmouseout="despintar(this)">
+    <div id="btnsPintadosDesktop" key="${trending.data.id}">
     <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.data.id}">
-    <img id="btnDescargarPintado" onclick="downloadDesktop(this)" src="assets/assets/icon-download.svg" key="${trending.data.id}">
-    <img id="btnAmpliarPintado"  onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.data.id}">
+    <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.data.id}">
+    <img id="btnAmpliarPintado"  titulo="${trending.data.title}" nombre="${trending.data.username}" path="${trending.data.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.data.id}">
     </div>
     <div id="infoImgPintDesktop">
     <p id="usuarioPintado">${trending.data.username}</p>
     <p id="tituloPintado">${trending.data.title}</p>
     </div>
     </div>
-    </div>`;
+    </div>
+    `;
     let arrayImagenesFavoritos = document.querySelectorAll(".imgBuscada");
     arrayImagenesFavoritos.forEach(imagenesFavoritos => {
         imagenesFavoritos.addEventListener('click', (eventoAmpliar) => {

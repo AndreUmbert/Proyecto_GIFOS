@@ -73,36 +73,38 @@ async function showGifos(gifUsuario) {
     console.log(trendingGifo);
     galeriaMisGifos.innerHTML += ` 
     <div class="divHoverContenedorMisGifos">
-    <img key="${trendingGifo.data.id}"  class="imgBuscada" src="${trendingGifo.data.images.fixed_height.url}" nombre="${trendingGifo.data.username}" corazon="false" titulo="${trendingGifo.data.title}" onmouseover="pintar(this)" onclick="ampliar()">
+    <img key="${trendingGifo.data.id}"  class="imgBuscada" src="${trendingGifo.data.images.fixed_height.url}" nombre="${trendingGifo.data.username}" corazon="true" titulo="${trendingGifo.data.title}" onmouseover="pintar(this)" onclick="ampliar()">
     <div id="${trendingGifo.data.id}" nombre="${trendingGifo.data.username}" titulo="${trendingGifo.data.title}" class="divHover" onmouseout="despintar(this)">
     <div id="btnsPintadosDesktop">
-    <img id="btnTrashPintado" src="assets/assets/icon-trash-normal.svg" onclick="trashDesktop(this)" key="${trendingGifo.data.id}">
+    <img id="btnTrashPintado" onclick="eliminarElementoArrayMisGifos(this)" src="assets/assets/icon-trash-normal.svg" key="${trendingGifo.data.id}">
     <img id="btnDescargarPintado" onclick="downloadDesktop(this)" src="assets/assets/icon-download.svg" key="${trendingGifo.data.id}">
-    <img id="btnAmpliarPintado" src="assets/assets/icon-max-normal.svg" key="${trendingGifo.data.id}">
+    <img id="btnAmpliarPintado"  titulo="${trendingGifo.data.title}" nombre="${trendingGifo.data.username}" path="${trendingGifo.data.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trendingGifo.data.id}">
     </div>
     <div id="infoImgPintDesktop">
     <p id="usuarioPintado">${trendingGifo.data.username}</p>
     <p id="tituloPintado">${trendingGifo.data.title}</p>
     </div>
     </div>
-    </div>`;
+    </div>
+    `;
     let arrayGifosCreados = document.querySelectorAll(".imgBuscada");
     arrayGifosCreados.forEach(imagenesMisGifos => {
-        imagenesMisGifos.addEventListener('click', (eventoAmpliar) => {
+        imagenesMisGifos.addEventListener('click', (eventoPintar) => {
             console.log(trendingGifo);
-            console.log(eventoAmpliar.target.getAttribute("nombre"));
+            console.log(eventoPintar.target.getAttribute("nombre"));
             sectionImagenAmplificada.style.display = "block";
-            imgAmplificada.src = `${eventoAmpliar.target.src}`;
+            imgAmplificada.src = `${eventoPintar.target.src}`;
             imgAmplificada.setAttribute("corazon", "true");
-            imgAmplificada.key = `${eventoAmpliar.target.getAttribute("key")}`;
-            imgAmplificada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`);
-            nombreUsuario.innerHTML = `${eventoAmpliar.target.getAttribute("nombre")}`;
-            tituloGif.innerHTML = `${eventoAmpliar.target.getAttribute("titulo")}`;
+            imgAmplificada.key = `${eventoPintar.target.getAttribute("key")}`;
+            imgAmplificada.setAttribute("key", `${eventoPintar.target.getAttribute("key")}`);
+            nombreUsuario.innerHTML = `${eventoPintar.target.getAttribute("nombre")}`;
+            tituloGif.innerHTML = `${eventoPintar.target.getAttribute("titulo")}`;
             galeriaFav.style.display = "none";
             busquedaSection.style.display = "none";
             buscadorGifos.style.display = "none";
             footer.style.display = "none";
             let btnTrashPintado = document.getElementById("btnTrashPintado");
+            btnTrashPintado.getAttribute("key");
             let cruzImgAmplificadaBtn = document.getElementById('cruzImgAmplificadaBtn');
             cruzImgAmplificadaBtn.addEventListener('click', (eventoReducir) => {
                 busquedaSection.style.display = "none";
@@ -111,9 +113,6 @@ async function showGifos(gifUsuario) {
                 trendingSection.style.display = "block";
                 footer.style.display = "block";
                 galeriaFav.style.display = "grid";
-            });
-            btnTrashPintado.addEventListener('click', (eventoFavorito) => {
-                eliminarElementoArray(eventoAmpliar.target.getAttribute("key"));
             });
             let btnDescargarImgAmpliada = document.getElementById("btnDescargarImgAmpliada");
             btnDescargarImgAmpliada.addEventListener('click', (eventoDescargar) => {
@@ -127,5 +126,17 @@ async function showGifos(gifUsuario) {
     let hijosFavs = document.getElementById("galeriaFav").children;
     console.log(hijosFavs);
     console.log(hijosFavs.length);
+
+}
+
+
+function eliminarElementoArrayMisGifos(idElementoMisGifos) {
+
+    let btnTrashPintado = document.getElementById("btnTrashPintado").getAttribute("key");
+    let btnTrashPintadoSrc = document.getElementById("btnTrashPintado");
+    btnTrashPintado.src = "./assets/assets/icon-trash-hover.svg";
+    arrayGifosCreados.splice(arrayFavoritos.indexOf(btnTrashPintado), 1);
+    localStorage.setItem("misGIFOS", JSON.stringify(arrayGifosCreados));
+
 
 }

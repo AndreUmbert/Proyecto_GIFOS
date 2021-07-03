@@ -15,15 +15,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
     <header id="header">
         <div id="container" class="container">
-            <a href="index.html"><img src="./assets/assets/logo-mobile.svg" id="logo" alt="imagen de logo GIFOS"></a>
+            <a><img src="./assets/assets/logo-mobile.svg" id="logo" alt="imagen de logo GIFOS"></a>
             <img src="./assets/assets/burger.svg" id="burger" alt="imagen de menu hamburguesa sin desplegar">
         </div>
         <nav id="site-nav" class="site-nav">
             <ul id="navLista">
-                <li><a class="liNavItem" href="#">Modo Nocturno</a>
+                <li><a id="modo" class="liNavItem" href="#">Modo Nocturno</a>
                     <div class="borderLiItems"></div>
                 </li>
                 <li><a id="itemListaFavoritos" class="liNavItem" href="#">Favoritos</a>
@@ -42,7 +42,7 @@
     <main>
         <section id="buscadorGifos">
             <div id="titulo">
-                <h1>Inspírate, busca, guarda, y crea<br id="brTituloInicio"> los mejores <span
+                <h1 id="textoTitulo">Inspírate, busca, guarda, y crea<br id="brTituloInicio"> los mejores <span
                         id="GIFOSSpan">GIFOS</span></h1>
             </div>
             <div id="searchBar">
@@ -218,7 +218,7 @@
             <div id="contImgDesktop">
                 <img id="imgFlechaIzqDesktop" src="./assets/assets/button-slider-left.svg"
                     alt="imagen flecha izquierda">
-                <img id="imgAmpliadaDesktop" src="" alt="imagen ampliada en modo desktop">
+                <img id="imgAmpliadaDesktop" alt="imagen ampliada en modo desktop">
                 <img id="imgFlechaDerDesktop" src="./assets/assets/Button-Slider-right.svg" alt="imagen flecha derecha">
             </div>
             <div id="infoImgAmplaiadaDesktop">
@@ -227,10 +227,10 @@
                     <p id="tituloImgDesktop">titulo GIFO</p>
                 </div>
                 <div id="btnsImgAmpladaDesktop">
-                    <img id="corazonAmpliadoDesktop" src="./assets/assets/icon-fav.svg"
+                    <img id="corazonAmpliadoDesktop" onclick="favDesktop(this)" src="./assets/assets/icon-fav.svg"
                         alt="imagen de corazon sin apintar">
-                    <img id="descargaAmplaidaDesktop" src="./assets/assets/icon-download.svg"
-                        alt="imagen de icono de descarga">
+                    <img id="descargaAmpliadaDesktop" onclick="downloadDesktopAmpliado()"
+                        src="./assets/assets/icon-download.svg" alt="imagen de icono de descarga">
                 </div>
             </div>
         </section>
@@ -264,6 +264,7 @@
     <script src="./imgsFunctions.js"></script>
     <script src="./creador.js"></script>
     <script src="./imgAmpliDesktop.js"></script>
+    <script src="./nocturno.js"></script>
 
 </body>
 

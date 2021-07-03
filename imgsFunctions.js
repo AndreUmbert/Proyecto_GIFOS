@@ -32,6 +32,7 @@ async function ampliar() {
         const arrayImagenes = document.querySelectorAll(".imgBuscada");
         arrayImagenes.forEach(imagenesGaleria => {
             imagenesGaleria.addEventListener('click', (eventoAmpliar) => {
+                console.log(eventoAmpliar.target);
                 console.log(eventoAmpliar.target.getAttribute("key"));
                 sectionImagenAmplificada.style.display = "block";
                 imgAmplificada.src = `${eventoAmpliar.target.src}`;
@@ -63,7 +64,7 @@ async function ampliar() {
                 btnFavImgAmpliada.addEventListener('click', (eventoFavorito) => {
                     if (arrayFavoritos.includes(eventoAmpliar.target.getAttribute("key"))) {
                         arrayFavoritos.splice(arrayFavoritos.indexOf(eventoAmpliar.target.getAttribute("key")), 1);
-                        localStorage.clear();
+                        localStorage.misFavoritos.clear();
                         localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
                         btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg";
                     } else {
@@ -92,15 +93,16 @@ function favDesktop(eventoFavDesktop) {
         console.log("click");
         if (arrayFavoritos.includes(eventoFavDesktop.getAttribute("key"))) {
             arrayFavoritos.splice(arrayFavoritos.indexOf(eventoFavDesktop.getAttribute("key")), 1);
-            localStorage.clear();
             localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
             eventoFavDesktop.src = "assets/assets/icon-fav-hover.svg";
+            corazonAmpliadoDesktop.style.padding = "0";
         } else {
             eventoFavDesktop.src = "assets/assets/icon-fav-active.svg";
             eventoFavDesktop.setAttribute("corazon", "true")
             let idImgFavActive = `${eventoFavDesktop.getAttribute("key")}`;
             arrayFavoritos.push(idImgFavActive);
             localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
+            corazonAmpliadoDesktop.style.padding = "0.45vw";
         }
     }
 }
@@ -156,6 +158,33 @@ async function descargarGifDesktop(eventoDescargar) {
     let btnDescargarPintado = document.getElementById("btnDescargarPintado").getAttribute("key");
     console.log(btnDescargarPintado);
     var source = "https://api.giphy.com/v1/gifs/" + `${btnDescargarPintado}` + "?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9";
+    let response = await fetch(source);
+    let info = await response.json();
+
+    console.log(info.data.images.downsized_large.url);
+
+    return fetch(info.data.images.downsized_large.url).then((response) => {
+        return response.blob();
+    }).then(blob => {
+        return URL.createObjectURL(blob);
+    });
+}
+
+//Funcion descargar Gif desktop ampliado
+
+async function downloadDesktopAmpliado() {
+    const a = document.createElement("a");
+    a.href = await descargarGifDesktopAmpliado();
+    a.download = "gifDesktop.gif";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+async function descargarGifDesktopAmpliado(eventoDescargarAmpliado) {
+    let descargaAmpliadaDesktop = document.getElementById("descargaAmpliadaDesktop").getAttribute("key");
+    console.log(descargaAmpliadaDesktop);
+    var source = "https://api.giphy.com/v1/gifs/" + `${descargaAmpliadaDesktop}` + "?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9";
     let response = await fetch(source);
     let info = await response.json();
 

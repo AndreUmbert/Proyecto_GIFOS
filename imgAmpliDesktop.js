@@ -8,13 +8,14 @@ let infoImgAmplaiadaDesktop = document.getElementById("infoImgAmplaiadaDesktop")
 let usuarioImgDesktop = document.getElementById("usuarioImgDesktop");
 let tituloImgDesktop = document.getElementById("tituloImgDesktop");
 let btnsImgAmpladaDesktop = document.getElementById("btnsImgAmpladaDesktop");
-let corazonAmpliadoDesktop = document.getElementById("corazonAmpliadoDesktop");
-let descargaAmplaidaDesktop = document.getElementById("descargaAmplaidaDesktop");
 let header = document.getElementById("header");
 
 
 
+
+
 async function ampliarDesktop(eventoAmpliarDesktop) {
+    let imgAmpliadaDesktop = document.getElementById("imgAmpliadaDesktop");
     creadorGifos.style.display = "none";
     menu.src = "./assets/assets/burger.svg";
     sectionMisGifos.style.display = "none";
@@ -31,17 +32,21 @@ async function ampliarDesktop(eventoAmpliarDesktop) {
     sectionImgAmplificadaDesktop.style.display = "block";
     footer.style.display = "none";
     header.style.display = "none";
-    imgAmplificada.src = `${eventoAmpliarDesktop.target.src}`;
-    imgAmplificada.setAttribute("corazon", `${eventoAmpliarDesktop.target.getAttribute("corazon")}`);
-    imgAmplificada.key = `${eventoAmpliarDesktop.target.getAttribute("key")}`;
-    imgAmplificada.setAttribute("key", `${eventoAmpliarDesktop.target.getAttribute("key")}`);
-    nombreUsuario.innerHTML = `${eventoAmpliarDesktop.target.getAttribute("nombre")}`;
-    tituloGif.innerHTML = `${eventoAmpliarDesktop.target.getAttribute("titulo")}`;
+    imgAmpliadaDesktop.setAttribute("src", `${eventoAmpliarDesktop.getAttribute("path")}`);
+    imgAmpliadaDesktop.setAttribute("key", `${eventoAmpliarDesktop.getAttribute("key")}`);
+    imgAmpliadaDesktop.key = `${eventoAmpliarDesktop.getAttribute("key")}`;
+    usuarioImgDesktop.innerHTML = `${eventoAmpliarDesktop.getAttribute("nombre")}`;
+    tituloImgDesktop.innerHTML = `${eventoAmpliarDesktop.getAttribute("titulo")}`;
+    let descargaAmpliadaDesktop = document.getElementById("descargaAmpliadaDesktop");
+    descargaAmpliadaDesktop.setAttribute("key", `${eventoAmpliarDesktop.getAttribute("key")}`);
+    let corazonAmpliadoDesktop = document.getElementById("corazonAmpliadoDesktop");
+    corazonAmpliadoDesktop.setAttribute("key", `${eventoAmpliarDesktop.getAttribute("key")}`);
 }
 
 //cerrar imagen ampliada desktop
 
 imgCloseDesktop.addEventListener("click", (eventoCerrarImgDesktop) => {
+    location.reload();
     creadorGifos.style.display = "none";
     menu.src = "./assets/assets/burger.svg";
     sectionMisGifos.style.display = "none";

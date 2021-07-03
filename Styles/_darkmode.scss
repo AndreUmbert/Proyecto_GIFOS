@@ -1,0 +1,76 @@
+body.darkmode {
+  background-color: #37383c;
+  color: #ffffff;
+}
+
+.darkmode #header #container {
+  border-top: 1.333333333vw solid #000000;
+}
+
+.darkmode #header #site-nav #navLista {
+  background-color: #000000;
+  opacity: 1;
+}
+
+.darkmode #buscadorGifos #searchBar #barraContenedor {
+  border: 1px solid #ffffff;
+}
+
+.darkmode #buscarYMas {
+  background-color: #37383c;
+  color: #6b7989;
+}
+
+.darkmode #buscadorGifos #titulo h1 {
+  color: #ffffff;
+}
+
+.darkmode #buscadorGifos #etiquetasInicio #buscadorEtiquetasHome {
+  color: #ffffff;
+}
+
+.darkmode #buscadorGifos #etiquetasInicio #etiquetasEjemplos {
+  color: #ffffff;
+}
+
+.darkmode #trendingGifos {
+  background-color: #222326;
+}
+
+.darkmode #trendingGifos #textosTrending #tituloTrendingGifos {
+  color: #ffffff;
+}
+
+.darkmode #infoFooter {
+  border-bottom: 1.333333333vw solid #000000;
+}
+
+.darkmode #sectionFavoritos #tituloFavoritos {
+  color: #ffffff;
+}
+
+.darkmode #sectionMisGifos #tituloMisGifos {
+  color: #ffffff;
+}
+
+@media only screen and (min-width: 1440px) {
+  .darkmode #header #container {
+    border-top: 0.347439371vw solid #000000;
+  }
+  .darkmode #header #site-nav #navLista {
+    background-color: #37383c;
+    opacity: 1;
+  }
+  .darkmode #header #site-nav #navLista li .liNavItem {
+    color: #ffffff;
+  }
+  .darkmode #infoFooter {
+    border-bottom: 0.347439371vw solid #000000;
+  }
+  .darkmode #sectionFavoritos #tituloFavoritos {
+    color: #ffffff;
+  }
+  .darkmode #sectionMisGifos #tituloMisGifos {
+    color: #ffffff;
+  }
+}
