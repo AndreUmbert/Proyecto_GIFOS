@@ -296,7 +296,6 @@ body {
 #buscadorGifos #searchBar #barraContenedor #barra #buscarYMas {
   font-family: "Roboto", sans-serif;
   padding: 0;
-  margin-left: 14.66666vw;
   margin-right: 6.4vw;
   color: #6b7989;
   width: 57.3333333vw;
@@ -2033,7 +2032,7 @@ body {
   position: absolute;
   top: 0;
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 15.73333333vw 7.4666666vw 33.6vw  7.733333vw;
+  padding: 15.73333333vw 7.4666666vw 33.6vw 7.733333vw;
 }
 
 #sectionImagenAmplificada #cruzImgAmplificada {
@@ -2135,9 +2134,13 @@ body {
   height: 9.06666666vw;
 }
 
+#sectionImagenAmplificada #imgAmplificadaCtn #pieDeImg #botonesImgAmpliada #btnFavImgAmpliada {
+  width: 20px;
+  height: 18px;
+}
+
 #sectionImagenAmplificada #imgAmplificadaCtn #pieDeImg #botonesImgAmpliada #btnDescargarImgAmpliada {
   border-radius: 1vw;
-  border: 1px solid rgba(156, 175, 195, 0.5);
   margin-left: 7.7333333vw;
 }
 
@@ -2209,9 +2212,10 @@ body {
   margin-right: 1.45833333vw;
 }
 
-#sectionImgAmplificadaDesktop #infoImgAmplaiadaDesktop #btnsImgAmpladaDesktop #descargaAmplaidaDesktop {
-  border: 1px solid #ced7e1;
+#sectionImgAmplificadaDesktop #infoImgAmplaiadaDesktop #btnsImgAmpladaDesktop #descargaAmpliadaDesktop {
   border-radius: 0.3rem;
+  width: 2.5vw;
+  height: 2.5vw;
 }
 
 body.darkmode {
@@ -2267,6 +2271,93 @@ body.darkmode {
 
 .darkmode #sectionMisGifos #tituloMisGifos {
   color: #ffffff;
+}
+
+.darkmode #busqueda #tituloBusqueda {
+  color: #ffffff;
+}
+
+.darkmode #creadorGifos #parteGrabar #grabador #grabacionInterfaz {
+  border: 1px solid #ffffff;
+}
+
+.darkmode
+#creadorGifos
+#parteGrabar
+#grabador
+#btnsGrabacionYCronometro
+#btnsGrabacion
+#btnGrabacion1 {
+  border: 1px solid #ffffff;
+}
+
+.darkmode
+#creadorGifos
+#parteGrabar
+#grabador
+#btnsGrabacionYCronometro
+#btnsGrabacion
+#btnGrabacion1
+#textBtnGrabacion1 {
+  color: #ffffff;
+}
+
+.darkmode
+#creadorGifos
+#parteGrabar
+#grabador
+#btnsGrabacionYCronometro
+#btnsGrabacion
+#btnGrabacion2 {
+  border: 1px solid #ffffff;
+}
+
+.darkmode
+#creadorGifos
+#parteGrabar
+#grabador
+#btnsGrabacionYCronometro
+#btnsGrabacion
+#btnGrabacion2
+#textBtnGrabacion2 {
+  color: #ffffff;
+}
+
+.darkmode
+#creadorGifos
+#parteGrabar
+#grabador
+#btnsGrabacionYCronometro
+#btnsGrabacion
+#btnGrabacion3 {
+  border: 1px solid #ffffff;
+}
+
+.darkmode
+#creadorGifos
+#parteGrabar
+#grabador
+#btnsGrabacionYCronometro
+#btnsGrabacion
+#btnGrabacion3
+#textBtnGrabacion3 {
+  color: #ffffff;
+}
+
+.darkmode #creadorGifos #separadorGrabacion {
+  background-color: #ffffff;
+}
+
+.darkmode #creadorGifos #btnComenzar {
+  border: 1px solid #ffffff;
+}
+
+.darkmode #creadorGifos #btnComenzar #textoBtnComenzar {
+  color: #ffffff;
+}
+
+.darkmode #sectionImagenAmplificada {
+  background-color: #46474b;
 }
 
 @media only screen and (min-width: 1440px) {

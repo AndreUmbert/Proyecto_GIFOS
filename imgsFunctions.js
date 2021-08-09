@@ -12,7 +12,7 @@ function pintar(eventoPintar) {
             if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
                 btnFavPintado.src = "assets/assets/icon-fav-active.svg";
             } else {
-                btnFavPintado.src = "assets/assets/icon-fav-hover.svg";
+                btnFavPintado.src = "assets/assets/icon-fav.svg";
             }
         });
     }
@@ -27,7 +27,7 @@ function despintar(eventoDespintar) {
 }
 
 
-async function ampliar() {
+function ampliar() {
     if (!pantallaDesktop.matches) {
         const arrayImagenes = document.querySelectorAll(".imgBuscada");
         arrayImagenes.forEach(imagenesGaleria => {
@@ -45,39 +45,24 @@ async function ampliar() {
                 buscadorGifos.style.display = "none";
                 trendingSection.style.display = "none";
                 footer.style.display = "none";
+                galeriaFav.style.display = "none";
                 let cruzImgAmplificadaBtn = document.getElementById('cruzImgAmplificadaBtn');
                 cruzImgAmplificadaBtn.addEventListener('click', (eventoReducir) => {
-                    busquedaSection.style.display = "block";
-                    sectionImagenAmplificada.style.display = "none";
-                    buscadorGifos.style.display = "block";
-                    trendingSection.style.display = "block";
-                    footer.style.display = "block";
-                    btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg";
                     location.reload()
                 });
                 if (arrayFavoritos.includes(eventoAmpliar.target.getAttribute("key"))) {
                     btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
+                    btnFavImgAmpliada.style.padding = "9px 8px";
+                    btnFavImgAmpliada.style.borderRadius = "5px";
+                    btnFavImgAmpliada.style.backgroundColor = "#C7C7C9";
                 } else {
-                    btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg";
+                    btnFavImgAmpliada.src = "assets/assets/icon-fav.svg";
+                    btnFavImgAmpliada.style.width = "36px";
+                    btnFavImgAmpliada.style.height = "36px";
                 }
-                btnFavImgAmpliada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`)
-                btnFavImgAmpliada.addEventListener('click', (eventoFavorito) => {
-                    if (arrayFavoritos.includes(eventoAmpliar.target.getAttribute("key"))) {
-                        arrayFavoritos.splice(arrayFavoritos.indexOf(eventoAmpliar.target.getAttribute("key")), 1);
-                        localStorage.misFavoritos.clear();
-                        localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
-                        btnFavImgAmpliada.src = "assets/assets/icon-fav-hover.svg";
-                    } else {
-                        btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
-                        eventoAmpliar.target.setAttribute("corazon", "true")
-                        imgAmplificada.setAttribute("corazon", "true")
-                        let idImgFavActive = `${imgAmplificada.getAttribute("key")}`;
-                        arrayFavoritos.push(idImgFavActive);
-                        localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
-                    }
-                });
+                btnFavImgAmpliada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`);
+
                 let btnDescargarImgAmpliada = document.getElementById("btnDescargarImgAmpliada");
-                // console.log(btnDescargarImgAmpliada);
                 btnDescargarImgAmpliada.addEventListener('click', (eventoDescargar) => {
                     console.log("click");
                     console.log(eventoDescargar);
@@ -90,35 +75,68 @@ async function ampliar() {
 
 function favDesktop(eventoFavDesktop) {
     if (pantallaDesktop.matches) {
-        console.log("click");
         if (arrayFavoritos.includes(eventoFavDesktop.getAttribute("key"))) {
             arrayFavoritos.splice(arrayFavoritos.indexOf(eventoFavDesktop.getAttribute("key")), 1);
             localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
-            eventoFavDesktop.src = "assets/assets/icon-fav-hover.svg";
+            eventoFavDesktop.src = "assets/assets/icon-fav.svg";
+            corazonAmpliadoDesktop.style.opacity = "1";
+            corazonAmpliadoDesktop.style.width = "34px";
+            corazonAmpliadoDesktop.style.height = "34px";
             corazonAmpliadoDesktop.style.padding = "0";
         } else {
             eventoFavDesktop.src = "assets/assets/icon-fav-active.svg";
-            eventoFavDesktop.setAttribute("corazon", "true")
+            corazonAmpliadoDesktop.style.backgroundColor = "#ffffff";
+            eventoFavDesktop.setAttribute("corazon", "true");
             let idImgFavActive = `${eventoFavDesktop.getAttribute("key")}`;
             arrayFavoritos.push(idImgFavActive);
             localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
-            corazonAmpliadoDesktop.style.padding = "0.45vw";
+            corazonAmpliadoDesktop.style.border = "1px solid #ced7e1";
+            corazonAmpliadoDesktop.style.borderRadius = "0.3rem";
+            corazonAmpliadoDesktop.style.opacity = "1";
+            corazonAmpliadoDesktop.style.width = "18px";
+            corazonAmpliadoDesktop.style.height = "15.9px";
+            corazonAmpliadoDesktop.style.padding = "9px 8px";
         }
     }
 }
 
 
+function favImagenAmpliada(params) {
 
+    if (arrayFavoritos.includes(params.getAttribute("key"))) {
+
+        arrayFavoritos.splice(arrayFavoritos.indexOf(params.getAttribute("key")), 1);
+        localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
+        btnFavImgAmpliada.src = "assets/assets/icon-fav.svg";
+        // localStorage.misFavoritos.clear();
+        btnFavImgAmpliada.style.width = "36px";
+        btnFavImgAmpliada.style.height = "36px";
+        btnFavImgAmpliada.style.padding = "0";
+    }
+    else {
+        btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
+        // eventoAmpliar.target.setAttribute("corazon", "true")
+        // imgAmplificada.setAttribute("corazon", "true")
+        arrayFavoritos.push(params.getAttribute("key"));
+        localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
+        btnFavImgAmpliada.style.width = "20px";
+        btnFavImgAmpliada.style.height = "18px";
+        btnFavImgAmpliada.style.padding = "9px 8px";
+        btnFavImgAmpliada.style.borderRadius = "5px";
+    }
+
+    console.log(params.getAttribute('key'));
+}
 
 
 //Cargar array de favoritos del usuario:
-function loadFavoritosLs() {
-    let favoritosGifs = JSON.parse(localStorage.getItem("misFavoritos"));
-    if (favoritosGifs) {
-        arrayFavoritos = favoritosGifs;
-    }
-};
-loadFavoritosLs();
+// function loadFavoritosLs() {
+//     let favoritosGifs = JSON.parse(localStorage.getItem("misFavoritos"));
+//     if (favoritosGifs) {
+//         arrayFavoritos = favoritosGifs;
+//     }
+// };
+// loadFavoritosLs();
 
 //Funcion para descargar el gif en img Ampliada:
 async function download() {

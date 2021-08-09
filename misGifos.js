@@ -88,40 +88,6 @@ async function showGifos(gifUsuario) {
     </div>
     `;
     let arrayGifosCreados = document.querySelectorAll(".imgBuscada");
-    arrayGifosCreados.forEach(imagenesMisGifos => {
-        imagenesMisGifos.addEventListener('click', (eventoPintar) => {
-            console.log(trendingGifo);
-            console.log(eventoPintar.target.getAttribute("nombre"));
-            sectionImagenAmplificada.style.display = "block";
-            imgAmplificada.src = `${eventoPintar.target.src}`;
-            imgAmplificada.setAttribute("corazon", "true");
-            imgAmplificada.key = `${eventoPintar.target.getAttribute("key")}`;
-            imgAmplificada.setAttribute("key", `${eventoPintar.target.getAttribute("key")}`);
-            nombreUsuario.innerHTML = `${eventoPintar.target.getAttribute("nombre")}`;
-            tituloGif.innerHTML = `${eventoPintar.target.getAttribute("titulo")}`;
-            galeriaFav.style.display = "none";
-            busquedaSection.style.display = "none";
-            buscadorGifos.style.display = "none";
-            footer.style.display = "none";
-            let btnTrashPintado = document.getElementById("btnTrashPintado");
-            btnTrashPintado.getAttribute("key");
-            let cruzImgAmplificadaBtn = document.getElementById('cruzImgAmplificadaBtn');
-            cruzImgAmplificadaBtn.addEventListener('click', (eventoReducir) => {
-                busquedaSection.style.display = "none";
-                sectionImagenAmplificada.style.display = "none";
-                buscadorGifos.style.display = "none";
-                trendingSection.style.display = "block";
-                footer.style.display = "block";
-                galeriaFav.style.display = "grid";
-            });
-            let btnDescargarImgAmpliada = document.getElementById("btnDescargarImgAmpliada");
-            btnDescargarImgAmpliada.addEventListener('click', (eventoDescargar) => {
-                console.log("click");
-                console.log(eventoDescargar);
-                download();
-            })
-        });
-    });
     let noFavs = document.getElementById("noFavs");
     let hijosFavs = document.getElementById("galeriaFav").children;
     console.log(hijosFavs);
@@ -137,6 +103,4 @@ function eliminarElementoArrayMisGifos(idElementoMisGifos) {
     btnTrashPintado.src = "./assets/assets/icon-trash-hover.svg";
     arrayGifosCreados.splice(arrayFavoritos.indexOf(btnTrashPintado), 1);
     localStorage.setItem("misGIFOS", JSON.stringify(arrayGifosCreados));
-
-
 }

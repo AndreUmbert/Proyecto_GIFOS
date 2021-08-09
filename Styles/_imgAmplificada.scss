@@ -1,71 +1,74 @@
 //Imagen ampliada Mobile:
-#sectionImagenAmplificada{
-    display: none;
-    position: absolute;
-    top: 0;
-    background-color: rgba(255,255,255,0.90) ;
-    padding: 15.73333333vw 7.4666666vw 33.6vw  7.733333vw;
-    #cruzImgAmplificada{
-        width: 100%;
+#sectionImagenAmplificada {
+  display: none;
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15.73333333vw 7.4666666vw 33.6vw 7.733333vw;
+  #cruzImgAmplificada {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 6.4vw;
+    margin-bottom: 20.8vw;
+    #cruzImgAmplificadaBtn {
+      height: 3.73333vw;
+      width: 3.68vw;
+      padding: 1.333333vw;
+    }
+  }
+  #imgAmplificadaCtn {
+    display: flex;
+    flex-direction: column;
+    #imgAmplificada {
+      width: 84.8vw;
+      height: 65.333333vw;
+      margin-bottom: 3.733333vw;
+    }
+    #pieDeImg {
+      display: flex;
+      flex-direction: row;
+      #infoUsuario {
+        display: flex;
+        width: 70%;
+        flex-direction: column;
+        #nombreUsuario {
+          margin-bottom: 1.6vw;
+          margin-top: 0;
+          margin-left: 1.6vw;
+          font-size: 3.3vw;
+          line-height: 4.8vw;
+          font-family: "Roboto", sans-serif;
+        }
+        #tituloGif {
+          margin: 0;
+          font-size: 3.5vw;
+          font-family: "Montserrat", sans-serif;
+          line-height: 5.2vw;
+          font-weight: bold;
+          margin-left: 0.13333333vw;
+        }
+      }
+      #botonesImgAmpliada {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        height: 6.4vw;
-        margin-bottom: 20.8vw;
-        #cruzImgAmplificadaBtn{
-            height: 3.73333vw;
-            width: 3.68vw;
-            padding: 1.333333vw;
+        width: 30%;
+        align-items: center;
+        img {
+          width: 9.06666666vw;
+          height: 9.06666666vw;
         }
+        #btnFavImgAmpliada {
+          width: 20px;
+          height: 18px;
+        }
+        #btnDescargarImgAmpliada {
+          border-radius: 1vw;
+          margin-left: 7.7333333vw;
+        }
+      }
     }
-    #imgAmplificadaCtn{
-        display: flex;
-        flex-direction: column;
-        #imgAmplificada{
-            width: 84.8vw;
-            height: 65.333333vw;
-            margin-bottom: 3.733333vw;
-        }
-        #pieDeImg{
-            display: flex;
-            flex-direction: row;
-            #infoUsuario{
-                display: flex;
-                width: 70%;
-                flex-direction: column;
-                #nombreUsuario{
-                    margin-bottom: 1.6vw;
-                    margin-top: 0;
-                    margin-left: 1.6vw;
-                    font-size: 3.3vw;
-                    line-height: 4.8vw;
-                    font-family: "Roboto", sans-serif;
-                }
-                #tituloGif{
-                    margin: 0;
-                    font-size: 3.5vw;
-                    font-family: "Montserrat", sans-serif;
-                    line-height: 5.2vw;
-                    font-weight: bold;
-                    margin-left: 0.13333333vw;
-                }
-            }
-            #botonesImgAmpliada{
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                width: 30%;
-                align-items: center;
-                img{
-                    width: 9.06666666vw;
-                    height: 9.06666666vw;
-                }
-                #btnDescargarImgAmpliada{
-                    border-radius: 1vw;
-                    border: 1px solid rgba(156, 175, 195, 0.5);
-                    margin-left: 7.7333333vw;
-                }
-            }
-        }
-    }
+  }
 }

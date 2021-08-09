@@ -1,24 +1,20 @@
-//VARIABLES:
-// var buscador = document.getElementById("buscarYMas");
-// var tituloBusqueda = document.getElementById("tituloBusqueda");
-// var busquedaSection = document.getElementById("busqueda");
-// var galeria = document.getElementById("galeria");
-// var pjsGifos = document.getElementById("pjsGifos");
-// var tituloInicio = document.getElementById("titulo");
-// var lupa = document.getElementById("lupa");
-// var site_nav = document.getElementById("site-nav");
-// var favoritos = document.getElementById("sectionFavoritos");
-
+let noFavs = document.getElementById("noFavs");
 let searchBar = document.getElementById("searchBar");
 let btnFavoritos = document.getElementById("itemListaFavoritos");
 let etiquetasInicio = document.getElementById("etiquetasInicio");
 let galeriaFav = document.getElementById("galeriaFav");
 let itemListaFavoritos = document.getElementById("itemListaFavoritos");
 const gifFav = `${imgAmplificada.getAttribute("key")}`;
+let textoNoFav = document.getElementById("textoNoFavs");
+let imgNoFavs = document.getElementById("imgNoFavs");
 
 btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
     creadorGifos.style.display = "none";
-    menu.src = "./assets/assets/burger.svg";
+    if (localStorage.getItem("darkmode") === "true") {
+        menu.src = "./assets/assets/burger-modo-noct.svg";
+    } else {
+        menu.src = "./assets/assets/burger.svg";
+    }
     sectionMisGifos.style.display = "none";
     sectionFavoritos.style.display = "block";
     if (!pantallaDesktop.matches) {
@@ -32,6 +28,7 @@ btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
     if (sectionFavoritos.style.display == "block") {
         galeriaFav.innerHTML = ``;
     }
+    actualizarFavoritos();
 });
 
 
@@ -40,13 +37,13 @@ if (buscador.value === "") {
     sectionFavoritos.style.display = "none";
 }
 
-itemListaFavoritos.addEventListener("click", () => {
-    actualizarFavoritos();
+// itemListaFavoritos.addEventListener("click", () => {
+//     actualizarFavoritos();
 
-});
-
+// });
 function actualizarFavoritos() {
-    if (arrayFavoritos.length === 0) {
+
+    if (!arrayFavoritos) {
         console.log("no hay favoritos");
         //Aca hay que mostrar el mensaje
         if (pantallaDesktop.matches) {
@@ -54,8 +51,6 @@ function actualizarFavoritos() {
             galeriaFav.style.display = "none";
             noFavs.style.display = "block";
             noFavs.style.textAlign = "center";
-            let textoNoFav = document.getElementById("textoNoFavs");
-            let imgNoFavs = document.getElementById("imgNoFavs");
             textoNoFav.style.fontFamily = "Montserrat, sans-serif";
             textoNoFav.style.fontWeight = "bold";
             textoNoFav.style.color = "#50E3C2";
@@ -82,13 +77,14 @@ async function showFavoritos(gifFav) {
     const URL_SearchId = `https://api.giphy.com/v1/gifs/${gifFav}?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9`;
     const favorito = await fetch(URL_SearchId);
     let trending = await favorito.json();
-    console.log(trending);
+    let isFav = arrayFavoritos.includes(trending.data.id);
+    console.log(arrayFavoritos);
     galeriaFav.innerHTML += ` 
     <div class="divHoverContenedor">
     <img key="${trending.data.id}"  class="imgBuscada" src="${trending.data.images.fixed_height.url}" nombre="${trending.data.username}" corazon="true" titulo="${trending.data.title}" onmouseover="pintar(this)" onclick="ampliar()">
     <div key="${trending.data.id}" id="${trending.data.id}" nombre="${trending.data.username}" titulo="${trending.data.title}" class="divHover" onmouseout="despintar(this)">
     <div id="btnsPintadosDesktop" key="${trending.data.id}">
-    <img id="btnFavPintado" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.data.id}">
+    <img class="btnFavPintado" src=${!isFav ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.data.id}">
     <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.data.id}">
     <img id="btnAmpliarPintado"  titulo="${trending.data.title}" nombre="${trending.data.username}" path="${trending.data.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.data.id}">
     </div>
@@ -100,56 +96,50 @@ async function showFavoritos(gifFav) {
     </div>
     `;
     let arrayImagenesFavoritos = document.querySelectorAll(".imgBuscada");
-    arrayImagenesFavoritos.forEach(imagenesFavoritos => {
-        imagenesFavoritos.addEventListener('click', (eventoAmpliar) => {
-            console.log(trending);
-            console.log(eventoAmpliar.target.getAttribute("nombre"));
-            sectionImagenAmplificada.style.display = "block";
-            imgAmplificada.src = `${eventoAmpliar.target.src}`;
-            imgAmplificada.setAttribute("corazon", "true");
-            imgAmplificada.key = `${eventoAmpliar.target.getAttribute("key")}`;
-            imgAmplificada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`);
-            nombreUsuario.innerHTML = `${eventoAmpliar.target.getAttribute("nombre")}`;
-            tituloGif.innerHTML = `${eventoAmpliar.target.getAttribute("titulo")}`;
-            galeriaFav.style.display = "none";
-            busquedaSection.style.display = "none";
-            buscadorGifos.style.display = "none";
-            trendingSection.style.display = "none";
-            footer.style.display = "none";
-            let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
-            btnFavImgAmpliada.src = "http://127.0.0.1:5500/Proyecto_GIFOS/assets/assets/icon-fav-active.svg";
-            let cruzImgAmplificadaBtn = document.getElementById('cruzImgAmplificadaBtn');
-            cruzImgAmplificadaBtn.addEventListener('click', (eventoReducir) => {
-                busquedaSection.style.display = "none";
-                sectionImagenAmplificada.style.display = "none";
-                buscadorGifos.style.display = "none";
-                trendingSection.style.display = "block";
-                footer.style.display = "block";
-                galeriaFav.style.display = "grid";
-            });
-            btnFavImgAmpliada.addEventListener('click', (eventoFavorito) => {
-                // console.log(btnFavImgAmpliada.src);
-                // if (eventoAmpliar.target.getAttribute("corazon") == "true") {
-                //     console.log(arrayFavoritos);
-                //     const index = arrayFavoritos.indexOf(eventoAmpliar.target.getAttribute("key"));
-                //     console.log(index);
-                // }
-                eliminarElementoArray(eventoAmpliar.target.getAttribute("key"));
-            });
-            let btnDescargarImgAmpliada = document.getElementById("btnDescargarImgAmpliada");
-            // console.log(btnDescargarImgAmpliada);
-            btnDescargarImgAmpliada.addEventListener('click', (eventoDescargar) => {
-                console.log("click");
-                console.log(eventoDescargar);
-                download();
-            })
-        });
-    });
     let noFavs = document.getElementById("noFavs");
     let hijosFavs = document.getElementById("galeriaFav").children;
-    console.log(hijosFavs);
-    console.log(hijosFavs.length);
-
+    let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+    var arrFavoritos = Array.prototype.slice.call(btnFavPintado);
+    arrFavoritos.forEach(btnFavPintado => {
+        if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+            btnFavPintado.style.border = "none";
+            btnFavPintado.style.borderRadius = "0.3rem";
+            btnFavPintado.style.opacity = "0.7";
+            btnFavPintado.style.width = "1.25vw";
+            btnFavPintado.style.height = "1.10416666666vw";
+            btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+            btnFavPintado.style.backgroundColor = "#ffffff";
+        } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+            btnFavPintado.style.border = "0";
+            btnFavPintado.style.borderRadius = "0.3rem";
+            btnFavPintado.style.opacity = "1";
+            btnFavPintado.style.width = "2.222222vw";
+            btnFavPintado.style.height = "2.222222vw";
+            btnFavPintado.style.padding = "0";
+            btnFavPintado.style.backgroundColor = "#ffffff";
+            btnFavPintado.style.opacity = "0.7";
+        }
+        btnFavPintado.addEventListener('click', () => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+        });
+    });
 }
 
 function eliminarElementoArray(idElementoFavorito) {

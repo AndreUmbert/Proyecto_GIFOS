@@ -14,7 +14,9 @@ let header = document.getElementById("header");
 
 
 
-async function ampliarDesktop(eventoAmpliarDesktop) {
+function ampliarDesktop(eventoAmpliarDesktop) {
+    console.log(eventoAmpliarDesktop);
+    // console.log(eventoAmpliarDesktop.target.getAttribute("key"));
     let imgAmpliadaDesktop = document.getElementById("imgAmpliadaDesktop");
     creadorGifos.style.display = "none";
     menu.src = "./assets/assets/burger.svg";
@@ -41,6 +43,23 @@ async function ampliarDesktop(eventoAmpliarDesktop) {
     descargaAmpliadaDesktop.setAttribute("key", `${eventoAmpliarDesktop.getAttribute("key")}`);
     let corazonAmpliadoDesktop = document.getElementById("corazonAmpliadoDesktop");
     corazonAmpliadoDesktop.setAttribute("key", `${eventoAmpliarDesktop.getAttribute("key")}`);
+    if (arrayFavoritos.includes(eventoAmpliarDesktop.getAttribute("key"))) {
+        corazonAmpliadoDesktop.src = "assets/assets/icon-fav-active.svg";
+        corazonAmpliadoDesktop.style.border = "1px solid #ced7e1";
+        corazonAmpliadoDesktop.style.borderRadius = "0.3rem";
+        corazonAmpliadoDesktop.style.opacity = "1";
+        corazonAmpliadoDesktop.style.width = "18px";
+        corazonAmpliadoDesktop.style.height = "15.9px";
+        corazonAmpliadoDesktop.style.padding = "9px 8px";
+        corazonAmpliadoDesktop.style.backgroundColor = "#ffffff";
+    } else {
+        corazonAmpliadoDesktop.src = "assets/assets/icon-fav.svg";
+        corazonAmpliadoDesktop.style.opacity = "1";
+        corazonAmpliadoDesktop.style.width = "34px";
+        corazonAmpliadoDesktop.style.height = "34px";
+        corazonAmpliadoDesktop.style.padding = "0";
+        corazonAmpliadoDesktop.style.backgroundColor = "#ffffff";
+    }
 }
 
 //cerrar imagen ampliada desktop

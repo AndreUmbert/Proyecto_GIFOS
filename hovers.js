@@ -3,19 +3,19 @@ let btnCrearGifos = document.getElementById("btnCrearGifos");
 let imgBtnCrearGifos = document.getElementById("imgBtnCrearGifos");
 
 function setImgCrearGifosNueva() {
-    if (modo.getAttribute("darkmode") === "false") {
-        imgBtnCrearGifos.src = "./assets/assets/CTA-crear-gifo-hover.svg";
-    } else {
-
+    if (localStorage.getItem("darkmode") === "true") {
         imgBtnCrearGifos.src = "./assets/assets/CTA-crear-gifo-hover-modo-noc.svg";
+    } else {
+        imgBtnCrearGifos.src = "./assets/assets/CTA-crear-gifo-hover.svg";
+
     }
 }
 
 function setImgVolver() {
-    if (modo.getAttribute("darkmode") === "false") {
-        imgBtnCrearGifos.src = "./assets/assets/button-crear-gifo.svg";
-    } else {
+    if (localStorage.getItem("darkmode") === "true") {
         imgBtnCrearGifos.src = "./assets/assets/CTA-crear-gifo-modo-noc.svg";
+    } else {
+        imgBtnCrearGifos.src = "./assets/assets/button-crear-gifo.svg";
     }
 }
 

@@ -30,11 +30,14 @@ let sectionImagenAmplificada = document.getElementById("sectionImagenAmplificada
 let imgAmplificada = document.getElementById("imgAmplificada");
 let nombreUsuario = document.getElementById('nombreUsuario');
 let tituloGif = document.getElementById("tituloGif");
-let arrayFavoritos = [];
 let etiquetasEjemplosTexto = document.getElementById("etiquetasEjemplosTexto");
 let btnFavImgAmpliada = document.getElementById("btnFavImgAmpliada");
 let busquedaFallida = document.getElementById("busquedaFallida");
 let btnsPintadosDesktop = document.getElementById("btnsPintadosDesktop");
+let arrayFavoritos = JSON.parse(localStorage.getItem("misFavoritos"));
+if (arrayFavoritos === null) {
+    arrayFavoritos = [];
+}
 
 
 
@@ -53,9 +56,16 @@ buscador.addEventListener('click', (ocultar) => {
         lupa.style.display = "none";
     } else { lupa.style.display = "block"; }
     console.log(buscador.value.length);
-    cruzAparece.innerHTML = `
-        <img src="./assets/assets/close.svg">
+    if (localStorage.getItem("darkmode") === "true") {
+        cruzAparece.innerHTML = `
+        <img id="cruzBuscador" src="./assets/assets/close-modo-noct.svg">
         `;
+    } else {
+        cruzAparece.innerHTML = `
+        <img id="cruzBuscador" src="./assets/assets/close.svg">
+        `;
+    }
+
     cruzAparece.style.display = "block";
     // cambiarImgs();
 });
@@ -76,10 +86,14 @@ if (pantallaDesktop.matches) {
             buscador.style.margin = "0";
             buscador.style.width = "80%";
             barra.style.margin = "1.0416666vw 0 0.694444444vw 0";
+            if (localStorage.getItem("darkmode") === "true") {
+                lupa.src = "./assets/assets/icon-search-mod-noc.svg";
+            } else {
+                lupa.src = "./assets/assets/icon-search.svg";
+            }
             lupa.style.display = "block";
             lupa.style.order = "-1";
             lupa.style.margin = "0 1.458333vw 0 1.458333vw";
-            lupa.src = "./assets/assets/icon-search.svg";
             barraContenedor.style.height = "13.88888vw";
             barraContenedora.style.borderRadius = "2rem";
             sugerenciasBusqueda.innerHTML = ``;
@@ -97,12 +111,22 @@ if (pantallaDesktop.matches) {
             let json = await resultadoBusqueda.json();
             json.data.forEach(trending => {
                 contadorOffset++;
-                sugerenciasBusqueda.innerHTML += `
-                <div  class="itemListaSugerido">
-                    <img src="./assets/assets/icon-search.svg">
-                    <a><p id="${contadorOffset}" onclick="changeText(this)" class="itemListaBuscar">${trending.name}</p></a>
-                </div>
-                `;
+                if (localStorage.getItem("darkmode") === "true") {
+                    sugerenciasBusqueda.innerHTML += `
+                    <div  class="itemListaSugerido">
+                        <img class="lupasSugeridas" src="./assets/assets/icon-search-mod-noc.svg">
+                        <a><p id="${contadorOffset}" onclick="changeText(this)" class="itemListaBuscar">${trending.name}</p></a>
+                    </div>
+                    `;
+                } else {
+                    sugerenciasBusqueda.innerHTML += `
+                    <div  class="itemListaSugerido">
+                        <img class="lupasSugeridas" src="./assets/assets/icon-search.svg">
+                        <a><p id="${contadorOffset}" onclick="changeText(this)" class="itemListaBuscar">${trending.name}</p></a>
+                    </div>
+                    `;
+                }
+                44
             });
         }
     });
@@ -122,12 +146,14 @@ buscador.addEventListener('keypress', async (buscar) => {
         let resultadoBusqueda = await fetch(URL_BASE + buscar.target.value);
         let json = await resultadoBusqueda.json();
         json.data.forEach(trending => {
+            // let arrayFavoritos = [];
+            let isFavorito = arrayFavoritos.includes(trending.id);
             galeria.innerHTML += `
             <div class="divHoverContenedor">
             <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
             <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
             <div id="btnsPintadosDesktop" key="${trending.id}">
-            <img id="btnFavPintado" corazon="false" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
+            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
             <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
             <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
             </div>
@@ -142,6 +168,49 @@ buscador.addEventListener('keypress', async (buscar) => {
             tituloBusqueda.style.textTransform = "capitalize";
         });
         let hijosGaleria = document.getElementById("galeria").children;
+        let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+        var arr = Array.prototype.slice.call(btnFavPintado);
+        arr.forEach(btnFavPintado => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+            btnFavPintado.addEventListener('click', () => {
+                if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "none";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "0.7";
+                    btnFavPintado.style.width = "1.25vw";
+                    btnFavPintado.style.height = "1.10416666666vw";
+                    btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "0";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "1";
+                    btnFavPintado.style.width = "2.222222vw";
+                    btnFavPintado.style.height = "2.222222vw";
+                    btnFavPintado.style.padding = "0";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                    btnFavPintado.style.opacity = "0.7";
+                }
+            });
+        });
+
         //Eliminar boton ver-mas si no encuentra 12 elementos minimo:
         if (hijosGaleria.length % 12 != 0) {
             btnVerMas.style.display = "none";
@@ -156,6 +225,7 @@ buscador.addEventListener('keypress', async (buscar) => {
                 busquedaFallida.style.display = "block";
             }
         }
+
     }
 });
 
@@ -163,31 +233,75 @@ buscador.addEventListener('keypress', async (buscar) => {
 let btnVerMas = document.getElementById("btnVerMas");
 btnVerMas.addEventListener('click', async (verMas) => {
     contadorOffset += 12;
+
     let URL_BusquedaReiterada = "https://api.giphy.com/v1/gifs/search?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9&limit=12&offset=" + contadorOffset + "&q=";
     let resultadoBusqueda = await fetch(URL_BusquedaReiterada + buscador.value);
     let json = await resultadoBusqueda.json();
     json.data.forEach(trending => {
+        let isFavorito = arrayFavoritos.includes(trending.id);
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-        <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-        <div id="btnsPintadosDesktop" key="${trending.id}">
-        <img id="btnFavPintado" corazon="false" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
-        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-        <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
-        </div>
-        <div id="infoImgPintDesktop">
-        <p id="usuarioPintado">${trending.username}</p>
-        <p id="tituloPintado">${trending.title}</p>
-        </div>
-        </div>
-        </div>
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+            <div id="btnsPintadosDesktop" key="${trending.id}">
+            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+            <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
+            </div>
         `;
     });
     let hijosGaleria = document.getElementById("galeria").children;
     if (hijosGaleria.length % 12 != 0) {
         btnVerMas.style.display = "none";
     }
+    let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+    var arrVerMas = Array.prototype.slice.call(btnFavPintado);
+    arrVerMas.forEach(btnFavPintado => {
+        if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+            btnFavPintado.style.border = "none";
+            btnFavPintado.style.borderRadius = "0.3rem";
+            btnFavPintado.style.opacity = "0.7";
+            btnFavPintado.style.width = "1.25vw";
+            btnFavPintado.style.height = "1.10416666666vw";
+            btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+            btnFavPintado.style.backgroundColor = "#ffffff";
+        } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+            btnFavPintado.style.border = "0";
+            btnFavPintado.style.borderRadius = "0.3rem";
+            btnFavPintado.style.opacity = "1";
+            btnFavPintado.style.width = "2.222222vw";
+            btnFavPintado.style.height = "2.222222vw";
+            btnFavPintado.style.padding = "0";
+            btnFavPintado.style.backgroundColor = "#ffffff";
+            btnFavPintado.style.opacity = "0.7";
+        }
+        btnFavPintado.addEventListener('click', () => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+        });
+    });
 });
 
 //Al clickear ENDPOINTS (funciona con changeText):
@@ -226,13 +340,20 @@ async function changeText(objeto) {
     if (!pantallaDesktop.matches) {
         site_nav.style.display = "none";
     }
+    if (localStorage.getItem("darkmode") === "true") {
+        cruzAparece.innerHTML = `
+        <img id="cruzBuscador" src="./assets/assets/close-modo-noct.svg">
+        `;
+        lupa.src = "./assets/assets/icon-search-mod-noc.svg";
+    } else {
+        cruzAparece.innerHTML = `
+        <img id="cruzBuscador" src="./assets/assets/close.svg">
+        `;
+        lupa.src = "./assets/assets/icon-search.svg";
+    }
     lupa.style.display = "block";
     lupa.style.order = "-1";
     lupa.style.margin = "0 1.458333vw 0 1.458333vw";
-    lupa.src = "./assets/assets/icon-search.svg";
-    cruzAparece.innerHTML = `
-    <img src="./assets/assets/close.svg">
-    `;
     cruzAparece.style.display = "block";
     cruzAparece.style.marginLeft = "1.59722222vw";
     cruzAparece.addEventListener('click', () => {
@@ -243,23 +364,66 @@ async function changeText(objeto) {
     let resultadoBusqueda = await fetch(URL_BASE + buscador.value);
     let json = await resultadoBusqueda.json();
     json.data.forEach(trending => {
+        let isFavorito = arrayFavoritos.includes(trending.id);
         galeria.innerHTML += `
         <div class="divHoverContenedor">
-        <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-        <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-        <div id="btnsPintadosDesktop" key="${trending.id}">
-        <img id="btnFavPintado" corazon="false" src="assets/assets/icon-fav.svg" onclick="favDesktop(this)" key="${trending.id}">
-        <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-        <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
-        </div>
-        <div id="infoImgPintDesktop">
-        <p id="usuarioPintado">${trending.username}</p>
-        <p id="tituloPintado">${trending.title}</p>
-        </div>
-        </div>
-        </div>
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+            <div id="btnsPintadosDesktop" key="${trending.id}">
+            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+            <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
+            </div>
         `;
         tituloBusqueda.innerHTML = `${buscador.value}`;
         tituloBusqueda.style.textTransform = "capitalize";
+        let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+        var arrTrendingText = Array.prototype.slice.call(btnFavPintado);
+        arrTrendingText.forEach(btnFavPintado => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+            btnFavPintado.addEventListener('click', () => {
+                if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "none";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "0.7";
+                    btnFavPintado.style.width = "1.25vw";
+                    btnFavPintado.style.height = "1.10416666666vw";
+                    btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "0";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "1";
+                    btnFavPintado.style.width = "2.222222vw";
+                    btnFavPintado.style.height = "2.222222vw";
+                    btnFavPintado.style.padding = "0";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                    btnFavPintado.style.opacity = "0.7";
+                }
+            });
+        });
     });
 }
