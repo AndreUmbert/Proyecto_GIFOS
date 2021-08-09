@@ -8,13 +8,14 @@ function pintar(eventoPintar) {
         divHover.key = `${eventoPintar.getAttribute("key")}`;
         divHover.style.display = "block";
         let btnFavPintado = document.getElementById("btnFavPintado");
-        arrayDivHovers.forEach(divsGaleria => {
-            if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
-                btnFavPintado.src = "assets/assets/icon-fav-active.svg";
-            } else {
-                btnFavPintado.src = "assets/assets/icon-fav.svg";
-            }
-        });
+        // arrayDivHovers.forEach(divsGaleria => {
+        //     if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
+        //         btnFavPintado.src = "assets/assets/icon-fav-active.svg";
+        //     }
+        //     // } else {
+        //     //     btnFavPintado.src = "assets/assets/icon-fav.svg";
+        //     // }
+        // });
     }
 }
 
@@ -52,13 +53,15 @@ function ampliar() {
                 });
                 if (arrayFavoritos.includes(eventoAmpliar.target.getAttribute("key"))) {
                     btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
-                    btnFavImgAmpliada.style.padding = "9px 8px";
+                    btnFavImgAmpliada.style.padding = "2.4vw 2.13333333vw";
                     btnFavImgAmpliada.style.borderRadius = "5px";
-                    btnFavImgAmpliada.style.backgroundColor = "#C7C7C9";
+                    btnFavImgAmpliada.style.backgroundColor = "#ffffff";
                 } else {
                     btnFavImgAmpliada.src = "assets/assets/icon-fav.svg";
-                    btnFavImgAmpliada.style.width = "36px";
-                    btnFavImgAmpliada.style.height = "36px";
+                    btnFavImgAmpliada.style.width = "9.6vw";
+                    btnFavImgAmpliada.style.height = "9.6vw";
+                    btnFavImgAmpliada.style.backgroundColor = "#ffffff";
+                    btnFavImgAmpliada.style.borderRadius = "5px";
                 }
                 btnFavImgAmpliada.setAttribute("key", `${eventoAmpliar.target.getAttribute("key")}`);
 
@@ -80,8 +83,8 @@ function favDesktop(eventoFavDesktop) {
             localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
             eventoFavDesktop.src = "assets/assets/icon-fav.svg";
             corazonAmpliadoDesktop.style.opacity = "1";
-            corazonAmpliadoDesktop.style.width = "34px";
-            corazonAmpliadoDesktop.style.height = "34px";
+            corazonAmpliadoDesktop.style.width = "2.361111111vw";
+            corazonAmpliadoDesktop.style.height = "2.361111111vw";
             corazonAmpliadoDesktop.style.padding = "0";
         } else {
             eventoFavDesktop.src = "assets/assets/icon-fav-active.svg";
@@ -93,9 +96,9 @@ function favDesktop(eventoFavDesktop) {
             corazonAmpliadoDesktop.style.border = "1px solid #ced7e1";
             corazonAmpliadoDesktop.style.borderRadius = "0.3rem";
             corazonAmpliadoDesktop.style.opacity = "1";
-            corazonAmpliadoDesktop.style.width = "18px";
-            corazonAmpliadoDesktop.style.height = "15.9px";
-            corazonAmpliadoDesktop.style.padding = "9px 8px";
+            corazonAmpliadoDesktop.style.width = "1.25vw";
+            corazonAmpliadoDesktop.style.height = "1.104166666vw";
+            corazonAmpliadoDesktop.style.padding = "0.625vw 0.55555555vw";
         }
     }
 }

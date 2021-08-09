@@ -2142,6 +2142,8 @@ body {
 #sectionImagenAmplificada #imgAmplificadaCtn #pieDeImg #botonesImgAmpliada #btnDescargarImgAmpliada {
   border-radius: 1vw;
   margin-left: 7.7333333vw;
+  width: 9.6vw;
+  height: 9.6vw;
 }
 
 #sectionImgAmplificadaDesktop {
