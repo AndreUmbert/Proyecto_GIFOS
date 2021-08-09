@@ -48,15 +48,15 @@ function ampliarDesktop(eventoAmpliarDesktop) {
         corazonAmpliadoDesktop.style.border = "1px solid #ced7e1";
         corazonAmpliadoDesktop.style.borderRadius = "0.3rem";
         corazonAmpliadoDesktop.style.opacity = "1";
-        corazonAmpliadoDesktop.style.width = "18px";
-        corazonAmpliadoDesktop.style.height = "15.9px";
-        corazonAmpliadoDesktop.style.padding = "9px 8px";
+        corazonAmpliadoDesktop.style.width = "1.25vw";
+        corazonAmpliadoDesktop.style.height = "1.104166666vw";
+        corazonAmpliadoDesktop.style.padding = "0.625vw 0.55555555vw";
         corazonAmpliadoDesktop.style.backgroundColor = "#ffffff";
     } else {
         corazonAmpliadoDesktop.src = "assets/assets/icon-fav.svg";
         corazonAmpliadoDesktop.style.opacity = "1";
-        corazonAmpliadoDesktop.style.width = "34px";
-        corazonAmpliadoDesktop.style.height = "34px";
+        corazonAmpliadoDesktop.style.width = "2.361111111vw";
+        corazonAmpliadoDesktop.style.height = "2.361111111vw";
         corazonAmpliadoDesktop.style.padding = "0";
         corazonAmpliadoDesktop.style.backgroundColor = "#ffffff";
     }
