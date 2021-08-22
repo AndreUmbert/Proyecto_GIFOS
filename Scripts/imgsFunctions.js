@@ -1,21 +1,15 @@
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                  FUNCIONES PARA MOSTRAR Y OCULTAR EL DIV PINTADO Y LOS BOTONES EN VERSION DESKTOP
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function pintar(eventoPintar) {
     if (pantallaDesktop.matches) {
-        // console.log(eventoPintar);
         const arrayDivHovers = document.querySelectorAll(".divHover");
         const divHover = document.getElementById(eventoPintar.getAttribute("key"));
         divHover.setAttribute("key", `${eventoPintar.getAttribute("key")}`);
         divHover.key = `${eventoPintar.getAttribute("key")}`;
         divHover.style.display = "block";
         let btnFavPintado = document.getElementById("btnFavPintado");
-        // arrayDivHovers.forEach(divsGaleria => {
-        //     if (arrayFavoritos.includes(eventoPintar.getAttribute("key"))) {
-        //         btnFavPintado.src = "assets/assets/icon-fav-active.svg";
-        //     }
-        //     // } else {
-        //     //     btnFavPintado.src = "assets/assets/icon-fav.svg";
-        //     // }
-        // });
     }
 }
 
@@ -27,6 +21,9 @@ function despintar(eventoDespintar) {
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                  FUNCION PARA MOSTRAR LAS IMAGENES AMPLIADAS AL CLICKEAR SOBRE LA IMAGEN VERSION MOBILE
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function ampliar() {
     if (!pantallaDesktop.matches) {
@@ -76,6 +73,10 @@ function ampliar() {
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                      FUNCIONALIDAD DE FAVORITOS Y CARGA ESTILADO IAMGEN AMPLIADA PARA DESKTOP
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 function favDesktop(eventoFavDesktop) {
     if (pantallaDesktop.matches) {
         if (arrayFavoritos.includes(eventoFavDesktop.getAttribute("key"))) {
@@ -103,6 +104,9 @@ function favDesktop(eventoFavDesktop) {
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                     FUNCIONALIDAD DE FAVORITOS Y CARGA ESTILADO IAMGEN AMPLIADA PARA MOBILE
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function favImagenAmpliada(params) {
 
@@ -111,15 +115,12 @@ function favImagenAmpliada(params) {
         arrayFavoritos.splice(arrayFavoritos.indexOf(params.getAttribute("key")), 1);
         localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
         btnFavImgAmpliada.src = "assets/assets/icon-fav.svg";
-        // localStorage.misFavoritos.clear();
         btnFavImgAmpliada.style.width = "36px";
         btnFavImgAmpliada.style.height = "36px";
         btnFavImgAmpliada.style.padding = "0";
     }
     else {
         btnFavImgAmpliada.src = "assets/assets/icon-fav-active.svg";
-        // eventoAmpliar.target.setAttribute("corazon", "true")
-        // imgAmplificada.setAttribute("corazon", "true")
         arrayFavoritos.push(params.getAttribute("key"));
         localStorage.setItem("misFavoritos", JSON.stringify(arrayFavoritos));
         btnFavImgAmpliada.style.width = "20px";
@@ -132,16 +133,11 @@ function favImagenAmpliada(params) {
 }
 
 
-//Cargar array de favoritos del usuario:
-// function loadFavoritosLs() {
-//     let favoritosGifs = JSON.parse(localStorage.getItem("misFavoritos"));
-//     if (favoritosGifs) {
-//         arrayFavoritos = favoritosGifs;
-//     }
-// };
-// loadFavoritosLs();
 
-//Funcion para descargar el gif en img Ampliada:
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                FUNCION DESCARGAR IMAGEN AMPLIADA MOBILE
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 async function download() {
     const a = document.createElement("a");
     a.href = await descargarGif();
@@ -165,7 +161,10 @@ async function descargarGif(descargarGif) {
     });
 }
 
-//Funcion descargar Gif desktop:
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                      FUNCION DESCARGAR DESKTOP
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 async function downloadDesktop() {
     const a = document.createElement("a");
     a.href = await descargarGifDesktop();
@@ -191,7 +190,9 @@ async function descargarGifDesktop(eventoDescargar) {
     });
 }
 
-//Funcion descargar Gif desktop ampliado
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                FUNCION DESCARGAR IMAGEN AMPLIADA DESKTOP
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async function downloadDesktopAmpliado() {
     const a = document.createElement("a");

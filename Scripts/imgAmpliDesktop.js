@@ -10,13 +10,12 @@ let tituloImgDesktop = document.getElementById("tituloImgDesktop");
 let btnsImgAmpladaDesktop = document.getElementById("btnsImgAmpladaDesktop");
 let header = document.getElementById("header");
 
-
-
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                  FUNCION PARA MOSTRAR LAS IMAGENES AMPLIADAS DESDE EL BOTON AMPLIAR EN VERSION DESKTOP
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function ampliarDesktop(eventoAmpliarDesktop) {
-    console.log(eventoAmpliarDesktop);
-    // console.log(eventoAmpliarDesktop.target.getAttribute("key"));
+
     let imgAmpliadaDesktop = document.getElementById("imgAmpliadaDesktop");
     creadorGifos.style.display = "none";
     menu.src = "./assets/assets/burger.svg";
@@ -34,8 +33,16 @@ function ampliarDesktop(eventoAmpliarDesktop) {
     sectionImgAmplificadaDesktop.style.display = "block";
     footer.style.display = "none";
     header.style.display = "none";
-    imgAmpliadaDesktop.setAttribute("src", `${eventoAmpliarDesktop.getAttribute("path")}`);
-    imgAmpliadaDesktop.setAttribute("key", `${eventoAmpliarDesktop.getAttribute("key")}`);
+    let contador = eventoAmpliarDesktop.getAttribute("contador");
+    if (contador == 0) {
+        imgFlechaIzqDesktop.style.display = "none";
+    } if (contador >= arrayCarrusel.length - 1) {
+        imgFlechaDerDesktop.style.display = "none";
+    }
+    console.log(arrayCarrusel[parseInt(contador)]);
+    console.log(document.getElementById(arrayCarrusel[parseInt(contador)]).previousElementSibling);
+    imgAmpliadaDesktop.setAttribute("src", `${document.getElementById(arrayCarrusel[parseInt(contador)]).previousElementSibling.getAttribute("src")}`);
+    imgAmpliadaDesktop.setAttribute("key", `${arrayCarrusel[parseInt(contador)]}`);
     imgAmpliadaDesktop.key = `${eventoAmpliarDesktop.getAttribute("key")}`;
     usuarioImgDesktop.innerHTML = `${eventoAmpliarDesktop.getAttribute("nombre")}`;
     tituloImgDesktop.innerHTML = `${eventoAmpliarDesktop.getAttribute("titulo")}`;
@@ -60,10 +67,33 @@ function ampliarDesktop(eventoAmpliarDesktop) {
         corazonAmpliadoDesktop.style.padding = "0";
         corazonAmpliadoDesktop.style.backgroundColor = "#ffffff";
     }
+    imgFlechaIzqDesktop.addEventListener("click", () => {
+        contador--;
+        if (contador > 0) {
+            imgAmpliadaDesktop.setAttribute("src", `${document.getElementById(arrayCarrusel[parseInt(contador)]).previousElementSibling.getAttribute("src")}`);
+            imgAmpliadaDesktop.setAttribute("key", `${arrayCarrusel[parseInt(contador)]}`);
+            imgFlechaDerDesktop.style.display = "block";
+        } else if (contador == 0) {
+            imgFlechaIzqDesktop.style.display = "none";
+        }
+        console.log(contador);
+
+    });
+
+    imgFlechaDerDesktop.addEventListener("click", () => {
+        contador++;
+        if (contador < arrayCarrusel.length - 1) {
+            imgAmpliadaDesktop.setAttribute("src", `${document.getElementById(arrayCarrusel[parseInt(contador)]).previousElementSibling.getAttribute("src")}`);
+            imgAmpliadaDesktop.setAttribute("key", `${arrayCarrusel[parseInt(contador)]}`);
+            imgFlechaIzqDesktop.style.display = "block";
+        } else {
+            imgFlechaDerDesktop.style.display = "none";
+        }
+        console.log(contador);
+    });
 }
 
 //cerrar imagen ampliada desktop
-
 imgCloseDesktop.addEventListener("click", (eventoCerrarImgDesktop) => {
     location.reload();
     creadorGifos.style.display = "none";

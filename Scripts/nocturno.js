@@ -18,15 +18,17 @@ const cruzImgAmplificadaBtn = document.getElementById("cruzImgAmplificadaBtn");
 
 modo.setAttribute("darkmode", "false");
 
-
 logo.addEventListener('click', () => {
     location.reload();
 });
 
 load();
 
-function cambiarModo() {
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                               FUNCIONALIDAD MODO NOCTURNO, SWITCH IMAGENES Y GUARDADO DE MODO EN LOCAL STORAGE
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+function cambiarModo() {
     if (localStorage.getItem("darkmode") === "true") {
         if (modo.innerHTML === "Modo Diurno") {
             modo.innerHTML = `Modo Nocturno`;
@@ -119,43 +121,6 @@ if (localStorage.getItem("darkmode") === "true") {
 modo.addEventListener('click', (eventoNocturno) => {
     body.classList.toggle('darkmode');
     store(body.classList.contains('darkmode'));
-    // container.classList.toggle('darkmode');
-    // store(container.classList.contains('darkmode'));
-    // logo.classList.toggle('darkmode');
-    // store(logo.classList.contains('darkmode'));
-    // burger.classList.toggle('darkmode');
-    // store(burger.classList.contains('darkmode'));
-    // navLista.classList.toggle('darkmode');
-    // store(navLista.classList.contains('darkmode'));
-    // buscarYMas.classList.toggle('darkmode');
-    // store(buscarYMas.classList.contains('darkmode'));
-    // lupa.classList.toggle('darkmode');
-    // store(lupa.classList.contains('darkmode'));
-    // textoTitulo.classList.toggle('darkmode');
-    // store(textoTitulo.classList.contains('darkmode'));
-    // buscadorEtiquetasHome.classList.toggle('darkmode');
-    // store(buscadorEtiquetasHome.classList.contains('darkmode'));
-    // etiquetasEjemplos.classList.toggle('darkmode');
-    // store(etiquetasEjemplos.classList.contains('darkmode'));
-    // trendingGifos.classList.toggle('darkmode');
-    // store(trendingGifos.classList.contains('darkmode'));
-    // tituloTrendingGifos.classList.toggle('darkmode');
-    // store(tituloTrendingGifos.classList.contains('darkmode'));
-    // infoFooter.classList.toggle('darkmode');
-    // store(infoFooter.classList.contains('darkmode'));
-    // imgBtnCrearGifos.classList.toggle('darkmode');
-    // store(imgBtnCrearGifos.classList.contains('darkmode'));
-    // imgBtnCrearGifos.setAttribute('boleano', "true");
-    // tituloFavoritos.classList.toggle('darkmode');
-    // store(tituloFavoritos.classList.contains('darkmode'));
-    // tituloMisGifos.classList.toggle('darkmode');
-    // store(tituloMisGifos.classList.contains('darkmode'));
-    // modo.classList.toggle('darkmode');
-    // store(modo.classList.contains('darkmode'));
-    // tituloBusqueda.classList.toggle('darkmode');
-    // store(tituloBusqueda.classList.contains('darkmode'));
-    // grabacionInterfaz.classList.toggle('darkmode');
-    // store(grabacionInterfaz.classList.contains('darkmode'));
     cambiarModo();
 });
 
@@ -167,24 +132,6 @@ function load(params) {
     } else if (darkmode == 'true') {
         modo.innerHTML = `Modo Diurno`;
         body.classList.add('darkmode');
-        // container.classList.add('darkmode');
-        // logo.classList.add('darkmode');
-        // burger.classList.add('darkmode');
-        // navLista.classList.add('darkmode');
-        // buscarYMas.classList.add('darkmode');
-        // lupa.classList.add('darkmode');
-        // textoTitulo.classList.add('darkmode');
-        // buscadorEtiquetasHome.classList.add('darkmode');
-        // etiquetasEjemplos.classList.add('darkmode');
-        // trendingGifos.classList.add('darkmode');
-        // tituloTrendingGifos.classList.add('darkmode');
-        // infoFooter.classList.add('darkmode');
-        // imgBtnCrearGifos.classList.add('darkmode');
-        // tituloFavoritos.classList.add('darkmode');
-        // tituloMisGifos.classList.add('darkmode');
-        // modo.classList.add('darkmode');
-        // tituloBusqueda.classList.add('darkmode');
-        // grabacionInterfaz.classList.add('darkmode');
     }
 }
 

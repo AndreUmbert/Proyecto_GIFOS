@@ -8,6 +8,10 @@ const gifFav = `${imgAmplificada.getAttribute("key")}`;
 let textoNoFav = document.getElementById("textoNoFavs");
 let imgNoFavs = document.getElementById("imgNoFavs");
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                          AL CLIKCEAR SOBRE EL ITEM "FAVORITOS", EVENTO Y FUNCION PARA PREPARAR LA GALERIA DE FAVORITOS
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
     creadorGifos.style.display = "none";
     if (localStorage.getItem("darkmode") === "true") {
@@ -31,22 +35,20 @@ btnFavoritos.addEventListener('click', async (desplegarFavoritos) => {
     actualizarFavoritos();
 });
 
-
-
 if (buscador.value === "") {
     sectionFavoritos.style.display = "none";
 }
 
-// itemListaFavoritos.addEventListener("click", () => {
-//     actualizarFavoritos();
-
-// });
+//mostrar mensaje si no hay favoritos agregados:
 function actualizarFavoritos() {
-
-    if (!arrayFavoritos) {
-        console.log("no hay favoritos");
-        //Aca hay que mostrar el mensaje
-        if (pantallaDesktop.matches) {
+    if (pantallaDesktop.matches) {
+        if (localStorage.getItem("misFavoritos")) {
+            noFavs.style.display = "none";
+            galeriaFav.style.display = "grid";
+            arrayFavoritos.forEach(gifFav => {
+                showFavoritos(gifFav);
+            });
+        } else {
             btnVerMasFav.style.display = "none";
             galeriaFav.style.display = "none";
             noFavs.style.display = "block";
@@ -59,10 +61,9 @@ function actualizarFavoritos() {
             textoNoFav.style.lineHeight = "2.3vw"
             textoNoFav.style.marginBottom = "9.5138888vw";
             imgNoFavs.style.marginTop = "7.590277vw";
-        } else {
-            noFavs.style.display = "none";
         }
-    } else {
+    }
+    else {
         noFavs.style.display = "none";
         arrayFavoritos.forEach(gifFav => {
             showFavoritos(gifFav);
@@ -71,6 +72,9 @@ function actualizarFavoritos() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                   API-REST MAS LLENADO DE GALERIA FAVORITOS CON GIFS LIKEADOS
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async function showFavoritos(gifFav) {
 
@@ -140,6 +144,12 @@ async function showFavoritos(gifFav) {
             }
         });
     });
+    let btnAmpliarPintado = document.getElementsByClassName("btnAmpliarPintado");
+    var arrBtnAmpliar = Array.prototype.slice.call(btnAmpliarPintado);
+    arrBtnAmpliar.forEach(contadorBtn => {
+        contadorBtn.setAttribute("contador", contadorSlider++);
+    });
+    console.log(arrayBuscador);
 }
 
 function eliminarElementoArray(idElementoFavorito) {

@@ -1,4 +1,3 @@
-// //Llamar las imagenes que busca el usuario desde giphy
 let buscador = document.getElementById("buscarYMas");
 let buscadorGifos = document.getElementById("buscadorGifos");
 let tituloBusqueda = document.getElementById("tituloBusqueda");
@@ -43,6 +42,336 @@ if (arrayFavoritos === null) {
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                              API-REST MAS LLENADO DE GALERIA CON GIFS AL PRESIONAR ENTER ESTANDO EN EL BUSCADOR
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Al apretar ENTER en el buscador:
+buscador.addEventListener('keypress', async (buscar) => {
+    contadorSlider = 0;
+    arrayCarrusel = [];
+    if (buscar.key === 'Enter') {
+        tituloGif.innerHTML = ``;
+        nombreUsuario.innerHTML = ``;
+        if (!pantallaDesktop.matches) {
+            site_nav.style.display = "none";
+        }
+        busquedaSection.style.display = "Block";
+        galeria.style.display = "grid";
+        galeria.innerHTML = ``;
+        let resultadoBusqueda = await fetch(URL_BASE + buscar.target.value);
+        let json = await resultadoBusqueda.json();
+        json.data.forEach(trending => {
+            arrayCarrusel.push(trending.id);
+            let isFavorito = arrayFavoritos.includes(trending.id);
+            galeria.innerHTML += `
+            <div class="divHoverContenedor">
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+            <div id="btnsPintadosDesktop" key="${trending.id}">
+            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+            <img class="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
+            </div>
+        `;
+            tituloBusqueda.innerHTML = `${buscar.target.value}`;
+            tituloBusqueda.style.textTransform = "capitalize";
+        });
+        let hijosGaleria = document.getElementById("galeria").children;
+        let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+        var arr = Array.prototype.slice.call(btnFavPintado);
+        arr.forEach(btnFavPintado => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+            btnFavPintado.addEventListener('click', () => {
+                if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "none";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "0.7";
+                    btnFavPintado.style.width = "1.25vw";
+                    btnFavPintado.style.height = "1.10416666666vw";
+                    btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "0";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "1";
+                    btnFavPintado.style.width = "2.222222vw";
+                    btnFavPintado.style.height = "2.222222vw";
+                    btnFavPintado.style.padding = "0";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                    btnFavPintado.style.opacity = "0.7";
+                }
+            });
+        });
+        let btnAmpliarPintado = document.getElementsByClassName("btnAmpliarPintado");
+        var arrBtnAmpliar = Array.prototype.slice.call(btnAmpliarPintado);
+        arrBtnAmpliar.forEach(contadorBtn => {
+            contadorBtn.setAttribute("contador", contadorSlider++);
+        });
+        //Eliminar boton ver-mas si no encuentra 12 elementos minimo:
+        if (hijosGaleria.length % 12 != 0) {
+            btnVerMas.style.display = "none";
+        }
+        //Ejecutar lo siguiente si el resultado de busquedas da igual a 0:
+        if (hijosGaleria.length === 0) {
+            galeria.style.display = "none";
+            tituloBusqueda.innerHTML = `${buscar.target.value}`;
+            tituloBusqueda.style.textTransform = "capitalize";
+            btnVerMas.style.display = "none";
+            if (pantallaDesktop.matches) {
+                busquedaFallida.style.display = "block";
+            }
+        }
+    }
+});
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                              AGREGAR 12 IMAGENES MAS A LA GALERIA AL CLICKEAR SOBRE EL BOTON "VER MAS" DE LA GALERIA
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Al clickear VER-MAS:
+let btnVerMas = document.getElementById("btnVerMas");
+btnVerMas.addEventListener('click', async (verMas) => {
+    contadorOffset += 12;
+    contadorSlider = 0;
+    let URL_BusquedaReiterada = "https://api.giphy.com/v1/gifs/search?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9&limit=12&offset=" + contadorOffset + "&q=";
+    let resultadoBusqueda = await fetch(URL_BusquedaReiterada + buscador.value);
+    let json = await resultadoBusqueda.json();
+    json.data.forEach(trending => {
+        arrayCarrusel.push(trending.id);
+        let isFavorito = arrayFavoritos.includes(trending.id);
+        galeria.innerHTML += `
+        <div class="divHoverContenedor">
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+            <div id="btnsPintadosDesktop" key="${trending.id}">
+            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+            <img class="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
+            </div>
+        `;
+    });
+    let hijosGaleria = document.getElementById("galeria").children;
+    if (hijosGaleria.length % 12 != 0) {
+        btnVerMas.style.display = "none";
+    }
+    let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+    var arrVerMas = Array.prototype.slice.call(btnFavPintado);
+    arrVerMas.forEach(btnFavPintado => {
+        if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+            btnFavPintado.style.border = "none";
+            btnFavPintado.style.borderRadius = "0.3rem";
+            btnFavPintado.style.opacity = "0.7";
+            btnFavPintado.style.width = "1.25vw";
+            btnFavPintado.style.height = "1.10416666666vw";
+            btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+            btnFavPintado.style.backgroundColor = "#ffffff";
+        } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+            btnFavPintado.style.border = "0";
+            btnFavPintado.style.borderRadius = "0.3rem";
+            btnFavPintado.style.opacity = "1";
+            btnFavPintado.style.width = "2.222222vw";
+            btnFavPintado.style.height = "2.222222vw";
+            btnFavPintado.style.padding = "0";
+            btnFavPintado.style.backgroundColor = "#ffffff";
+            btnFavPintado.style.opacity = "0.7";
+        }
+        btnFavPintado.addEventListener('click', () => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+        });
+    });
+    let btnAmpliarPintado = document.getElementsByClassName("btnAmpliarPintado");
+    var arrBtnAmpliar = Array.prototype.slice.call(btnAmpliarPintado);
+    arrBtnAmpliar.forEach(contadorBtn => {
+        contadorBtn.setAttribute("contador", contadorSlider++);
+    });
+});
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                              API-REST MAS LLENADO DE GALERIA CON GIFS AL CLICKEAR UNA PALABRA RELACIONADA
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Al clickear ENDPOINTS (funciona con changeText):
+let mostrarEndpoints = async (mostrarEndpoints) => {
+    try {
+        let resultado = await fetch(URL_SearchEndpoints);
+        let json = await resultado.json();
+        for (let index = 0; index < 5; index++) {
+            if (index !== 4) {
+                trendingEndpoints.innerHTML += `
+                <p id="etiquetasEjemplosTexto" onclick="changeText(this)">
+                ${json.data[index]},</p> 
+                `;
+            }
+            else {
+                trendingEndpoints.innerHTML += `
+                <p id="etiquetasEjemplosTexto" onclick="changeText(this)">
+                ${json.data[index]}</p>
+                `;
+            }
+        }
+        // console.log(trendingEndpoints.querySelector('[id=etiquetasEjemplosTexto]').value);
+    } catch (error) {
+        console.log(error);
+    }
+}
+mostrarEndpoints();
+
+//cambia el buscador.value por el texto clickeado y realiza una busqueda:
+async function changeText(objeto) {
+    buscador.value = objeto.innerHTML;
+    //Borrar la "," al final.
+    if (buscador.value.charAt(buscador.value.length - 1) == ',') {
+        buscador.value = buscador.value.slice(0, -1)
+    }
+    if (!pantallaDesktop.matches) {
+        site_nav.style.display = "none";
+    }
+    if (localStorage.getItem("darkmode") === "true") {
+        cruzAparece.innerHTML = `
+        <img id="cruzBuscador" src="./assets/assets/close-modo-noct.svg">
+        `;
+        lupa.src = "./assets/assets/icon-search-mod-noc.svg";
+    } else {
+        cruzAparece.innerHTML = `
+        <img id="cruzBuscador" src="./assets/assets/close.svg">
+        `;
+        lupa.src = "./assets/assets/icon-search.svg";
+    }
+    lupa.style.display = "block";
+    lupa.style.order = "-1";
+    lupa.style.margin = "0 1.458333vw 0 1.458333vw";
+    cruzAparece.style.display = "block";
+    cruzAparece.style.marginLeft = "1.59722222vw";
+    cruzAparece.addEventListener('click', () => {
+        buscador.value = " "
+    });
+    contadorSlider = 0;
+    arrayCarrusel = [];
+    busquedaSection.style.display = "Block";
+    galeria.innerHTML = ``;
+    let resultadoBusqueda = await fetch(URL_BASE + buscador.value);
+    let json = await resultadoBusqueda.json();
+    json.data.forEach(trending => {
+        let isFavorito = arrayFavoritos.includes(trending.id);
+        arrayCarrusel.push(trending.id);
+        galeria.innerHTML += `
+        <div class="divHoverContenedor">
+            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
+            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
+            <div id="btnsPintadosDesktop" key="${trending.id}">
+            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
+            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
+            <img class="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+            </div>
+            <div id="infoImgPintDesktop">
+            <p id="usuarioPintado">${trending.username}</p>
+            <p id="tituloPintado">${trending.title}</p>
+            </div>
+            </div>
+            </div>
+        `;
+        tituloBusqueda.innerHTML = `${buscador.value}`;
+        tituloBusqueda.style.textTransform = "capitalize";
+        let btnFavPintado = document.getElementsByClassName("btnFavPintado");
+        var arrTrendingText = Array.prototype.slice.call(btnFavPintado);
+        arrTrendingText.forEach(btnFavPintado => {
+            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "none";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "0.7";
+                btnFavPintado.style.width = "1.25vw";
+                btnFavPintado.style.height = "1.10416666666vw";
+                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                btnFavPintado.style.border = "0";
+                btnFavPintado.style.borderRadius = "0.3rem";
+                btnFavPintado.style.opacity = "1";
+                btnFavPintado.style.width = "2.222222vw";
+                btnFavPintado.style.height = "2.222222vw";
+                btnFavPintado.style.padding = "0";
+                btnFavPintado.style.backgroundColor = "#ffffff";
+                btnFavPintado.style.opacity = "0.7";
+            }
+            btnFavPintado.addEventListener('click', () => {
+                if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "none";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "0.7";
+                    btnFavPintado.style.width = "1.25vw";
+                    btnFavPintado.style.height = "1.10416666666vw";
+                    btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
+                    btnFavPintado.style.border = "0";
+                    btnFavPintado.style.borderRadius = "0.3rem";
+                    btnFavPintado.style.opacity = "1";
+                    btnFavPintado.style.width = "2.222222vw";
+                    btnFavPintado.style.height = "2.222222vw";
+                    btnFavPintado.style.padding = "0";
+                    btnFavPintado.style.backgroundColor = "#ffffff";
+                    btnFavPintado.style.opacity = "0.7";
+                }
+            });
+        });
+    });
+    let btnAmpliarPintado = document.getElementsByClassName("btnAmpliarPintado");
+    var arrBtnAmpliar = Array.prototype.slice.call(btnAmpliarPintado);
+    arrBtnAmpliar.forEach(contadorBtn => {
+        contadorBtn.setAttribute("contador", contadorSlider++);
+    });
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                       FUNCIONES SECUNDARIAS DEL BUSCADOR
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Establecer mayuscula al buscador:
 buscador.style.textTransform = "capitalize";
@@ -129,301 +458,5 @@ if (pantallaDesktop.matches) {
                 44
             });
         }
-    });
-}
-
-//Al apretar ENTER en el buscador:
-buscador.addEventListener('keypress', async (buscar) => {
-    if (buscar.key === 'Enter') {
-        tituloGif.innerHTML = ``;
-        nombreUsuario.innerHTML = ``;
-        if (!pantallaDesktop.matches) {
-            site_nav.style.display = "none";
-        }
-        busquedaSection.style.display = "Block";
-        galeria.style.display = "grid";
-        galeria.innerHTML = ``;
-        let resultadoBusqueda = await fetch(URL_BASE + buscar.target.value);
-        let json = await resultadoBusqueda.json();
-        json.data.forEach(trending => {
-            // let arrayFavoritos = [];
-            let isFavorito = arrayFavoritos.includes(trending.id);
-            galeria.innerHTML += `
-            <div class="divHoverContenedor">
-            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-            <div id="btnsPintadosDesktop" key="${trending.id}">
-            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
-            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-            <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
-            </div>
-            <div id="infoImgPintDesktop">
-            <p id="usuarioPintado">${trending.username}</p>
-            <p id="tituloPintado">${trending.title}</p>
-            </div>
-            </div>
-            </div>
-        `;
-            tituloBusqueda.innerHTML = `${buscar.target.value}`;
-            tituloBusqueda.style.textTransform = "capitalize";
-        });
-        let hijosGaleria = document.getElementById("galeria").children;
-        let btnFavPintado = document.getElementsByClassName("btnFavPintado");
-        var arr = Array.prototype.slice.call(btnFavPintado);
-        arr.forEach(btnFavPintado => {
-            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                btnFavPintado.style.border = "none";
-                btnFavPintado.style.borderRadius = "0.3rem";
-                btnFavPintado.style.opacity = "0.7";
-                btnFavPintado.style.width = "1.25vw";
-                btnFavPintado.style.height = "1.10416666666vw";
-                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
-                btnFavPintado.style.backgroundColor = "#ffffff";
-            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                btnFavPintado.style.border = "0";
-                btnFavPintado.style.borderRadius = "0.3rem";
-                btnFavPintado.style.opacity = "1";
-                btnFavPintado.style.width = "2.222222vw";
-                btnFavPintado.style.height = "2.222222vw";
-                btnFavPintado.style.padding = "0";
-                btnFavPintado.style.backgroundColor = "#ffffff";
-                btnFavPintado.style.opacity = "0.7";
-            }
-            btnFavPintado.addEventListener('click', () => {
-                if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                    btnFavPintado.style.border = "none";
-                    btnFavPintado.style.borderRadius = "0.3rem";
-                    btnFavPintado.style.opacity = "0.7";
-                    btnFavPintado.style.width = "1.25vw";
-                    btnFavPintado.style.height = "1.10416666666vw";
-                    btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
-                    btnFavPintado.style.backgroundColor = "#ffffff";
-                } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                    btnFavPintado.style.border = "0";
-                    btnFavPintado.style.borderRadius = "0.3rem";
-                    btnFavPintado.style.opacity = "1";
-                    btnFavPintado.style.width = "2.222222vw";
-                    btnFavPintado.style.height = "2.222222vw";
-                    btnFavPintado.style.padding = "0";
-                    btnFavPintado.style.backgroundColor = "#ffffff";
-                    btnFavPintado.style.opacity = "0.7";
-                }
-            });
-        });
-
-        //Eliminar boton ver-mas si no encuentra 12 elementos minimo:
-        if (hijosGaleria.length % 12 != 0) {
-            btnVerMas.style.display = "none";
-        }
-        //Ejecutar lo siguiente si el resultado de busquedas da igual a 0:
-        if (hijosGaleria.length === 0) {
-            galeria.style.display = "none";
-            tituloBusqueda.innerHTML = `${buscar.target.value}`;
-            tituloBusqueda.style.textTransform = "capitalize";
-            btnVerMas.style.display = "none";
-            if (pantallaDesktop.matches) {
-                busquedaFallida.style.display = "block";
-            }
-        }
-
-    }
-});
-
-//Al clickear VER-MAS:
-let btnVerMas = document.getElementById("btnVerMas");
-btnVerMas.addEventListener('click', async (verMas) => {
-    contadorOffset += 12;
-
-    let URL_BusquedaReiterada = "https://api.giphy.com/v1/gifs/search?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9&limit=12&offset=" + contadorOffset + "&q=";
-    let resultadoBusqueda = await fetch(URL_BusquedaReiterada + buscador.value);
-    let json = await resultadoBusqueda.json();
-    json.data.forEach(trending => {
-        let isFavorito = arrayFavoritos.includes(trending.id);
-        galeria.innerHTML += `
-        <div class="divHoverContenedor">
-            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-            <div id="btnsPintadosDesktop" key="${trending.id}">
-            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
-            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-            <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
-            </div>
-            <div id="infoImgPintDesktop">
-            <p id="usuarioPintado">${trending.username}</p>
-            <p id="tituloPintado">${trending.title}</p>
-            </div>
-            </div>
-            </div>
-        `;
-    });
-    let hijosGaleria = document.getElementById("galeria").children;
-    if (hijosGaleria.length % 12 != 0) {
-        btnVerMas.style.display = "none";
-    }
-    let btnFavPintado = document.getElementsByClassName("btnFavPintado");
-    var arrVerMas = Array.prototype.slice.call(btnFavPintado);
-    arrVerMas.forEach(btnFavPintado => {
-        if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-            btnFavPintado.style.border = "none";
-            btnFavPintado.style.borderRadius = "0.3rem";
-            btnFavPintado.style.opacity = "0.7";
-            btnFavPintado.style.width = "1.25vw";
-            btnFavPintado.style.height = "1.10416666666vw";
-            btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
-            btnFavPintado.style.backgroundColor = "#ffffff";
-        } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-            btnFavPintado.style.border = "0";
-            btnFavPintado.style.borderRadius = "0.3rem";
-            btnFavPintado.style.opacity = "1";
-            btnFavPintado.style.width = "2.222222vw";
-            btnFavPintado.style.height = "2.222222vw";
-            btnFavPintado.style.padding = "0";
-            btnFavPintado.style.backgroundColor = "#ffffff";
-            btnFavPintado.style.opacity = "0.7";
-        }
-        btnFavPintado.addEventListener('click', () => {
-            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                btnFavPintado.style.border = "none";
-                btnFavPintado.style.borderRadius = "0.3rem";
-                btnFavPintado.style.opacity = "0.7";
-                btnFavPintado.style.width = "1.25vw";
-                btnFavPintado.style.height = "1.10416666666vw";
-                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
-                btnFavPintado.style.backgroundColor = "#ffffff";
-            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                btnFavPintado.style.border = "0";
-                btnFavPintado.style.borderRadius = "0.3rem";
-                btnFavPintado.style.opacity = "1";
-                btnFavPintado.style.width = "2.222222vw";
-                btnFavPintado.style.height = "2.222222vw";
-                btnFavPintado.style.padding = "0";
-                btnFavPintado.style.backgroundColor = "#ffffff";
-                btnFavPintado.style.opacity = "0.7";
-            }
-        });
-    });
-});
-
-//Al clickear ENDPOINTS (funciona con changeText):
-let mostrarEndpoints = async (mostrarEndpoints) => {
-    try {
-        let resultado = await fetch(URL_SearchEndpoints);
-        let json = await resultado.json();
-        for (let index = 0; index < 5; index++) {
-            if (index !== 4) {
-                trendingEndpoints.innerHTML += `
-                <p id="etiquetasEjemplosTexto" onclick="changeText(this)">
-                ${json.data[index]},</p> 
-                `;
-            }
-            else {
-                trendingEndpoints.innerHTML += `
-                <p id="etiquetasEjemplosTexto" onclick="changeText(this)">
-                ${json.data[index]}</p>
-                `;
-            }
-        }
-        // console.log(trendingEndpoints.querySelector('[id=etiquetasEjemplosTexto]').value);
-    } catch (error) {
-        console.log(error);
-    }
-}
-mostrarEndpoints();
-
-//cambia el buscador.value por el texto clickeado y realiza una busqueda:
-async function changeText(objeto) {
-    buscador.value = objeto.innerHTML;
-    //Borrar la "," al final.
-    if (buscador.value.charAt(buscador.value.length - 1) == ',') {
-        buscador.value = buscador.value.slice(0, -1)
-    }
-    if (!pantallaDesktop.matches) {
-        site_nav.style.display = "none";
-    }
-    if (localStorage.getItem("darkmode") === "true") {
-        cruzAparece.innerHTML = `
-        <img id="cruzBuscador" src="./assets/assets/close-modo-noct.svg">
-        `;
-        lupa.src = "./assets/assets/icon-search-mod-noc.svg";
-    } else {
-        cruzAparece.innerHTML = `
-        <img id="cruzBuscador" src="./assets/assets/close.svg">
-        `;
-        lupa.src = "./assets/assets/icon-search.svg";
-    }
-    lupa.style.display = "block";
-    lupa.style.order = "-1";
-    lupa.style.margin = "0 1.458333vw 0 1.458333vw";
-    cruzAparece.style.display = "block";
-    cruzAparece.style.marginLeft = "1.59722222vw";
-    cruzAparece.addEventListener('click', () => {
-        buscador.value = " "
-    });
-    busquedaSection.style.display = "Block";
-    galeria.innerHTML = ``;
-    let resultadoBusqueda = await fetch(URL_BASE + buscador.value);
-    let json = await resultadoBusqueda.json();
-    json.data.forEach(trending => {
-        let isFavorito = arrayFavoritos.includes(trending.id);
-        galeria.innerHTML += `
-        <div class="divHoverContenedor">
-            <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
-            <div key="${trending.id}" id="${trending.id}" nombre="${trending.username}" titulo="${trending.title}" class="divHover" onmouseout="despintar(this)">
-            <div id="btnsPintadosDesktop" key="${trending.id}">
-            <img class="btnFavPintado" corazon="false" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
-            <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-            <img id="btnAmpliarPintado" corazon="false"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
-            </div>
-            <div id="infoImgPintDesktop">
-            <p id="usuarioPintado">${trending.username}</p>
-            <p id="tituloPintado">${trending.title}</p>
-            </div>
-            </div>
-            </div>
-        `;
-        tituloBusqueda.innerHTML = `${buscador.value}`;
-        tituloBusqueda.style.textTransform = "capitalize";
-        let btnFavPintado = document.getElementsByClassName("btnFavPintado");
-        var arrTrendingText = Array.prototype.slice.call(btnFavPintado);
-        arrTrendingText.forEach(btnFavPintado => {
-            if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                btnFavPintado.style.border = "none";
-                btnFavPintado.style.borderRadius = "0.3rem";
-                btnFavPintado.style.opacity = "0.7";
-                btnFavPintado.style.width = "1.25vw";
-                btnFavPintado.style.height = "1.10416666666vw";
-                btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
-                btnFavPintado.style.backgroundColor = "#ffffff";
-            } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                btnFavPintado.style.border = "0";
-                btnFavPintado.style.borderRadius = "0.3rem";
-                btnFavPintado.style.opacity = "1";
-                btnFavPintado.style.width = "2.222222vw";
-                btnFavPintado.style.height = "2.222222vw";
-                btnFavPintado.style.padding = "0";
-                btnFavPintado.style.backgroundColor = "#ffffff";
-                btnFavPintado.style.opacity = "0.7";
-            }
-            btnFavPintado.addEventListener('click', () => {
-                if (arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                    btnFavPintado.style.border = "none";
-                    btnFavPintado.style.borderRadius = "0.3rem";
-                    btnFavPintado.style.opacity = "0.7";
-                    btnFavPintado.style.width = "1.25vw";
-                    btnFavPintado.style.height = "1.10416666666vw";
-                    btnFavPintado.style.padding = "0.55555555vw 0.48611111vw";
-                    btnFavPintado.style.backgroundColor = "#ffffff";
-                } else if (!arrayFavoritos.includes(btnFavPintado.getAttribute("key")) && pantallaDesktop.matches) {
-                    btnFavPintado.style.border = "0";
-                    btnFavPintado.style.borderRadius = "0.3rem";
-                    btnFavPintado.style.opacity = "1";
-                    btnFavPintado.style.width = "2.222222vw";
-                    btnFavPintado.style.height = "2.222222vw";
-                    btnFavPintado.style.padding = "0";
-                    btnFavPintado.style.backgroundColor = "#ffffff";
-                    btnFavPintado.style.opacity = "0.7";
-                }
-            });
-        });
     });
 }

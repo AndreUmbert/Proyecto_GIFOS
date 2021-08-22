@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROYECTO GIFOS</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./Css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
                 <li id="itemListaMisGifos"><a class="liNavItem" href="#">Mis GIFOS</a>
                     <div class="borderLiItems"></div>
                 </li>
-                <li id="btnCrearGifos"><a href="#"><img boleano="false" onmouseover="setImgCrearGifosNueva()"
+                <li id="btnCrearGifos"><a href="#"><img onmouseover="setImgCrearGifosNueva()"
                             onmouseout="setImgVolver()" id="imgBtnCrearGifos"
                             src="./assets/assets/button-crear-gifo.svg" alt="imagen crear gifos"></a></li>
             </ul>
@@ -66,7 +66,7 @@
         </section>
         <section id="busqueda">
             <div id="separador"></div>
-            <h2 id="tituloBusqueda"></h2>
+            <h2 id="tituloBusqueda">#</h2>
             <div id="galeria"></div>
             <div id="busquedaFallida">
                 <img id="imgBusquedaFallida" src="./assets/assets/icon-busqueda-sin-resultado.svg"
@@ -82,7 +82,7 @@
             <h2 id="tituloFavoritos">Favoritos</h2>
             <div id="galeriaFav"></div>
             <div id="btnVerMasFav">
-                <img src="./assets/assets/CTA-ver-mas.svg" id="verMasFav">
+                <img src="./assets/assets/CTA-ver-mas.svg" id="verMasFav" alt="imagen de boton ver mas">
             </div>
             <div id="noFavs">
                 <img id="imgNoFavs" src="./assets/assets/icon-fav-sin-contenido.svg" alt="imagen corazon vacio">
@@ -94,7 +94,7 @@
             <h2 id="tituloMisGifos">Mis GIFOS</h2>
             <div id="galeriaMisGifos"></div>
             <div id="btnVerMasMisGifos">
-                <img src="./assets/assets/CTA-ver-mas.svg" id="verMasMisGifos">
+                <img src="./assets/assets/CTA-ver-mas.svg" id="verMasMisGifos" alt="imagen de boton ver mas">
             </div>
             <div id="noGifos">
                 <img id="imgNoGifos" src="./assets/assets/icon-mis-gifos-sin-contenido.svg"
@@ -111,9 +111,11 @@
                     comunidad.</p>
             </div>
             <div id="carrusel">
-                <img src="./assets/assets/button-slider-left.svg" id="flechaIzquierda">
+                <img src="./assets/assets/button-slider-left.svg" id="flechaIzquierda"
+                    alt="imagen de boton flecha izquierda">
                 <div id="carruselTrendingGifos"></div>
-                <img src="./assets/assets/Button-Slider-right.svg" id="flechaDerecha">
+                <img src="./assets/assets/Button-Slider-right.svg" id="flechaDerecha"
+                    alt="imagen de boton flecha derecha">
             </div>
         </section>
         <section id="creadorGifos">
@@ -141,7 +143,7 @@
                                     <h3 id="textoSubiendoGifo">Estamos subiendo tu GIFO</h3>
                                 </div>
                                 <video id="video" autoplay></video>
-                                <img id="mostrarVideo" alt="lugar donde se mostrara el video">
+                                <img id="mostrarVideo" src="#" alt="lugar donde se mostrara el video">
                                 <h2 id="tituloGrabacion">Aquí podrás<br>crear tus propios <span
                                         id="spanGifos">GIFOS</span></h2>
                                 <p id="textoGrabacion1">¡Crea tu GIFO en sólo 3 pasos!</p>
@@ -199,7 +201,7 @@
                 <img id="cruzImgAmplificadaBtn" src="./assets/assets/close.svg" alt="imagenCruzCerrar">
             </div>
             <div id="imgAmplificadaCtn">
-                <img id="imgAmplificada" key="" src="" alt="imagenAmplificada">
+                <img id="imgAmplificada" src="#" alt="imagenAmplificada">
                 <div id="pieDeImg">
                     <div id="infoUsuario">
                         <p id="nombreUsuario">user</p>
@@ -219,7 +221,7 @@
             <div id="contImgDesktop">
                 <img id="imgFlechaIzqDesktop" src="./assets/assets/button-slider-left.svg"
                     alt="imagen flecha izquierda">
-                <img id="imgAmpliadaDesktop" alt="imagen ampliada en modo desktop">
+                <img id="imgAmpliadaDesktop" src="#" alt="imagen ampliada en modo desktop">
                 <img id="imgFlechaDerDesktop" src="./assets/assets/Button-Slider-right.svg" alt="imagen flecha derecha">
             </div>
             <div id="infoImgAmplaiadaDesktop">
@@ -256,16 +258,16 @@
     </footer>
 
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-    <script src="./menu.js"></script>
-    <script src="./buscador.js"></script>
-    <script src="./favoritos.js"></script>
-    <script src="./misGifos.js"></script>
-    <script src="./carrusel.js"></script>
-    <script src="./hovers.js"></script>
-    <script src="./imgsFunctions.js"></script>
-    <script src="./creador.js"></script>
-    <script src="./imgAmpliDesktop.js"></script>
-    <script src="./nocturno.js"></script>
+    <script src="./Scripts/menu.js"></script>
+    <script src="./Scripts/buscador.js"></script>
+    <script src="./Scripts/favoritos.js"></script>
+    <script src="./Scripts/misGifos.js"></script>
+    <script src="./Scripts/carrusel.js"></script>
+    <script src="./Scripts/hovers.js"></script>
+    <script src="./Scripts/imgsFunctions.js"></script>
+    <script src="./Scripts/creador.js"></script>
+    <script src="./Scripts/imgAmpliDesktop.js"></script>
+    <script src="./Scripts/nocturno.js"></script>
 
 </body>
 

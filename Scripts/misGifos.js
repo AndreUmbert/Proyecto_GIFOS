@@ -6,6 +6,10 @@ let galeriaMisGifos = document.getElementById("galeriaMisGifos");
 let btnVerMasMisGifos = document.getElementById("btnVerMasMisGifos");
 let noGifos = document.getElementById("noGifos");
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                              MOSTRAR SECCION DE GIFOS CREADOS POR EL USUARIO
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 btnMisGifos.addEventListener("click", (mostrarMisGifos) => {
     creadorGifos.style.display = "none";
     menu.src = "./assets/assets/burger.svg";
@@ -64,6 +68,9 @@ function actualizarGifos() {
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                    MOSTRAR GALERIA DE GIFOS CREADOS POR EL USUARIO LLAMANDOLOS DESDE LA API
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async function showGifos(gifUsuario) {
 
@@ -94,7 +101,6 @@ async function showGifos(gifUsuario) {
     console.log(hijosFavs.length);
 
 }
-
 
 function eliminarElementoArrayMisGifos(idElementoMisGifos) {
 

@@ -1,7 +1,11 @@
 var carrusel = document.getElementById("carruselTrendingGifos");
 const URL_Trending = "https://api.giphy.com/v1/gifs/trending?api_key=umCoI8QE3nt72GLxXUntliERdZW5J6z9&limit=12";
+let arrayCarrusel = [];
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                              API-REST MAS LLENADO DE CARRUSEL CON GIFS (TRENDING) AL INICIAR LA PAGINA
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 //Cargar Carrusel con imagenes:
@@ -11,6 +15,7 @@ let mostrarTrending = async () => {
     let json = await resultado.json();
     json.data.forEach(trending => {
         let isFavorito = arrayFavoritos.includes(trending.id);
+        arrayCarrusel.push(trending.id)
         carrusel.innerHTML += `
         <div class="divHoverContenedor">
         <img key="${trending.id}"  class="imgBuscada" src="${trending.images.fixed_height.url}" nombre="${trending.username}" corazon="false" titulo="${trending.title}" onmouseover="pintar(this)" onclick="ampliar()">
@@ -18,7 +23,7 @@ let mostrarTrending = async () => {
         <div id="btnsPintadosDesktop" key="${trending.id}">
         <img class="btnFavPintado" src=${!isFavorito ? "assets/assets/icon-fav.svg" : "assets/assets/icon-fav-active.svg"} onclick="favDesktop(this)" key="${trending.id}">
         <img id="btnDescargarPintado" src="assets/assets/icon-download.svg" onclick="downloadDesktop(this)" key="${trending.id}">
-        <img id="btnAmpliarPintado"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
+        <img class="btnAmpliarPintado"  titulo="${trending.title}" nombre="${trending.username}" path="${trending.images.fixed_height.url}" onclick="ampliarDesktop(this)" src="assets/assets/icon-max-normal.svg" key="${trending.id}">
         </div>
         <div id="infoImgPintDesktop">
         <p id="usuarioPintado">${trending.username}</p>
@@ -72,13 +77,21 @@ let mostrarTrending = async () => {
             }
         });
     });
+    let btnAmpliarPintado = document.getElementsByClassName("btnAmpliarPintado");
+    var arrBtnAmpliar = Array.prototype.slice.call(btnAmpliarPintado);
+    arrBtnAmpliar.forEach(contadorBtn => {
+        contadorBtn.setAttribute("contador", contadorSlider++);
+    });
+    // console.log(arrayCarrusel);
 }
 mostrarTrending();
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                 FUNCIONES SECUNDARIAS EN EL CARRUSEL
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//Funciones de scroll para el carrusel:
 const flechaIzquierda = document.getElementById("flechaIzquierda");
 const flechaDerecha = document.getElementById("flechaDerecha");
 
@@ -90,3 +103,26 @@ flechaDerecha.addEventListener("click", (desplazarDerecha) => {
     carrusel.scrollBy(1150, 0);
 })
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                                 PROBANDO
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+let contadorSlider = 0;
+
+// imgFlechaIzqDesktop.addEventListener("click", () => {
+//     console.log(contador);
+//     if (contadorSlider > 0) {
+//         contadorSlider--;
+//     } else {
+//         "aca no ha pasado nada";
+//     }
+// });
+
+// imgFlechaDerDesktop.addEventListener("click", () => {
+//     console.log(contador);
+//     contadorSlider++;
+// });
+
+
+
+// imgAmpliadaDesktop.setAttribute()
